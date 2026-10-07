@@ -1,0 +1,167 @@
+/*
+ * Staff auth decorative right-panel slide animations.
+ *
+ * Each colored accent tile rotates through a stack of promotional slides.
+ * Entering slides swipe up from below with a blur/scale pop; outgoing slides
+ * swipe up and off with the same curve. A diagonal "sheen" wipes across the
+ * entering slide for extra flare, and inner elements (kicker, icon, metric,
+ * headline, description) cascade in with a staggered fade-rise so the card
+ * feels composed rather than flat.
+ *
+ * The parent `RotatingAccentTile` renders a persistent backdrop (matching the
+ * outgoing slide's color during a transition, then the current slide's color
+ * once the transition settles) so the tile never shows a gap between cards.
+ */
+
+.staff-auth-slide-enter,
+.staff-auth-slide-exit {
+  will-change: transform, filter;
+}
+
+.staff-auth-slide-enter {
+  animation: staff-auth-slide-enter 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.staff-auth-slide-exit {
+  animation: staff-auth-slide-exit 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes staff-auth-slide-enter {
+  0% {
+    transform: translateY(100%) scale(0.96);
+    filter: blur(6px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes staff-auth-slide-exit {
+  0% {
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(-100%) scale(0.96);
+    filter: blur(6px);
+  }
+}
+
+/* Diagonal sheen that wipes up across the entering slide. */
+.staff-auth-slide-enter::after {
+  content: "";
+  position: absolute;
+  inset: -25% -15%;
+  background: linear-gradient(
+    18deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.14) 46%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.14) 54%,
+    transparent 62%
+  );
+  mix-blend-mode: overlay;
+  transform: translateY(130%);
+  animation: staff-auth-slide-sheen 1200ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes staff-auth-slide-sheen {
+  0% {
+    transform: translateY(130%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-130%);
+    opacity: 0;
+  }
+}
+
+/* Staggered reveal of inner elements on entering slides. */
+.staff-auth-slide-enter .staff-auth-slide-kicker {
+  animation: staff-auth-slide-text-in 650ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+}
+
+.staff-auth-slide-enter .staff-auth-slide-icon {
+  animation: staff-auth-slide-icon-pop 750ms cubic-bezier(0.34, 1.56, 0.64, 1) 220ms both;
+}
+
+.staff-auth-slide-enter .staff-auth-slide-metric {
+  animation: staff-auth-slide-text-in 700ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+}
+
+.staff-auth-slide-enter .staff-auth-slide-rule {
+  animation: staff-auth-slide-rule-in 700ms cubic-bezier(0.22, 1, 0.36, 1) 420ms both;
+  transform-origin: left center;
+}
+
+.staff-auth-slide-enter .staff-auth-slide-headline {
+  animation: staff-auth-slide-text-in 700ms cubic-bezier(0.22, 1, 0.36, 1) 480ms both;
+}
+
+.staff-auth-slide-enter .staff-auth-slide-desc {
+  animation: staff-auth-slide-text-in 700ms cubic-bezier(0.22, 1, 0.36, 1) 560ms both;
+}
+
+@keyframes staff-auth-slide-icon-pop {
+  0% {
+    transform: scale(0.4) rotate(-14deg);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes staff-auth-slide-text-in {
+  0% {
+    transform: translateY(14px);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes staff-auth-slide-rule-in {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .staff-auth-slide-enter,
+  .staff-auth-slide-exit,
+  .staff-auth-slide-enter::after,
+  .staff-auth-slide-enter .staff-auth-slide-kicker,
+  .staff-auth-slide-enter .staff-auth-slide-icon,
+  .staff-auth-slide-enter .staff-auth-slide-metric,
+  .staff-auth-slide-enter .staff-auth-slide-rule,
+  .staff-auth-slide-enter .staff-auth-slide-headline,
+  .staff-auth-slide-enter .staff-auth-slide-desc {
+    animation: none !important;
+  }
+}
