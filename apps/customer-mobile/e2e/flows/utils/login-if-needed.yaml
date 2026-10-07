@@ -1,0 +1,19 @@
+# Utility - Login If Needed
+# Logs in using phone OTP only if user is not already logged in
+# 
+# This utility checks for login screen indicators and runs
+# the full phone login flow if needed.
+
+appId: com.dilivygo.customer
+name: "Utility - Login If Needed"
+env:
+  TEST_PHONE: ${TEST_PHONE:-+1234567890}
+  TEST_EMAIL: ${TEST_USER_EMAIL:-test@dilivygo.com}
+---
+
+# Check if we need to login by looking for login screen indicators
+- runFlow:
+    when:
+      visible: "Dilivygo|Sign In|Login|Log In|phone number|email"
+      regex: true
+    file: ../auth/login.yaml

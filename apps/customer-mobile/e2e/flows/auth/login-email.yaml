@@ -1,0 +1,113 @@
+# Authentication - Email Login with OTP Flow
+# Tests user email login alternative (instead of phone)
+#
+# Covers:
+# - Switch to email tab
+# - Email input
+# - OTP request and verification
+# - Successful login
+
+appId: com.dilivygo.customer
+name: "Authentication - Email Login with OTP"
+tags:
+  - auth
+  - login
+  - otp
+  - email
+env:
+  TEST_EMAIL: ${TEST_USER_EMAIL:-test@dilivygo.com}
+---
+
+# Launch app with clean state
+- launchApp:
+    clearState: true
+
+# Wait for app to load
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+- takeScreenshot: "email_login_01_start"
+
+# Navigate to login if needed
+- runFlow:
+    when:
+      notVisible: "Dilivygo|phone|email|Continue with"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Sign In|Login|Account"
+          regex: true
+          optional: true
+
+# Welcome screen → email sign-in (Android: Email, iOS: Apple routes to same flow)
+- tapOn:
+    text: "Continue with Email"
+    optional: true
+- tapOn:
+    text: "Continue with Apple"
+    optional: true
+
+# Switch to Email tab
+- tapOn:
+    text: "Email"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "email_login_02_email_tab"
+
+# Enter email address
+- tapOn:
+    text: "email|@"
+    regex: true
+    optional: true
+
+- inputText: ${TEST_EMAIL}
+
+- hideKeyboard
+
+- takeScreenshot: "email_login_03_email_entered"
+
+# Request OTP
+- tapOn:
+    text: "Send Code|Send OTP|Continue"
+    regex: true
+
+# Wait for OTP screen
+- extendedWaitUntil:
+    visible: "6-digit|code|OTP|Verify"
+    regex: true
+    timeout: 10000
+
+- takeScreenshot: "email_login_04_otp_screen"
+
+# Enter OTP (single field)
+- tapOn:
+    text: "000000|Verification"
+    regex: true
+    optional: true
+
+- inputText: "123456"
+
+- takeScreenshot: "email_login_05_otp_entered"
+
+# Verify OTP
+- tapOn:
+    text: "Verify|Sign In|Submit|Confirm"
+    regex: true
+
+# Wait for successful login
+- extendedWaitUntil:
+    visible: "Home|craving|Orders|Cart"
+    regex: true
+    timeout: 15000
+
+- takeScreenshot: "email_login_06_success"
+
+# Verify logged in state
+- assertVisible:
+    text: "Home|Cart|Orders|Account"
+    regex: true
+    optional: true

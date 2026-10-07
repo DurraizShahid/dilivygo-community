@@ -1,0 +1,55 @@
+# Authentication - Logout Flow
+# Tests user logout functionality
+
+appId: com.dilivygo.customer
+name: "Authentication - Logout"
+tags:
+  - auth
+  - logout
+---
+
+# Ensure user is logged in first
+- runFlow:
+    file: ./login.yaml
+
+# Navigate to account/profile tab
+- tapOn:
+    text: "Account|Profile|Settings"
+    regex: true
+
+# Wait for account screen
+- extendedWaitUntil:
+    visible: "Account|Profile|Settings"
+    regex: true
+    timeout: 5000
+
+# Screenshot of account screen
+- takeScreenshot: "account_screen"
+
+# Scroll to find logout button if needed
+- scroll:
+    direction: DOWN
+
+# Tap logout button
+- tapOn:
+    text: "Log Out|Logout|Sign Out"
+    regex: true
+
+# Handle confirmation dialog if present
+- runFlow:
+    when:
+      visible: "Confirm|Are you sure"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Yes|Confirm|Log Out|OK"
+          regex: true
+
+# Wait for logout to complete
+- extendedWaitUntil:
+    visible: "Sign In|Login|Welcome"
+    regex: true
+    timeout: 10000
+
+# Verify logout success
+- takeScreenshot: "logout_success"

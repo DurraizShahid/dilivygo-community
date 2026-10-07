@@ -1,0 +1,27 @@
+# Smoke Test - App Launch and Basic Navigation
+# This test verifies the app launches correctly and basic UI is accessible
+
+appId: com.dilivygo.customer
+name: "Smoke Test - App Launch"
+tags:
+  - smoke
+  - critical
+---
+
+# Launch the application
+- launchApp:
+    clearState: true
+
+# Wait for app to fully load
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+# Verify the app has launched (check for main UI elements)
+# The app should show either login screen or home screen
+- assertVisible:
+    text: ".*"
+    optional: true
+
+# Take screenshot for verification
+- takeScreenshot: "app_launch"

@@ -1,0 +1,22 @@
+# Utility - Navigate to Tab
+# Navigates to a specific tab in the bottom navigation
+#
+# Usage: Set TAB_NAME environment variable before running
+# TAB_NAME can be: Home, Cart, Orders, Chat, Account
+
+appId: com.dilivygo.customer
+name: "Utility - Navigate to Tab"
+env:
+  TAB_NAME: ${TAB_NAME:-Home}
+---
+
+# Tap on the specified tab
+- tapOn:
+    text: ${TAB_NAME}
+
+# Wait for tab content to load
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "tab_${TAB_NAME}"

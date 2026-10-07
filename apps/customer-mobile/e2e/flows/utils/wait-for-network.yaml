@@ -1,0 +1,18 @@
+# Utility - Wait for Network
+# Waits for network requests to complete
+
+appId: com.dilivygo.customer
+name: "Utility - Wait Network"
+---
+
+# Wait for loading indicators to disappear
+- extendedWaitUntil:
+    notVisible: "Loading|Fetching|Please wait"
+    regex: true
+    timeout: 15000
+    optional: true
+
+# Additional wait for animations
+- swipe:
+    direction: DOWN
+    duration: 100

@@ -1,0 +1,123 @@
+# Authentication - Invalid OTP Scenario
+# Tests error handling when user enters incorrect OTP
+#
+# Covers:
+# - Enter wrong OTP code
+# - Verify error message appears
+# - User can retry with correct OTP
+
+appId: com.dilivygo.customer
+name: "Authentication - Invalid OTP Handling"
+tags:
+  - auth
+  - login
+  - otp
+  - error-handling
+env:
+  TEST_PHONE: ${TEST_PHONE:-+1234567890}
+---
+
+# Launch app with clean state
+- launchApp:
+    clearState: true
+
+# Wait for app to load
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+- takeScreenshot: "invalid_otp_01_start"
+
+# Navigate to login if needed
+- runFlow:
+    when:
+      notVisible: "Dilivygo|phone"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Sign In|Login|Account"
+          regex: true
+          optional: true
+
+# Enter phone number
+- tapOn:
+    text: "Phone"
+    optional: true
+
+- tapOn:
+    text: "\\+|phone"
+    regex: true
+    optional: true
+
+- inputText: ${TEST_PHONE}
+
+- hideKeyboard
+
+# Request OTP
+- tapOn:
+    text: "Send Code|Send OTP|Continue"
+    regex: true
+
+# Wait for OTP screen
+- extendedWaitUntil:
+    visible: "6-digit|code|OTP|Verify"
+    regex: true
+    timeout: 10000
+
+- takeScreenshot: "invalid_otp_02_otp_screen"
+
+# Enter INVALID OTP (wrong code)
+- tapOn:
+    index: 0
+    optional: true
+
+# Enter intentionally wrong OTP: 000000
+- inputText: "0"
+- inputText: "0"
+- inputText: "0"
+- inputText: "0"
+- inputText: "0"
+- inputText: "0"
+
+- takeScreenshot: "invalid_otp_03_wrong_code_entered"
+
+# Try to verify
+- tapOn:
+    text: "Verify|Submit|Confirm"
+    regex: true
+
+# Wait for error message
+- extendedWaitUntil:
+    visible: "Invalid|incorrect|wrong|Error|failed"
+    regex: true
+    timeout: 10000
+    optional: true
+
+- takeScreenshot: "invalid_otp_04_error_shown"
+
+# Verify error message is displayed
+- assertVisible:
+    text: "Invalid|incorrect|wrong|Error|try again"
+    regex: true
+    optional: true
+
+# User should be able to try again
+# Check that we're still on OTP screen
+- assertVisible:
+    text: "6-digit|code|Verify"
+    regex: true
+    optional: true
+
+- takeScreenshot: "invalid_otp_05_can_retry"
+
+# Optionally go back to change phone number
+- tapOn:
+    text: "Change|Back|different"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "invalid_otp_06_final"

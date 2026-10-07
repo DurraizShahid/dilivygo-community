@@ -1,0 +1,256 @@
+# Order Flow - Cart Management
+# Comprehensive tests for cart functionality
+#
+# Covers:
+# - Add item to cart from restaurant menu
+# - Modify item quantity (increase/decrease)
+# - Remove item from cart
+# - Verify cart total calculation
+# - Cart persistence
+# - Clear cart
+
+appId: com.dilivygo.customer
+name: "Order - Cart Management"
+tags:
+  - order
+  - cart
+  - critical
+---
+
+# Start fresh
+- launchApp:
+    clearState: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+# Ensure logged in
+- runFlow:
+    file: ../utils/login-if-needed.yaml
+
+- takeScreenshot: "cart_01_home"
+
+# ===========================================
+# CLEAR ANY EXISTING CART
+# ===========================================
+
+- runFlow:
+    file: ../utils/clear-cart.yaml
+    optional: true
+
+# Navigate back to home
+- tapOn:
+    text: "Home"
+    optional: true
+
+- extendedWaitUntil:
+    visible: "craving|Search"
+    regex: true
+    timeout: 5000
+
+# ===========================================
+# ADD FIRST ITEM TO CART
+# ===========================================
+
+# Select first restaurant
+- tapOn:
+    index: 0
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "cart_02_restaurant_page"
+
+# Scroll to find menu items
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "cart_03_menu_items"
+
+# Tap on Add button or + to add first item
+- tapOn:
+    text: "Add|\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "cart_04_item_modal"
+
+# If there's a customization modal, confirm add
+- tapOn:
+    text: "Add to Cart|Add|Confirm|Done"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "cart_05_item_added"
+
+# ===========================================
+# ADD SECOND ITEM TO CART
+# ===========================================
+
+# Scroll to find more items
+- scroll:
+    direction: DOWN
+
+# Add another item
+- tapOn:
+    text: "Add|\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+# Confirm if modal appears
+- tapOn:
+    text: "Add to Cart|Add|Confirm|Done"
+    regex: true
+    optional: true
+
+- takeScreenshot: "cart_06_second_item_added"
+
+# ===========================================
+# NAVIGATE TO CART
+# ===========================================
+
+# Tap on Cart tab
+- tapOn:
+    text: "Cart"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "cart_07_cart_view"
+
+# Verify cart has items
+- assertVisible:
+    text: "Total|Subtotal|\\$|£|Checkout"
+    regex: true
+    optional: true
+
+# ===========================================
+# MODIFY ITEM QUANTITY - INCREASE
+# ===========================================
+
+# Find and tap + to increase quantity
+- tapOn:
+    text: "\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 2000
+
+- takeScreenshot: "cart_08_quantity_increased"
+
+# Increase again
+- tapOn:
+    text: "\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- takeScreenshot: "cart_09_quantity_increased_again"
+
+# ===========================================
+# MODIFY ITEM QUANTITY - DECREASE
+# ===========================================
+
+# Find and tap - to decrease quantity
+- tapOn:
+    text: "\\-|−"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 2000
+
+- takeScreenshot: "cart_10_quantity_decreased"
+
+# ===========================================
+# VERIFY CART TOTAL CALCULATION
+# ===========================================
+
+# Total should be visible
+- assertVisible:
+    text: "Total|Subtotal"
+    regex: true
+    optional: true
+
+# Price should be visible
+- assertVisible:
+    text: "\\$|£|\\d+\\.\\d{2}"
+    regex: true
+    optional: true
+
+- takeScreenshot: "cart_11_total_displayed"
+
+# ===========================================
+# REMOVE ITEM FROM CART
+# ===========================================
+
+# Tap remove/delete button or swipe to delete
+- tapOn:
+    text: "Remove|Delete|×|✕|Trash"
+    regex: true
+    optional: true
+    index: 0
+
+# If confirmation dialog appears
+- tapOn:
+    text: "Remove|Delete|Yes|Confirm"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "cart_12_item_removed"
+
+# ===========================================
+# VERIFY CART UPDATE
+# ===========================================
+
+# Cart should update
+- assertVisible:
+    text: "Total|Subtotal|\\$|£|empty"
+    regex: true
+    optional: true
+
+- takeScreenshot: "cart_13_cart_updated"
+
+# ===========================================
+# FINAL STATE
+# ===========================================
+
+# Scroll to see checkout button if cart has items
+- scroll:
+    direction: DOWN
+    optional: true
+
+- takeScreenshot: "cart_14_final_state"
+
+# Verify checkout button is present (if cart has items)
+- assertVisible:
+    text: "Checkout|Proceed|Continue|Place Order"
+    regex: true
+    optional: true

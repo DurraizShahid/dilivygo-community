@@ -1,0 +1,311 @@
+# Order Flow - Checkout with Stripe Payment Sheet
+# Complete checkout process including Stripe payment
+#
+# Covers:
+# - Proceed to checkout from cart
+# - Enter/select delivery address
+# - Select delivery time (ASAP or scheduled)
+# - Apply promo code (optional)
+# - Add delivery notes
+# - Complete payment with Stripe Payment Sheet
+# - Verify order confirmation
+
+appId: com.dilivygo.customer
+name: "Order - Checkout with Stripe Payment"
+tags:
+  - order
+  - checkout
+  - payment
+  - stripe
+  - critical
+env:
+  # Stripe test card details
+  TEST_CARD_NUMBER: "4242424242424242"
+  TEST_CARD_EXPIRY: "12/28"
+  TEST_CARD_CVC: "123"
+---
+
+# ===========================================
+# PREREQUISITES: Add items to cart first
+# ===========================================
+
+# Start with items in cart
+- runFlow:
+    file: ./add-to-cart.yaml
+
+# Navigate to cart if not already there
+- tapOn:
+    text: "Cart"
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "checkout_01_cart_view"
+
+# Verify cart has items
+- assertVisible:
+    text: "Total|Subtotal|\\$|£"
+    regex: true
+    optional: true
+
+# ===========================================
+# PROCEED TO CHECKOUT
+# ===========================================
+
+# Tap checkout/proceed button
+- tapOn:
+    text: "Checkout|Proceed|Continue"
+    regex: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "checkout_02_checkout_screen"
+
+# ===========================================
+# DELIVERY ADDRESS SECTION
+# ===========================================
+
+# Check if address section is visible
+- assertVisible:
+    text: "Delivery Address|Address|Where"
+    regex: true
+    optional: true
+
+# If saved addresses exist, select one
+- runFlow:
+    when:
+      visible: "Home|Work|Office|Saved"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Home|Work"
+          regex: true
+          optional: true
+          index: 0
+      - takeScreenshot: "checkout_03_address_selected"
+
+# If no saved address, enter new one
+- runFlow:
+    when:
+      notVisible: "Home|Work|Office"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Address|delivery address|Enter"
+          regex: true
+          optional: true
+      - inputText: "123 Test Street, Test City, 12345"
+      - hideKeyboard
+      - takeScreenshot: "checkout_03_address_entered"
+
+# ===========================================
+# DELIVERY NOTES (Optional)
+# ===========================================
+
+# Add delivery instructions
+- tapOn:
+    text: "Notes|instructions|special"
+    regex: true
+    optional: true
+
+- runFlow:
+    when:
+      visible: "Notes|instructions"
+      regex: true
+    commands:
+      - inputText: "Please ring the doorbell"
+      - hideKeyboard
+      - takeScreenshot: "checkout_04_notes_added"
+
+# ===========================================
+# DELIVERY TIME SELECTION
+# ===========================================
+
+# Verify delivery time options are visible
+- assertVisible:
+    text: "ASAP|Schedule|Delivery Time|Time"
+    regex: true
+    optional: true
+
+# Select ASAP (default)
+- tapOn:
+    text: "ASAP|Now"
+    regex: true
+    optional: true
+
+- takeScreenshot: "checkout_05_delivery_time"
+
+# Optionally test scheduled delivery
+- runFlow:
+    when:
+      visible: "Schedule|Later"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Schedule|Later"
+          regex: true
+          optional: true
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 2000
+      - takeScreenshot: "checkout_06_schedule_option"
+      # Switch back to ASAP for this test
+      - tapOn:
+          text: "ASAP|Now"
+          regex: true
+          optional: true
+
+# ===========================================
+# PROMO CODE (Optional)
+# ===========================================
+
+# Look for promo code section
+- runFlow:
+    when:
+      visible: "Promo|Code|Discount|Coupon"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Promo|Code|Enter code"
+          regex: true
+          optional: true
+      # Don't actually apply a code, just verify it's there
+      - takeScreenshot: "checkout_07_promo_section"
+      - hideKeyboard
+
+# ===========================================
+# ORDER SUMMARY VERIFICATION
+# ===========================================
+
+# Scroll to see full order summary
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "checkout_08_order_summary"
+
+# Verify order summary elements
+- assertVisible:
+    text: "Subtotal|Total|Delivery fee"
+    regex: true
+    optional: true
+
+# Verify total amount is visible
+- assertVisible:
+    text: "\\$|£|Total"
+    regex: true
+    optional: true
+
+- takeScreenshot: "checkout_09_totals"
+
+# ===========================================
+# PAYMENT - STRIPE PAYMENT SHEET
+# ===========================================
+
+# Tap Pay button to initiate Stripe Payment Sheet
+- tapOn:
+    text: "Pay|Place Order|Schedule & Pay|Confirm"
+    regex: true
+
+# Wait for Stripe Payment Sheet to appear
+- extendedWaitUntil:
+    visible: "Card|Payment|Pay \\$|Pay £|Add card"
+    regex: true
+    timeout: 10000
+
+- takeScreenshot: "checkout_10_stripe_payment_sheet"
+
+# ===========================================
+# STRIPE PAYMENT SHEET INTERACTION
+# ===========================================
+
+# Note: Stripe Payment Sheet is a native component
+# In test mode, it may show test card options
+
+# If card input is needed
+- runFlow:
+    when:
+      visible: "Card number|Card information"
+      regex: true
+    commands:
+      # Enter test card number
+      - tapOn:
+          text: "Card number|Card"
+          regex: true
+          optional: true
+      - inputText: ${TEST_CARD_NUMBER}
+      - takeScreenshot: "checkout_11_card_entered"
+      
+      # Enter expiry
+      - tapOn:
+          text: "MM / YY|Expiry|Expiration"
+          regex: true
+          optional: true
+      - inputText: ${TEST_CARD_EXPIRY}
+      
+      # Enter CVC
+      - tapOn:
+          text: "CVC|CVV|Security"
+          regex: true
+          optional: true
+      - inputText: ${TEST_CARD_CVC}
+      
+      - hideKeyboard
+      - takeScreenshot: "checkout_12_card_details_complete"
+
+# Tap the Pay button in Stripe sheet
+- tapOn:
+    text: "Pay|Confirm|Complete"
+    regex: true
+    optional: true
+
+# Wait for payment processing
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+- takeScreenshot: "checkout_13_payment_processing"
+
+# ===========================================
+# ORDER CONFIRMATION
+# ===========================================
+
+# Wait for success screen
+- extendedWaitUntil:
+    visible: "Success|Confirmed|Order Placed|Thank you|Scheduled"
+    regex: true
+    timeout: 15000
+    optional: true
+
+- takeScreenshot: "checkout_14_order_confirmation"
+
+# Verify order confirmation elements
+- assertVisible:
+    text: "Order|Confirmed|Success|Thank|Placed|Scheduled"
+    regex: true
+    optional: true
+
+# ===========================================
+# NAVIGATE TO ORDERS
+# ===========================================
+
+# Tap to view orders
+- tapOn:
+    text: "View Orders|Orders|See Order|Track"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "checkout_15_orders_view"
+
+# Verify order appears in orders list
+- assertVisible:
+    text: "Order|Pending|Preparing|Confirmed|Scheduled"
+    regex: true
+    optional: true

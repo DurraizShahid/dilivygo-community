@@ -1,0 +1,26 @@
+# Utility - Verify Tab Navigation
+# Verifies all tabs are accessible
+
+appId: com.dilivygo.customer
+name: "Utility - Verify Tabs"
+---
+
+# Check Home tab exists
+- assertVisible:
+    text: "Home"
+    optional: true
+
+# Check Cart tab exists
+- assertVisible:
+    text: "Cart"
+    optional: true
+
+# Check Orders tab exists
+- assertVisible:
+    text: "Orders"
+    optional: true
+
+# Check Account tab exists
+- assertVisible:
+    text: "Account"
+    optional: true

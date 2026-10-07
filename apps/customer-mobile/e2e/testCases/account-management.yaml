@@ -1,0 +1,94 @@
+# Test Case - User Account Management
+# Tests account features: profile, addresses, payment methods
+
+appId: com.dilivygo.customer
+name: "Test Case - Account Management"
+tags:
+  - testcase
+  - account
+  - e2e
+---
+
+# Launch and login
+- launchApp:
+    clearState: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+- runFlow:
+    file: ../flows/auth/login.yaml
+
+# Navigate to Account tab
+- tapOn:
+    text: "Account"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "tc_account_01_main"
+
+# Check for profile option
+- runFlow:
+    when:
+      visible: "Profile|Edit Profile"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Profile|Edit Profile"
+          regex: true
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 5000
+      - takeScreenshot: "tc_account_02_profile"
+      - back
+
+# Check for addresses option
+- runFlow:
+    when:
+      visible: "Address|Addresses|Delivery Address"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Address|Addresses"
+          regex: true
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 5000
+      - takeScreenshot: "tc_account_03_addresses"
+      - back
+
+# Check for payment methods
+- runFlow:
+    when:
+      visible: "Payment|Cards|Payment Methods"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Payment|Cards"
+          regex: true
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 5000
+      - takeScreenshot: "tc_account_04_payments"
+      - back
+
+# Check for order history link
+- runFlow:
+    when:
+      visible: "Order History|My Orders|Past Orders"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Order History|My Orders"
+          regex: true
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 5000
+      - takeScreenshot: "tc_account_05_orders"
+      - back
+
+# Final account screenshot
+- takeScreenshot: "tc_account_06_complete"

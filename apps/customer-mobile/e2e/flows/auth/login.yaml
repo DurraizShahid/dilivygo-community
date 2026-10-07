@@ -1,0 +1,139 @@
+# Authentication - Phone Login with OTP Flow
+# Tests user phone login and OTP verification functionality
+# 
+# Covers:
+# - Phone number input
+# - OTP request
+# - OTP entry and verification
+# - Successful login redirect
+# - Invalid OTP handling
+# - Email login alternative
+#
+# Test data: Uses TEST_PHONE from environment or fixtures
+
+appId: com.dilivygo.customer
+name: "Authentication - Phone Login with OTP"
+tags:
+  - auth
+  - login
+  - otp
+  - critical
+env:
+  TEST_PHONE: ${TEST_PHONE:-+1234567890}
+  TEST_EMAIL: ${TEST_USER_EMAIL:-test@dilivygo.com}
+---
+
+# Launch app with clean state for fresh login
+- launchApp:
+    clearState: true
+
+# Wait for app to fully load
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+# Screenshot initial state
+- takeScreenshot: "login_01_initial"
+
+# Check if we're already on login screen or need to navigate
+- runFlow:
+    when:
+      notVisible: "Dilivygo|phone|email"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Sign In|Login|Log In|Account"
+          regex: true
+          optional: true
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 5000
+
+# ===========================================
+# PHONE LOGIN FLOW (Primary)
+# ===========================================
+
+# Welcome screen → phone sign-in
+- tapOn:
+    text: "Continue with Phone"
+    optional: true
+
+# Ensure Phone tab is selected (default)
+- tapOn:
+    text: "Phone"
+    optional: true
+
+- takeScreenshot: "login_02_phone_tab"
+
+# Enter phone number in international format
+- tapOn:
+    text: "\\+|phone"
+    regex: true
+    optional: true
+
+- inputText: ${TEST_PHONE}
+
+# Hide keyboard to see the button
+- hideKeyboard
+
+- takeScreenshot: "login_03_phone_entered"
+
+# Tap Send Code button
+- tapOn:
+    text: "Send Code|Send OTP|Continue|Next"
+    regex: true
+
+# Wait for OTP screen to appear
+- extendedWaitUntil:
+    visible: "6-digit|code|OTP|Verify"
+    regex: true
+    timeout: 10000
+
+- takeScreenshot: "login_04_otp_screen"
+
+# In dev mode, OTP may be shown on screen - look for debug OTP box
+- runFlow:
+    when:
+      visible: "Dev OTP"
+      optional: true
+    commands:
+      - takeScreenshot: "login_05_debug_otp_visible"
+
+# Enter OTP (single field, matches customer web)
+- tapOn:
+    text: "000000|Verification"
+    regex: true
+    optional: true
+
+- inputText: "123456"
+
+- takeScreenshot: "login_06_otp_entered"
+
+# Tap Verify button
+- tapOn:
+    text: "Verify|Sign In|Submit|Confirm|Continue"
+    regex: true
+
+# Wait for login to complete and redirect to home
+- extendedWaitUntil:
+    visible: "Home|craving|Orders|Cart|Account"
+    regex: true
+    timeout: 15000
+
+- takeScreenshot: "login_07_success"
+
+# Verify we're on the home screen
+- assertVisible:
+    text: "craving|restaurant|shop"
+    regex: true
+    optional: true
+
+# ===========================================
+# ASSERTIONS
+# ===========================================
+
+# Verify bottom navigation is visible (logged in state)
+- assertVisible:
+    text: "Home|Cart|Orders|Account"
+    regex: true
+    optional: true

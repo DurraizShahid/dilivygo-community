@@ -1,0 +1,209 @@
+# Order Flow - Restaurant Browsing and Search
+# Comprehensive tests for restaurant discovery features
+#
+# Covers:
+# - View restaurant list on home screen
+# - Search for restaurants by name
+# - Filter by cuisine/category
+# - Open restaurant detail page
+# - Browse restaurant menu
+
+appId: com.dilivygo.customer
+name: "Order - Restaurant Browsing and Search"
+tags:
+  - order
+  - browse
+  - search
+  - restaurant
+  - critical
+---
+
+# Ensure logged in first
+- launchApp:
+    clearState: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+# Login if needed
+- runFlow:
+    file: ../utils/login-if-needed.yaml
+
+- takeScreenshot: "browse_01_home_screen"
+
+# ===========================================
+# VIEW RESTAURANT LIST
+# ===========================================
+
+# Verify home screen elements
+- assertVisible:
+    text: "craving|restaurant|shop"
+    regex: true
+    optional: true
+
+# Verify search bar is present
+- assertVisible:
+    text: "Search|Find"
+    regex: true
+    optional: true
+
+- takeScreenshot: "browse_02_restaurant_list"
+
+# Scroll through restaurant list
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "browse_03_scrolled_down"
+
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "browse_04_more_restaurants"
+
+# Scroll back to top
+- scroll:
+    direction: UP
+
+- scroll:
+    direction: UP
+
+- takeScreenshot: "browse_05_back_to_top"
+
+# ===========================================
+# SEARCH FUNCTIONALITY
+# ===========================================
+
+# Tap on search bar
+- tapOn:
+    text: "Search|Find"
+    regex: true
+    optional: true
+
+# Alternative: tap on search input
+- tapOn:
+    id: "search-input"
+    optional: true
+
+- takeScreenshot: "browse_06_search_focused"
+
+# Enter search query
+- inputText: "Pizza"
+
+- takeScreenshot: "browse_07_search_pizza"
+
+# Wait for search results
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "browse_08_search_results"
+
+# Clear search
+- tapOn:
+    text: "×|✕|clear|close"
+    regex: true
+    optional: true
+
+# Or tap the X button if visible
+- tapOn:
+    id: "clear-search"
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "browse_09_search_cleared"
+
+# ===========================================
+# FILTER BY CUISINE TYPE (if available)
+# ===========================================
+
+# Look for cuisine filters/categories
+- runFlow:
+    when:
+      visible: "Italian|American|Chinese|Indian|Mexican|Cuisine|Filter"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Italian|American|Chinese|Filter"
+          regex: true
+          optional: true
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 3000
+      - takeScreenshot: "browse_10_filtered_results"
+
+# ===========================================
+# OPEN RESTAURANT DETAIL
+# ===========================================
+
+# Scroll up to see restaurants
+- scroll:
+    direction: UP
+    optional: true
+
+# Tap on first restaurant card
+- tapOn:
+    index: 0
+    optional: true
+
+# Wait for restaurant detail page to load
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "browse_11_restaurant_detail"
+
+# Verify restaurant page elements
+- assertVisible:
+    text: "Menu|Add|\\$|£"
+    regex: true
+    optional: true
+
+# ===========================================
+# BROWSE RESTAURANT MENU
+# ===========================================
+
+# Scroll through menu sections
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "browse_12_menu_section_1"
+
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "browse_13_menu_section_2"
+
+# Look for menu items
+- assertVisible:
+    text: "Add|\\+|\\$|£"
+    regex: true
+    optional: true
+
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "browse_14_more_menu_items"
+
+# ===========================================
+# NAVIGATE BACK
+# ===========================================
+
+# Go back to restaurant list
+- back
+
+- extendedWaitUntil:
+    visible: "craving|Search|restaurant"
+    regex: true
+    timeout: 5000
+
+- takeScreenshot: "browse_15_back_to_list"
+
+# Verify we're back on home
+- assertVisible:
+    text: "craving|Search|shop"
+    regex: true
+    optional: true

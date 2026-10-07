@@ -1,0 +1,37 @@
+# Utility - Dismiss Modals
+# Dismisses any open modals, popups, or overlays
+#
+# Useful for recovering test state when unexpected modals appear
+
+appId: com.dilivygo.customer
+name: "Utility - Dismiss Modals"
+---
+
+# Try to dismiss any visible modal/popup
+# Look for common dismiss buttons
+
+# Close button (X)
+- tapOn:
+    text: "×|✕|Close"
+    regex: true
+    optional: true
+
+# Cancel button
+- tapOn:
+    text: "Cancel|Dismiss|Not Now|Later|Skip"
+    regex: true
+    optional: true
+
+# Tap outside modal (top of screen)
+- tapOn:
+    point: "50%,10%"
+    optional: true
+
+# Press back button
+- back
+  optional: true
+
+# Small wait for modal to close
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 1000

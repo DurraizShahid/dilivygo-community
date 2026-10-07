@@ -1,0 +1,23 @@
+# Utility - Scroll to Element
+# Scrolls until a specific element is visible
+#
+# Usage: Set TARGET_TEXT environment variable before running
+
+appId: com.dilivygo.customer
+name: "Utility - Scroll to Element"
+env:
+  TARGET_TEXT: ${TARGET_TEXT:-Target}
+  MAX_SCROLLS: 10
+---
+
+# Try to scroll to find the element
+- repeat:
+    times: ${MAX_SCROLLS}
+    while:
+      notVisible: ${TARGET_TEXT}
+    commands:
+      - scroll:
+          direction: DOWN
+
+# Take screenshot once found
+- takeScreenshot: "scroll_found_${TARGET_TEXT}"

@@ -1,0 +1,319 @@
+# Location Permission and Address Geocoding Tests
+# Tests location-related functionality
+#
+# Covers:
+# - Grant location permission
+# - Use current location for delivery address
+# - Manual address entry
+# - Address autocomplete/suggestions
+# - Save addresses for later use
+
+appId: com.dilivygo.customer
+name: "Location Permission and Address Geocoding"
+tags:
+  - location
+  - address
+  - permissions
+  - geocoding
+---
+
+# ===========================================
+# SETUP
+# ===========================================
+
+- launchApp:
+    clearState: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+# Login first
+- runFlow:
+    file: ../utils/login-if-needed.yaml
+
+- takeScreenshot: "location_01_logged_in"
+
+# ===========================================
+# LOCATION PERMISSION HANDLING
+# ===========================================
+
+# Navigate to checkout or address screen where location is needed
+- tapOn:
+    text: "Account|Profile"
+    regex: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "location_02_account_screen"
+
+# Look for Addresses option
+- tapOn:
+    text: "Addresses|Saved Addresses|Delivery Address"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "location_03_addresses_screen"
+
+# ===========================================
+# HANDLE LOCATION PERMISSION DIALOG
+# ===========================================
+
+# If location permission dialog appears, grant it
+# iOS permission dialog
+- runFlow:
+    when:
+      visible: "use your location|Allow|location access|While Using"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Allow While Using|Allow Once|Allow|OK"
+          regex: true
+      - takeScreenshot: "location_04_permission_granted_ios"
+
+# Android permission dialog
+- runFlow:
+    when:
+      visible: "access this device's location|Precise|Approximate"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Precise|While using|Allow"
+          regex: true
+          optional: true
+      - tapOn:
+          text: "Allow|OK|Yes"
+          regex: true
+      - takeScreenshot: "location_04_permission_granted_android"
+
+# ===========================================
+# USE CURRENT LOCATION
+# ===========================================
+
+# Look for "Use current location" or similar button
+- tapOn:
+    text: "Current Location|Use My Location|Locate Me|GPS"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "location_05_current_location_used"
+
+# ===========================================
+# MANUAL ADDRESS ENTRY
+# ===========================================
+
+# Tap Add New Address
+- tapOn:
+    text: "Add|New Address|\\+"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "location_06_add_address_form"
+
+# Fill in address form
+# Select label (Home, Work, etc.)
+- tapOn:
+    text: "Home"
+    optional: true
+
+# Address Line 1
+- tapOn:
+    text: "Address line 1|Street|123"
+    regex: true
+    optional: true
+
+- inputText: "123 Test Street"
+
+- hideKeyboard
+
+# Address Line 2 (optional)
+- tapOn:
+    text: "Address line 2|Flat|Apt|Unit"
+    regex: true
+    optional: true
+
+- inputText: "Apartment 4B"
+
+- hideKeyboard
+
+# City
+- tapOn:
+    text: "City|Town"
+    regex: true
+    optional: true
+
+- inputText: "London"
+
+- hideKeyboard
+
+# Postcode/ZIP
+- tapOn:
+    text: "Postcode|ZIP|Postal"
+    regex: true
+    optional: true
+
+- inputText: "SW1A 1AA"
+
+- hideKeyboard
+
+- takeScreenshot: "location_07_address_filled"
+
+# ===========================================
+# ADDRESS AUTOCOMPLETE (if available)
+# ===========================================
+
+# Some apps have address autocomplete
+# Clear and try autocomplete
+- runFlow:
+    when:
+      visible: "Autocomplete|Suggestions|Search address"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Address|Search"
+          regex: true
+          optional: true
+      - inputText: "10 Downing"
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 3000
+      - takeScreenshot: "location_08_autocomplete_suggestions"
+      # Select first suggestion
+      - tapOn:
+          index: 0
+          optional: true
+      - takeScreenshot: "location_09_autocomplete_selected"
+
+# ===========================================
+# SAVE ADDRESS
+# ===========================================
+
+# Set as default if checkbox available
+- tapOn:
+    text: "default|Set as default"
+    regex: true
+    optional: true
+
+# Save the address
+- tapOn:
+    text: "Save|Add|Confirm|Done"
+    regex: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "location_10_address_saved"
+
+# ===========================================
+# VERIFY ADDRESS SAVED
+# ===========================================
+
+# Address should appear in the list
+- assertVisible:
+    text: "123 Test Street|Home|London"
+    regex: true
+    optional: true
+
+- takeScreenshot: "location_11_address_in_list"
+
+# ===========================================
+# EDIT EXISTING ADDRESS
+# ===========================================
+
+# Tap edit on the address
+- tapOn:
+    text: "Edit|Modify|pencil"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "location_12_edit_address"
+
+# Make a change
+- tapOn:
+    text: "Address line 2|Flat|Apt"
+    regex: true
+    optional: true
+
+- clearText
+  optional: true
+
+- inputText: "Flat 10"
+
+- hideKeyboard
+
+# Save changes
+- tapOn:
+    text: "Update|Save|Done"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "location_13_address_updated"
+
+# ===========================================
+# DELETE ADDRESS
+# ===========================================
+
+# Tap delete on an address
+- tapOn:
+    text: "Delete|Remove|Trash"
+    regex: true
+    optional: true
+    index: 0
+
+# Confirm deletion if dialog appears
+- runFlow:
+    when:
+      visible: "Confirm|Sure|Delete"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Delete|Yes|Confirm|Remove"
+          regex: true
+      - takeScreenshot: "location_14_address_deleted"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "location_15_final_state"
+
+# ===========================================
+# NAVIGATE BACK TO HOME
+# ===========================================
+
+- back
+
+- tapOn:
+    text: "Home"
+    optional: true
+
+- extendedWaitUntil:
+    visible: "craving|restaurant"
+    regex: true
+    timeout: 5000
+
+- takeScreenshot: "location_16_back_home"

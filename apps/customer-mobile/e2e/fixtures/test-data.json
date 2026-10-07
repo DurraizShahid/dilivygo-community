@@ -1,0 +1,226 @@
+{
+  "testUsers": {
+    "customer": {
+      "phone": "+1234567890",
+      "email": "test@dilivygo.com",
+      "password": "TestPassword123!",
+      "name": "Test Customer",
+      "otp": "123456"
+    },
+    "newUser": {
+      "phone": "+1999999999",
+      "email": "newuser_{{timestamp}}@dilivygo.com",
+      "password": "NewUser123!",
+      "name": "New Test User"
+    },
+    "premiumUser": {
+      "phone": "+1888888888",
+      "email": "premium@dilivygo.com",
+      "name": "Premium Customer"
+    }
+  },
+  "testRestaurants": {
+    "primary": {
+      "id": "test-restaurant-001",
+      "name": "Test Restaurant",
+      "cuisine": "American",
+      "rating": 4.5,
+      "deliveryTime": "25-35 min"
+    },
+    "secondary": {
+      "id": "test-restaurant-002",
+      "name": "Pizza Place",
+      "cuisine": "Italian",
+      "rating": 4.2,
+      "deliveryTime": "30-40 min"
+    },
+    "burger": {
+      "id": "test-restaurant-003",
+      "name": "Burger House",
+      "cuisine": "American",
+      "rating": 4.0,
+      "deliveryTime": "20-30 min"
+    },
+    "sushi": {
+      "id": "test-restaurant-004",
+      "name": "Sushi Master",
+      "cuisine": "Japanese",
+      "rating": 4.8,
+      "deliveryTime": "35-45 min"
+    },
+    "indian": {
+      "id": "test-restaurant-005",
+      "name": "Curry House",
+      "cuisine": "Indian",
+      "rating": 4.3,
+      "deliveryTime": "30-40 min"
+    }
+  },
+  "testAddresses": {
+    "home": {
+      "label": "Home",
+      "addressLine1": "123 Test Street",
+      "addressLine2": "Apartment 4B",
+      "city": "Test City",
+      "state": "TS",
+      "postcode": "12345",
+      "country": "US",
+      "lat": 40.7128,
+      "lng": -74.0060
+    },
+    "work": {
+      "label": "Work",
+      "addressLine1": "456 Office Blvd",
+      "addressLine2": "Suite 100",
+      "city": "Test City",
+      "state": "TS",
+      "postcode": "12345",
+      "country": "US",
+      "lat": 40.7589,
+      "lng": -73.9851
+    },
+    "alternate": {
+      "label": "Other",
+      "addressLine1": "789 Alternative Ave",
+      "city": "Other City",
+      "state": "OT",
+      "postcode": "67890",
+      "country": "US",
+      "lat": 40.7484,
+      "lng": -73.9857
+    },
+    "uk": {
+      "label": "Home",
+      "addressLine1": "10 Downing Street",
+      "city": "London",
+      "postcode": "SW1A 2AA",
+      "country": "UK",
+      "lat": 51.5034,
+      "lng": -0.1276
+    }
+  },
+  "testPaymentMethods": {
+    "validCard": {
+      "number": "4242424242424242",
+      "expiry": "12/28",
+      "cvc": "123",
+      "name": "Test Card",
+      "brand": "Visa"
+    },
+    "declinedCard": {
+      "number": "4000000000000002",
+      "expiry": "12/28",
+      "cvc": "123",
+      "name": "Declined Card",
+      "brand": "Visa"
+    },
+    "insufficientFunds": {
+      "number": "4000000000009995",
+      "expiry": "12/28",
+      "cvc": "123",
+      "name": "Insufficient Funds",
+      "brand": "Visa"
+    },
+    "mastercard": {
+      "number": "5555555555554444",
+      "expiry": "12/28",
+      "cvc": "123",
+      "name": "Mastercard",
+      "brand": "Mastercard"
+    },
+    "amex": {
+      "number": "378282246310005",
+      "expiry": "12/28",
+      "cvc": "1234",
+      "name": "American Express",
+      "brand": "Amex"
+    }
+  },
+  "testMenuItems": {
+    "burger": {
+      "name": "Classic Burger",
+      "price": 12.99,
+      "priceCents": 1299,
+      "description": "Juicy beef patty with lettuce, tomato, and special sauce"
+    },
+    "fries": {
+      "name": "French Fries",
+      "price": 4.99,
+      "priceCents": 499,
+      "description": "Crispy golden fries"
+    },
+    "pizza": {
+      "name": "Margherita Pizza",
+      "price": 15.99,
+      "priceCents": 1599,
+      "description": "Classic tomato and mozzarella"
+    },
+    "salad": {
+      "name": "Garden Salad",
+      "price": 8.99,
+      "priceCents": 899,
+      "description": "Fresh mixed greens"
+    },
+    "drink": {
+      "name": "Soft Drink",
+      "price": 2.99,
+      "priceCents": 299,
+      "description": "Choice of cola, sprite, or fanta"
+    }
+  },
+  "testPromoCodes": {
+    "valid": {
+      "code": "TESTDISCOUNT10",
+      "discountPercent": 10,
+      "description": "10% off"
+    },
+    "freeDelivery": {
+      "code": "FREEDELIVERY",
+      "freeDelivery": true,
+      "description": "Free delivery"
+    },
+    "expired": {
+      "code": "EXPIRED2023",
+      "error": "This promo code has expired"
+    },
+    "invalid": {
+      "code": "INVALIDCODE",
+      "error": "Invalid promo code"
+    }
+  },
+  "testOrders": {
+    "pending": {
+      "id": "test-order-001",
+      "status": "pending",
+      "totalCents": 2298
+    },
+    "preparing": {
+      "id": "test-order-002",
+      "status": "preparing",
+      "totalCents": 3498
+    },
+    "onTheWay": {
+      "id": "test-order-003",
+      "status": "on_the_way",
+      "totalCents": 1599
+    },
+    "delivered": {
+      "id": "test-order-004",
+      "status": "delivered",
+      "totalCents": 2497
+    }
+  },
+  "searchQueries": {
+    "cuisine": ["Italian", "American", "Chinese", "Indian", "Japanese", "Mexican"],
+    "food": ["Pizza", "Burger", "Sushi", "Tacos", "Curry", "Salad"],
+    "noResults": "xyzabc123noresults"
+  },
+  "deepLinks": {
+    "restaurant": "dilivygo://restaurant/test-restaurant-001",
+    "order": "dilivygo://order/test-order-001",
+    "orders": "dilivygo://orders",
+    "checkout": "dilivygo://checkout",
+    "cart": "dilivygo://cart",
+    "account": "dilivygo://account"
+  }
+}

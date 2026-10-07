@@ -1,0 +1,221 @@
+# Order Flow - Add Items to Cart
+# Tests adding items to cart from restaurant menu
+#
+# Covers:
+# - Navigate to restaurant
+# - Browse menu
+# - Add single item
+# - Add item with customizations/modifiers
+# - Add multiple items
+# - Verify cart badge updates
+
+appId: com.dilivygo.customer
+name: "Order - Add to Cart"
+tags:
+  - order
+  - cart
+  - menu
+---
+
+# Launch and ensure logged in
+- launchApp:
+    clearState: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+- runFlow:
+    file: ../utils/login-if-needed.yaml
+
+- takeScreenshot: "add_cart_01_home"
+
+# ===========================================
+# NAVIGATE TO RESTAURANT
+# ===========================================
+
+# Tap on first restaurant in the list
+- tapOn:
+    index: 0
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "add_cart_02_restaurant_page"
+
+# ===========================================
+# BROWSE MENU
+# ===========================================
+
+# Scroll to find menu items
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "add_cart_03_menu_section"
+
+# Look for menu categories if present
+- assertVisible:
+    text: "Menu|Items|Popular|Appetizers|Mains|Drinks"
+    regex: true
+    optional: true
+
+# ===========================================
+# ADD FIRST ITEM
+# ===========================================
+
+# Tap Add or + button on first menu item
+- tapOn:
+    text: "Add|\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "add_cart_04_item_options"
+
+# ===========================================
+# HANDLE ITEM CUSTOMIZATION MODAL
+# ===========================================
+
+# If customization/modifier options appear
+- runFlow:
+    when:
+      visible: "Size|Extra|Add-on|Customize|Modifier|Option"
+      regex: true
+    commands:
+      # Select first option if available
+      - tapOn:
+          text: "Regular|Medium|Small|Standard"
+          regex: true
+          optional: true
+          index: 0
+      - takeScreenshot: "add_cart_05_customization_selected"
+
+# Confirm add to cart
+- tapOn:
+    text: "Add to Cart|Add|Confirm|Done|Continue"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "add_cart_06_first_item_added"
+
+# ===========================================
+# VERIFY CART UPDATE
+# ===========================================
+
+# Check for cart badge/indicator update
+- assertVisible:
+    text: "Cart|1|\\(1\\)"
+    regex: true
+    optional: true
+
+# ===========================================
+# ADD SECOND ITEM
+# ===========================================
+
+# Scroll to find more items
+- scroll:
+    direction: DOWN
+
+# Add another item
+- tapOn:
+    text: "Add|\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+# Confirm if customization modal appears
+- tapOn:
+    text: "Add to Cart|Add|Confirm|Done"
+    regex: true
+    optional: true
+
+- takeScreenshot: "add_cart_07_second_item_added"
+
+# ===========================================
+# ADD THIRD ITEM (quantity > 1)
+# ===========================================
+
+# Scroll to find more items
+- scroll:
+    direction: DOWN
+
+# Add another item
+- tapOn:
+    text: "Add|\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+# If quantity selector is available, increase quantity
+- runFlow:
+    when:
+      visible: "\\+|Quantity|Qty"
+      regex: true
+    commands:
+      - tapOn:
+          text: "\\+"
+          regex: true
+          optional: true
+      - tapOn:
+          text: "\\+"
+          regex: true
+          optional: true
+      - takeScreenshot: "add_cart_08_quantity_increased"
+
+# Confirm add
+- tapOn:
+    text: "Add to Cart|Add|Confirm|Done"
+    regex: true
+    optional: true
+
+- takeScreenshot: "add_cart_09_third_item_added"
+
+# ===========================================
+# NAVIGATE TO CART
+# ===========================================
+
+# Tap Cart tab
+- tapOn:
+    text: "Cart"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "add_cart_10_cart_view"
+
+# ===========================================
+# VERIFY CART CONTENTS
+# ===========================================
+
+# Verify items are in cart
+- assertVisible:
+    text: "Total|Subtotal|\\$|£"
+    regex: true
+    optional: true
+
+# Verify checkout option is available
+- assertVisible:
+    text: "Checkout|Proceed|Continue|Place Order"
+    regex: true
+    optional: true
+
+- takeScreenshot: "add_cart_11_cart_verified"

@@ -1,0 +1,103 @@
+# Authentication - Registration Flow
+# Tests new user registration
+
+appId: com.dilivygo.customer
+name: "Authentication - Registration"
+tags:
+  - auth
+  - registration
+env:
+  # Generate unique email for each test run
+  RANDOM_EMAIL: test_${maestro.copiedText}@dilivygo.com
+---
+
+# Launch app with clean state
+- launchApp:
+    clearState: true
+
+# Wait for initial screen
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+# Navigate to registration
+- tapOn:
+    text: "Sign Up|Register|Create Account|Don't have an account"
+    regex: true
+
+# Wait for registration screen
+- extendedWaitUntil:
+    visible: "Create|Sign Up|Register"
+    regex: true
+    timeout: 5000
+
+# Screenshot of registration screen
+- takeScreenshot: "registration_screen"
+
+# Fill in name
+- tapOn:
+    id: "name-input"
+    optional: true
+- tapOn:
+    text: "Name|Full Name"
+    optional: true
+    regex: true
+
+- inputText: "Test User"
+
+# Fill in email
+- tapOn:
+    id: "email-input"
+    optional: true
+- tapOn:
+    text: "Email"
+    optional: true
+
+- inputText: "testuser_${random.number}@dilivygo.com"
+
+# Fill in phone (if present)
+- runFlow:
+    when:
+      visible: "Phone"
+    commands:
+      - tapOn:
+          text: "Phone"
+      - inputText: "+1234567890"
+
+# Fill in password
+- tapOn:
+    id: "password-input"
+    optional: true
+- tapOn:
+    text: "Password"
+    optional: true
+
+- inputText: "TestPassword123!"
+
+# Confirm password (if present)
+- runFlow:
+    when:
+      visible: "Confirm Password"
+    commands:
+      - tapOn:
+          text: "Confirm Password"
+      - inputText: "TestPassword123!"
+
+# Hide keyboard
+- hideKeyboard
+
+# Screenshot with form filled
+- takeScreenshot: "registration_form_filled"
+
+# Submit registration
+- tapOn:
+    text: "Sign Up|Register|Create Account|Submit"
+    regex: true
+
+# Wait for result
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+# Screenshot of result
+- takeScreenshot: "registration_result"

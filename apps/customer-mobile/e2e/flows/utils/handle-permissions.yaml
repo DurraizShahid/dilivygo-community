@@ -1,0 +1,90 @@
+# Utility - Handle System Permissions
+# Handles common system permission dialogs (iOS and Android)
+#
+# Covers:
+# - Location permission
+# - Notification permission
+# - Camera permission (if needed)
+
+appId: com.dilivygo.customer
+name: "Utility - Handle Permissions"
+---
+
+# ===========================================
+# LOCATION PERMISSIONS
+# ===========================================
+
+# iOS Location Permission
+- runFlow:
+    when:
+      visible: "use your location|Allow.*While Using|location access"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Allow While Using|Allow Once|Allow"
+          regex: true
+          optional: true
+
+# Android Location Permission
+- runFlow:
+    when:
+      visible: "access this device's location|Precise|Approximate"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Precise"
+          regex: true
+          optional: true
+      - tapOn:
+          text: "While using the app|Allow"
+          regex: true
+          optional: true
+
+# ===========================================
+# NOTIFICATION PERMISSIONS
+# ===========================================
+
+# iOS Notification Permission
+- runFlow:
+    when:
+      visible: "Would Like to Send.*Notifications|send you notifications"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Allow"
+
+# Android Notification Permission (Android 13+)
+- runFlow:
+    when:
+      visible: "POST_NOTIFICATIONS|send you notifications"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Allow"
+          optional: true
+
+# ===========================================
+# CAMERA PERMISSIONS (if needed)
+# ===========================================
+
+# iOS Camera Permission
+- runFlow:
+    when:
+      visible: "access the camera|Would Like to Access.*Camera"
+      regex: true
+    commands:
+      - tapOn:
+          text: "OK|Allow"
+          regex: true
+          optional: true
+
+# Android Camera Permission
+- runFlow:
+    when:
+      visible: "take pictures and record video"
+      regex: true
+    commands:
+      - tapOn:
+          text: "While using the app|Allow"
+          regex: true
+          optional: true

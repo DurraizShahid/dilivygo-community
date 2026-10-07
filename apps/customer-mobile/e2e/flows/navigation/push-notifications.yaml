@@ -1,0 +1,178 @@
+# Push Notification Handling Tests
+# Tests push notification permissions and interaction
+#
+# Covers:
+# - Grant notification permission
+# - Handle notification tap (foreground/background)
+# - Deep link to order detail from notification
+# - Notification badge handling
+#
+# Note: Push notification testing requires specific setup:
+# - For iOS: Use simulator with notification permissions
+# - For Android: Use emulator with Google Play Services
+
+appId: com.dilivygo.customer
+name: "Push Notification Handling"
+tags:
+  - notifications
+  - push
+  - permissions
+---
+
+# ===========================================
+# SETUP: Launch app and login
+# ===========================================
+
+- launchApp:
+    clearState: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+# Login first
+- runFlow:
+    file: ../utils/login-if-needed.yaml
+
+- takeScreenshot: "notification_01_logged_in"
+
+# ===========================================
+# NOTIFICATION PERMISSION REQUEST
+# ===========================================
+
+# On first launch after login, app may request notification permission
+# This handles the system permission dialog
+
+# For iOS - handle notification permission dialog
+- runFlow:
+    when:
+      visible: "Would Like to Send|Notifications|Allow"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Allow|OK|Yes"
+          regex: true
+      - takeScreenshot: "notification_02_permission_granted_ios"
+
+# For Android - handle notification permission dialog (Android 13+)
+- runFlow:
+    when:
+      visible: "send you notifications|POST_NOTIFICATIONS|Allow"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Allow|OK|Yes"
+          regex: true
+      - takeScreenshot: "notification_02_permission_granted_android"
+
+- takeScreenshot: "notification_03_after_permission"
+
+# ===========================================
+# NAVIGATE TO ACCOUNT SETTINGS
+# ===========================================
+
+# Go to Account tab to verify notification settings
+- tapOn:
+    text: "Account|Profile|Settings"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "notification_04_account_screen"
+
+# Look for notification settings
+- runFlow:
+    when:
+      visible: "Notifications|Settings|Preferences"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Notifications|Settings"
+          regex: true
+          optional: true
+      - extendedWaitUntil:
+          visible: ".*"
+          timeout: 3000
+      - takeScreenshot: "notification_05_notification_settings"
+
+# ===========================================
+# SIMULATE NOTIFICATION TAP (Deep Link)
+# ===========================================
+
+# Navigate back to home first
+- tapOn:
+    text: "Home"
+    optional: true
+
+- extendedWaitUntil:
+    visible: "craving|restaurant"
+    regex: true
+    timeout: 5000
+
+# Open URL to simulate notification deep link to order
+# This simulates tapping a "Your order is ready" notification
+- openLink: "dilivygo://order/test-order-123"
+  optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "notification_06_deep_link_result"
+
+# If deep link worked, we should be on order detail
+- assertVisible:
+    text: "Order|Status|Details|Track"
+    regex: true
+    optional: true
+
+# ===========================================
+# NAVIGATE BACK
+# ===========================================
+
+# Go back to previous screen
+- back
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- takeScreenshot: "notification_07_back_from_deep_link"
+
+# ===========================================
+# TEST ORDERS TAB DEEP LINK
+# ===========================================
+
+# Simulate tapping notification that goes to orders list
+- openLink: "dilivygo://orders"
+  optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "notification_08_orders_deep_link"
+
+# Verify we're on orders screen
+- assertVisible:
+    text: "Orders|History|Recent"
+    regex: true
+    optional: true
+
+# ===========================================
+# FINAL STATE
+# ===========================================
+
+- tapOn:
+    text: "Home"
+    optional: true
+
+- extendedWaitUntil:
+    visible: "craving|restaurant"
+    regex: true
+    timeout: 5000
+
+- takeScreenshot: "notification_09_final"

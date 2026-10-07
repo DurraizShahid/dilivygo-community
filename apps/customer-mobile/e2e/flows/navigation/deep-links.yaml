@@ -1,0 +1,36 @@
+# Navigation - Deep Link Test
+# Tests navigation via deep links
+
+appId: com.dilivygo.customer
+name: "Navigation - Deep Links"
+tags:
+  - navigation
+  - deeplinks
+---
+
+# Test opening app via deep link to restaurant
+- openLink: "dilivygo-customer://restaurant/test-restaurant-id"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 10000
+
+- takeScreenshot: "deeplink_restaurant"
+
+# Test opening app via deep link to order
+- openLink: "dilivygo-customer://order/test-order-id"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 10000
+
+- takeScreenshot: "deeplink_order"
+
+# Test opening app via deep link to checkout
+- openLink: "dilivygo-customer://checkout"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 10000
+
+- takeScreenshot: "deeplink_checkout"

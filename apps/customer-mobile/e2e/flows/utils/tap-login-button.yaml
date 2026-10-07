@@ -1,0 +1,15 @@
+# Utility - Tap Login Button
+# Reusable flow for tapping login/sign in button
+
+appId: com.dilivygo.customer
+name: "Utility - Tap Login"
+---
+
+- tapOn:
+    text: "Sign In|Login|Log In"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000

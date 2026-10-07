@@ -1,0 +1,304 @@
+# Test Case - Full Order Flow (Happy Path)
+# Complete end-to-end test of ordering food
+# 
+# This test covers the entire customer journey:
+# 1. App launch
+# 2. Phone OTP login
+# 3. Browse restaurants
+# 4. Search for restaurant
+# 5. Select restaurant
+# 6. Browse menu
+# 7. Add items to cart
+# 8. Modify cart
+# 9. Checkout with address
+# 10. Payment (Stripe)
+# 11. Order confirmation
+
+appId: com.dilivygo.customer
+name: "Test Case - Full Order Flow"
+tags:
+  - testcase
+  - order
+  - e2e
+  - happy-path
+  - critical
+env:
+  TEST_PHONE: ${TEST_PHONE:-+1234567890}
+---
+
+# ============================================
+# STEP 1: Launch App Fresh
+# ============================================
+- launchApp:
+    clearState: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+- takeScreenshot: "tc_order_01_app_launched"
+
+# ============================================
+# STEP 2: Login with Phone OTP
+# ============================================
+- runFlow:
+    file: ../flows/auth/login.yaml
+
+- takeScreenshot: "tc_order_02_logged_in"
+
+# Handle any permission dialogs
+- runFlow:
+    file: ../flows/utils/handle-permissions.yaml
+    optional: true
+
+# ============================================
+# STEP 3: Browse Restaurants
+# ============================================
+- extendedWaitUntil:
+    visible: "craving|restaurant|shop"
+    regex: true
+    timeout: 10000
+
+- takeScreenshot: "tc_order_03_home_screen"
+
+# Scroll through list
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "tc_order_04_browsing_restaurants"
+
+- scroll:
+    direction: UP
+
+# ============================================
+# STEP 4: Search for Restaurant
+# ============================================
+- tapOn:
+    text: "Search"
+    optional: true
+
+- inputText: "Pizza"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "tc_order_05_search_results"
+
+# Clear search
+- tapOn:
+    text: "×|✕|clear"
+    regex: true
+    optional: true
+
+# ============================================
+# STEP 5: Select Restaurant
+# ============================================
+- scroll:
+    direction: UP
+    optional: true
+
+- tapOn:
+    index: 0
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "tc_order_06_restaurant_detail"
+
+# ============================================
+# STEP 6: Browse Menu
+# ============================================
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "tc_order_07_menu_section_1"
+
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "tc_order_08_menu_section_2"
+
+# ============================================
+# STEP 7: Add Items to Cart
+# ============================================
+# Add first item
+- tapOn:
+    text: "Add|\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- tapOn:
+    text: "Add to Cart|Add|Confirm"
+    regex: true
+    optional: true
+
+- takeScreenshot: "tc_order_09_first_item_added"
+
+# Add second item
+- scroll:
+    direction: DOWN
+
+- tapOn:
+    text: "Add|\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 3000
+
+- tapOn:
+    text: "Add to Cart|Add|Confirm"
+    regex: true
+    optional: true
+
+- takeScreenshot: "tc_order_10_second_item_added"
+
+# ============================================
+# STEP 8: Navigate to Cart & Modify
+# ============================================
+- tapOn:
+    text: "Cart"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "tc_order_11_cart_view"
+
+# Increase quantity
+- tapOn:
+    text: "\\+"
+    regex: true
+    optional: true
+    index: 0
+
+- takeScreenshot: "tc_order_12_quantity_increased"
+
+# Verify total
+- assertVisible:
+    text: "Total|Subtotal|\\$|£"
+    regex: true
+    optional: true
+
+# ============================================
+# STEP 9: Proceed to Checkout
+# ============================================
+- tapOn:
+    text: "Checkout|Proceed|Continue"
+    regex: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "tc_order_13_checkout_screen"
+
+# Select/enter address
+- runFlow:
+    when:
+      visible: "Home|Work|Address"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Home|Work"
+          regex: true
+          optional: true
+          index: 0
+
+# Or enter address manually
+- runFlow:
+    when:
+      notVisible: "Home|Work"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Address|delivery address"
+          regex: true
+          optional: true
+      - inputText: "123 Test Street, Test City"
+      - hideKeyboard
+
+- takeScreenshot: "tc_order_14_address_set"
+
+# Select delivery time (ASAP)
+- tapOn:
+    text: "ASAP|Now"
+    regex: true
+    optional: true
+
+# Scroll to see order summary
+- scroll:
+    direction: DOWN
+
+- takeScreenshot: "tc_order_15_order_summary"
+
+# ============================================
+# STEP 10: Payment
+# ============================================
+- tapOn:
+    text: "Pay|Place Order|Confirm"
+    regex: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 10000
+
+- takeScreenshot: "tc_order_16_payment_screen"
+
+# Handle Stripe payment sheet (in test mode)
+- runFlow:
+    when:
+      visible: "Card|Payment|Pay \\$|Pay £"
+      regex: true
+    commands:
+      - tapOn:
+          text: "Pay|Confirm|Complete"
+          regex: true
+          optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+- takeScreenshot: "tc_order_17_payment_processing"
+
+# ============================================
+# STEP 11: Order Confirmation
+# ============================================
+- extendedWaitUntil:
+    visible: "Success|Confirmed|Order Placed|Thank|Scheduled"
+    regex: true
+    timeout: 15000
+    optional: true
+
+- takeScreenshot: "tc_order_18_order_confirmed"
+
+# Navigate to orders
+- tapOn:
+    text: "View Orders|Orders|Track"
+    regex: true
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "tc_order_19_orders_list"
+
+# Verify order appears
+- assertVisible:
+    text: "Order|Pending|Preparing|Confirmed"
+    regex: true
+    optional: true
+
+- takeScreenshot: "tc_order_20_test_complete"

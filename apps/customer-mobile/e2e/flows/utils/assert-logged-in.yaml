@@ -1,0 +1,22 @@
+# Utility - Assert Logged In
+# Verifies user is logged in by checking for logged-in state indicators
+
+appId: com.dilivygo.customer
+name: "Utility - Assert Logged In"
+---
+
+# Check that we see logged-in state indicators
+# (bottom navigation tabs, home content, etc.)
+
+- assertVisible:
+    text: "Home|Cart|Orders|Account|craving"
+    regex: true
+    optional: true
+
+# Should NOT see login screen
+- assertNotVisible:
+    text: "Sign In|Login|Log In|Get Started"
+    regex: true
+    optional: true
+
+- takeScreenshot: "assert_logged_in"

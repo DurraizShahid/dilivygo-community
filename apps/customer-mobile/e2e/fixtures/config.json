@@ -1,0 +1,29 @@
+{
+  "environment": {
+    "development": {
+      "apiBaseUrl": "http://localhost:8080/api",
+      "wsBaseUrl": "ws://localhost:8080",
+      "mockEnabled": true
+    },
+    "staging": {
+      "apiBaseUrl": "https://staging-api.dilivygo.com/api",
+      "wsBaseUrl": "wss://staging-api.dilivygo.com",
+      "mockEnabled": false
+    },
+    "production": {
+      "apiBaseUrl": "https://api.dilivygo.com/api",
+      "wsBaseUrl": "wss://api.dilivygo.com",
+      "mockEnabled": false
+    }
+  },
+  "timeouts": {
+    "short": 3000,
+    "medium": 5000,
+    "long": 10000,
+    "network": 15000
+  },
+  "retries": {
+    "maxAttempts": 3,
+    "delayBetween": 1000
+  }
+}

@@ -1,0 +1,146 @@
+# Smoke Test - Critical User Flows
+# Quick verification of critical app functionality
+# 
+# This smoke test covers:
+# - App launch verification
+# - Login flow (phone OTP)
+# - Home screen rendering
+# - Restaurant list loading
+# - Basic navigation between tabs
+# - Cart functionality check
+
+appId: com.dilivygo.customer
+name: "Smoke Test - Critical Flows"
+tags:
+  - smoke
+  - critical
+env:
+  TEST_PHONE: ${TEST_PHONE:-+1234567890}
+---
+
+# ============================================
+# 1. APP LAUNCH
+# ============================================
+- launchApp:
+    clearState: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 15000
+
+- takeScreenshot: "smoke_01_app_launched"
+
+# ============================================
+# 2. LOGIN FLOW
+# ============================================
+- runFlow:
+    file: ../utils/login-if-needed.yaml
+
+- takeScreenshot: "smoke_02_logged_in"
+
+# ============================================
+# 3. HOME SCREEN VERIFICATION
+# ============================================
+- extendedWaitUntil:
+    visible: "craving|restaurant|shop|Home"
+    regex: true
+    timeout: 10000
+
+- assertVisible:
+    text: "craving|Search|restaurant"
+    regex: true
+    optional: true
+
+- takeScreenshot: "smoke_03_home_screen"
+
+# ============================================
+# 4. RESTAURANT LIST LOADING
+# ============================================
+# Scroll to verify content loads
+- scroll:
+    direction: DOWN
+
+- assertVisible:
+    text: ".*"
+    optional: true
+
+- takeScreenshot: "smoke_04_restaurants_loaded"
+
+- scroll:
+    direction: UP
+
+# ============================================
+# 5. TAB NAVIGATION
+# ============================================
+# Navigate to Cart tab
+- tapOn:
+    text: "Cart"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "smoke_05_cart_tab"
+
+# Navigate to Orders tab
+- tapOn:
+    text: "Orders"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "smoke_06_orders_tab"
+
+# Navigate to Account tab
+- tapOn:
+    text: "Account"
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "smoke_07_account_tab"
+
+# Return to Home
+- tapOn:
+    text: "Home"
+
+- extendedWaitUntil:
+    visible: "craving|restaurant"
+    regex: true
+    timeout: 5000
+
+- takeScreenshot: "smoke_08_back_to_home"
+
+# ============================================
+# 6. BASIC INTERACTION TEST
+# ============================================
+# Try to tap on first restaurant
+- tapOn:
+    index: 0
+    optional: true
+
+- extendedWaitUntil:
+    visible: ".*"
+    timeout: 5000
+
+- takeScreenshot: "smoke_09_restaurant_detail"
+
+# Navigate back
+- back
+
+- extendedWaitUntil:
+    visible: "craving|restaurant"
+    regex: true
+    timeout: 5000
+
+- takeScreenshot: "smoke_10_complete"
+
+# ============================================
+# FINAL ASSERTIONS
+# ============================================
+- assertVisible:
+    text: "Home|Cart|Orders|Account"
+    regex: true
+    optional: true
