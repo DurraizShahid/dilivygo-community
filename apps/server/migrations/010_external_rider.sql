@@ -1,0 +1,3 @@
+ALTER TABLE deliveries ADD COLUMN IF NOT EXISTS external_rider_name TEXT;
+ALTER TABLE deliveries ADD COLUMN IF NOT EXISTS external_rider_phone TEXT;
+ALTER TABLE deliveries ADD COLUMN IF NOT EXISTS is_external BOOLEAN DEFAULT FALSE;
