@@ -1,0 +1,362 @@
+{
+  "version": 1,
+  "generated": "2026-09-16",
+  "branch": "feat/nango-all-integrations",
+  "catalog": "integrations/catalog.json",
+  "statusSemantics": {
+    "functional": "Live and evidence-backed in repo + production. UI may claim connected/healthy.",
+    "partial": "Real implementation exists but a checklist item is missing (adapter boundary, hardening, live-cert, or dedicated code). UI must not overstate.",
+    "scaffolded": "Lifecycle + data-plane wiring + fail-closed gating + tests exist, but no domain workflow or provider credentials. Gate B. UI shows setup-required, never Connected.",
+    "missing": "No code, config, or docs in repo. Requires verified provider contract before any work. Must stay out of the installable catalog."
+  },
+  "statuses": {
+    "stripe": {
+      "status": "functional",
+      "gate": "F",
+      "evidence": [
+        "apps/server/services/stripe.service.js",
+        "apps/server/controllers/payment.controller.js (stripeWebhook)",
+        "apps/server/jobs/checkout-batch-cleanup.job.js (PI reconciliation)",
+        "apps/server/services/order-refund.service.js"
+      ],
+      "note": "Core order payments live. Phase 03 hardening (capability adapter, full event coverage, dedicated recon job) still open as P1."
+    },
+    "stripe-connect": {
+      "status": "partial",
+      "gate": "C",
+      "evidence": [
+        "apps/server/services/vendor-stripe-connect.service.js (onboarding state machine, capability sync)",
+        "apps/server/services/vendor-payout.service.js (idempotency keys, fail-closed truth)",
+        "apps/server/jobs/connect-payout-reconciliation.job.js",
+        "apps/server/migrations/110_vendor_transfer_reversal_ledger.sql",
+        "docs/integrations/providers/stripe-connect.md (charge model + prod prerequisites)"
+      ],
+      "note": "Transfer/payout orchestration + onboarding lifecycle + reconciliation exist. Kit Phase 04 complete at code level. Live activation blocked on Connect-enabled Stripe account, live keys, dashboard settings, funded balance (doc section 7)."
+    },
+    "apple-pay": {
+      "status": "partial",
+      "gate": "B",
+      "evidence": [
+        "apps/server/services/integration-connections.service.js:28,36 (availability derived from config.stripe.enabled)"
+      ],
+      "note": "No dedicated adapter or tests; rides Stripe. Availability flag only."
+    },
+    "google-pay": {
+      "status": "partial",
+      "gate": "B",
+      "evidence": [
+        "apps/server/services/integration-connections.service.js:29,37 (availability derived from config.stripe.enabled)"
+      ],
+      "note": "No dedicated adapter or tests; rides Stripe. Availability flag only."
+    },
+    "twilio": {
+      "status": "functional",
+      "gate": "F",
+      "evidence": [
+        "apps/server/services/messaging-provider.js (Twilio SMS adapter, Phase 06)",
+        "apps/server/services/sms.service.js (thin wrapper, OTP path)",
+        "TWILIO_* env, console fallback in dev"
+      ],
+      "note": "Native SMS/OTP path live behind the messaging capability. Nango connector entry does not exist for Twilio; do not add one without a use case."
+    },
+    "firebase-fcm": {
+      "status": "functional",
+      "gate": "F",
+      "evidence": [
+        "apps/server/services/messaging-provider.js (FCM adapter, Phase 06)",
+        "apps/server/services/push.service.js (thin wrapper)",
+        "FIREBASE_SERVICE_ACCOUNT_JSON env"
+      ],
+      "note": "Native push path live (vendor new-order fan-out via notifyShopStaffNewOrder)."
+    },
+    "google-maps": {
+      "status": "functional",
+      "gate": "F",
+      "evidence": [
+        "GOOGLE_MAPS_API_KEY env",
+        "backend geocoding proxy"
+      ],
+      "note": "Native maps/geocoding capability live. Nango mapbox/here-maps entries are scaffolded alternatives, not replacements."
+    },
+    "quickbooks": {
+      "status": "partial",
+      "gate": "C",
+      "evidence": [
+        "apps/server/services/accounting-sync.service.js",
+        "apps/server/services/accounting-provider.service.js (quickbooks|xero only)",
+        "apps/server/migrations/105_accounting_sync.sql..109_accounting_source_state_backfill.sql",
+        "docs/integrations/nango.md (actions: list-accounts, query-entities, create-journal-entry)",
+        "apps/server/tests/accounting-sync.service.test.js"
+      ],
+      "note": "Full product workflow wired + tested. Live-certification (real Nango Unique Key + sandbox post) pending -> Gates D-F."
+    },
+    "xero": {
+      "status": "partial",
+      "gate": "C",
+      "evidence": [
+        "apps/server/services/accounting-sync.service.js (bank txns + transfers, Xero-Tenant-Id)",
+        "apps/server/services/accounting-provider.service.js (get-tenants)",
+        "docs/integrations/nango.md (offline_access, BANK-account rule)",
+        "apps/server/tests/accounting-sync.service.test.js"
+      ],
+      "note": "Full product workflow wired + tested. Live-certification pending -> Gates D-F. Settlement boundary: clearing -> Stripe balance only, no bank-statement recon."
+    },
+    "slack": {
+      "status": "scaffolded",
+      "gate": "C",
+      "evidence": [
+        "integrations/catalog.json (nango, integrationId slack)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "docs/integrations/nango.md (OAuth app guidance)",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "OAuth identity documented; lifecycle + proxy/action wired. No notification workflows built."
+    },
+    "microsoft-teams": {
+      "status": "scaffolded",
+      "gate": "C",
+      "evidence": [
+        "integrations/catalog.json (nango, integrationId microsoft-teams)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "docs/integrations/nango.md (Entra app guidance)",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "OAuth identity documented; lifecycle + proxy/action wired. No notification workflows built."
+    },
+    "n8n": {
+      "status": "functional",
+      "gate": "F",
+      "evidence": [
+        "apps/server/services/integration-webhook.service.js (AES-GCM secrets, SSRF guard, 6-attempt retry)",
+        "apps/server/migrations/104_integration_webhooks.sql",
+        "apps/saas/src/app/dashboard/settings/integrations/integration-config-panels.tsx",
+        "apps/server/tests/integration-webhook.service.test.js",
+        "docs/integrations/automation-webhooks.md"
+      ],
+      "note": "Signed outbound automation webhooks live with test-event delivery from SaaS UI."
+    },
+    "zapier": {
+      "status": "functional",
+      "gate": "F",
+      "evidence": [
+        "apps/server/services/integration-webhook.service.js",
+        "apps/server/migrations/104_integration_webhooks.sql",
+        "apps/server/tests/integration-webhook.service.test.js",
+        "docs/integrations/automation-webhooks.md"
+      ],
+      "note": "Same signed-outbound pipeline as n8n."
+    },
+    "make": {
+      "status": "functional",
+      "gate": "F",
+      "evidence": [
+        "apps/server/services/integration-webhook.service.js",
+        "apps/server/migrations/104_integration_webhooks.sql",
+        "apps/server/tests/integration-webhook.service.test.js",
+        "docs/integrations/automation-webhooks.md"
+      ],
+      "note": "Same signed-outbound pipeline as n8n."
+    },
+    "paypal": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired, fail-closed without Nango Unique Key. Partner/merchant approval required for prod."
+    },
+    "adyen": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired, fail-closed without Nango Unique Key. Merchant contract required for prod."
+    },
+    "square": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango, payments+pos)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. No POS-order ingestion workflow; partner approval required."
+    },
+    "tabby": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango, payments+bnpl)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. BNPL merchant contract required for prod."
+    },
+    "tamara": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango, payments+bnpl)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. BNPL merchant contract required for prod."
+    },
+    "easypaisa": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. Regional merchant/API contract required for prod. Not related to kit EasyData."
+    },
+    "jazzcash": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. Regional merchant/API contract required for prod."
+    },
+    "zoho-books": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango, accounting)",
+        "apps/server/services/accounting-provider.service.js restricts product workflows to quickbooks|xero"
+      ],
+      "note": "Catalog + lifecycle only. No Zoho postings workflow; adding one must reuse accounting-sync idempotency/provenance."
+    },
+    "onesignal": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. Native FCM remains the live push path."
+    },
+    "mapbox": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. Native Google Maps remains the live path."
+    },
+    "here-maps": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. Native Google Maps remains the live path."
+    },
+    "resend": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango, email)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Nango connector entry is scaffolded. Do not confuse with the LIVE native email path (apps/server/services/email.service.js requires resend SDK)."
+    },
+    "whatsapp": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango, messaging)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Nango connector entry is scaffolded (lifecycle + data plane only). No WhatsApp messaging workflows exist on this branch."
+    },
+    "intercom": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. No support workflows built."
+    },
+    "zendesk": {
+      "status": "scaffolded",
+      "gate": "B",
+      "evidence": [
+        "integrations/catalog.json (nango)",
+        "apps/server/services/integration-connections.service.js PROVIDERS",
+        "apps/server/tests/integrations-all-providers-e2e.test.js"
+      ],
+      "note": "Lifecycle + data plane wired. No support workflows built."
+    },
+    "keenu": {
+      "status": "missing",
+      "gate": null,
+      "evidence": [
+        "grep -ri keenu across repo (2026-09-16): zero hits in code/routes/services/config",
+        "docs/integrations/providers/keenu.md (discovery record, no verified API doc)",
+        "apps/server/services/keenu-provider.scaffold.js (fixture mock, live paths 503)",
+        "apps/server/tests/keenu-scaffold.test.js (21 pass)"
+      ],
+      "note": "Requested regional payments provider. Scaffold artifacts exist but nothing is registered/wired/user-facing — still requires_provider_contract. Kit research: keenu.pk / merchant.keenu.pk exist but no verified public merchant API spec. Blocked on official docs/credentials. Never fabricate endpoints."
+    },
+    "blink-co": {
+      "status": "missing",
+      "gate": null,
+      "evidence": [
+        "grep -ri blink across repo (2026-09-16): zero provider hits (only \\bblink\\b regex in ai-chatbar.tsx)"
+      ],
+      "note": "Requested order/POS channel. Kit research: docs at docs.blinkco.io, prod api.blinkco.io, sandbox stg-api.blinkco.io. Re-fetch exact schemas before coding; blocked on partner credentials."
+    },
+    "indolj": {
+      "status": "missing",
+      "gate": null,
+      "evidence": [
+        "grep -ri indolj across repo (2026-09-16): zero hits"
+      ],
+      "note": "Requested provider. Exact endpoint contracts must be re-verified at implementation; blocked on official docs/credentials."
+    },
+    "easydata": {
+      "status": "missing",
+      "gate": null,
+      "evidence": [
+        "grep -ri easydata across repo (2026-09-16): zero hits in code/config",
+        "docs/integrations/providers/easydata.md (2026-09-17 identity gate: candidates researched, verdict UNRESOLVED)"
+      ],
+      "note": "Name is ambiguous and identity is UNVERIFIED — integrating the wrong vendor is worse than blocking. Candidates: easydata.cc (existence proven, intended-use unproven), EasyData Group, GetEasyData, others ruled out. See gate doc for the 5 business questions. Never default to easydata.cc."
+    },
+    "technosis-bluelink": {
+      "status": "missing",
+      "gate": null,
+      "evidence": [
+        "grep -ri bluelink|technosis across repo (2026-09-16): zero hits"
+      ],
+      "note": "Exact product/API unidentified in public research. Externally blocked until vendor identity, docs, and credentials are provided. Never invent endpoints."
+    },
+    "eposmatic": {
+      "status": "missing",
+      "gate": null,
+      "evidence": [
+        "grep -ri eposmatic across repo (2026-09-16): zero hits"
+      ],
+      "note": "Restaurant POS/online-ordering platform (eposmatic.com) but no verified public partner API spec. Blocked on official partner docs."
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "dilivygo-community",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": "20.x"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "optionalDependencies": {
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.2.2",
+    "lightningcss-linux-x64-gnu": "^1.32.0"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "redis:up": "docker compose up -d redis",
+    "redis:down": "docker compose stop redis",
+    "redis:logs": "docker compose logs -f redis",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "docker:build": "docker compose build",
+    "predev:web": "node -e \"const cp=require('child_process'); const path=require('path'); const fs=require('fs'); const root=process.cwd(); const locks=[path.join(root,'apps','customer','.next','dev','lock'),path.join(root,'apps','vendor','.next','dev','lock'),path.join(root,'apps','pos','.next','dev','lock')]; for (const p of locks) { try { fs.rmSync(p,{force:true}); } catch {} } if (process.platform!=='win32') process.exit(0); const ports=[3000,3001,3004,8080]; const ps=[\\\"$ErrorActionPreference='SilentlyContinue'\\\",\\\"$ports=@(\\\"+ports.join(',')+\\\")\\\",\\\"foreach($port in $ports){\\\",\\\"  $conns=Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue\\\",\\\"  foreach($conn in $conns){ try { Stop-Process -Id $conn.OwningProcess -Force -ErrorAction SilentlyContinue } catch {} }\\\",\\\"}\\\"].join('; '); cp.spawnSync('powershell',['-NoProfile','-Command',ps],{stdio:'ignore'});\"",
+    "dev:web": "turbo dev --filter=dilivygo-backend --filter=@dilivygo/customer --filter=@dilivygo/vendor --filter=@dilivygo/pos",
+    "dev:pos": "turbo dev --filter=@dilivygo/pos --filter=@dilivygo/pos-desktop",
+    "build": "turbo build",
+    "lint": "npm run publint && turbo lint",
+    "test": "turbo test",
+    "test:smart-theming": "npm run test:smart-theming --workspace=dilivygo-backend -- --no-coverage",
+    "syncpack:list": "syncpack list-mismatches",
+    "syncpack:fix": "syncpack fix-mismatches",
+    "publint": "node scripts/publint-workspaces.cjs",
+    "lock:server": "node scripts/regenerate-server-lock.mjs"
+  },
+  "devDependencies": {
+    "publint": "^0.3.18",
+    "react-doctor": "^0.2.2",
+    "syncpack": "^12.4.0",
+    "turbo": "^2.3.0"
+  },
+  "overrides": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.2.3"
+  }
+}
