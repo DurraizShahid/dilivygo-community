@@ -1,0 +1,27 @@
+{
+  "name": "@dilivygo/observability",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./next/server": "./src/next-server.ts",
+    "./next/client": "./src/next-client.ts",
+    "./next/withSentry": "./src/next-with-sentry.ts",
+    "./expo": "./src/expo.ts"
+  },
+  "peerDependencies": {
+    "@sentry/nextjs": "^10.49.0",
+    "@sentry/react-native": "^7.2.0",
+    "next": "16.1.7"
+  },
+  "peerDependenciesMeta": {
+    "@sentry/nextjs": {
+      "optional": true
+    },
+    "@sentry/react-native": {
+      "optional": true
+    },
+    "next": {
+      "optional": true
+    }
+  }
+}

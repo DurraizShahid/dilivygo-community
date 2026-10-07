@@ -1,0 +1,23 @@
+{
+  "name": "@dilivygo/logos",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./logo_without_text_monochrome_dark.svg": {
+      "types": "./logo_without_text_monochrome_dark.svg.d.ts",
+      "default": "./logo_without_text_monochrome_dark.svg"
+    },
+    "./logo_without_text_monochrome_light.svg": {
+      "types": "./logo_without_text_monochrome_light.svg.d.ts",
+      "default": "./logo_without_text_monochrome_light.svg"
+    },
+    "./logo_dark_with_text_monochrome.svg": {
+      "types": "./logo_dark_with_text_monochrome.svg.d.ts",
+      "default": "./logo_dark_with_text_monochrome.svg"
+    },
+    "./logo_light_with_text_monochrome.svg": {
+      "types": "./logo_light_with_text_monochrome.svg.d.ts",
+      "default": "./logo_light_with_text_monochrome.svg"
+    }
+  }
+}

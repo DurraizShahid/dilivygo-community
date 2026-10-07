@@ -1,0 +1,11 @@
+{
+  "name": "@dilivygo/tenant-host",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": "./src/next-middleware.ts"
+  },
+  "peerDependencies": {
+    "next": "16.1.7"
+  }
+}

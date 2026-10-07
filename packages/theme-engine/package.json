@@ -1,0 +1,30 @@
+{
+  "name": "@dilivygo/theme-engine",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.js",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.js"
+    },
+    "./generator": {
+      "types": "./src/generator.ts",
+      "default": "./src/generator.js"
+    },
+    "./accessibility": {
+      "types": "./src/accessibility.ts",
+      "default": "./src/accessibility.js"
+    },
+    "./chart": {
+      "types": "./src/chart.ts",
+      "default": "./src/chart.js"
+    },
+    "./surface-policy": {
+      "types": "./src/surface-policy.ts",
+      "default": "./src/surface-policy.js"
+    }
+  },
+  "dependencies": {}
+}
