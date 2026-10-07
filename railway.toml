@@ -1,0 +1,16 @@
+# Backend (Node) — build from repo root; Dockerfile uses apps/server
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+watchPatterns = ["apps/server/**", "integrations/**", "Dockerfile", ".dockerignore"]
+
+[deploy]
+numReplicas = 1
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5
+healthcheckPath = "/api/health"
+healthcheckTimeout = 60
+
+[env]
+PORT = "8080"
+NODE_ENV = "production"
