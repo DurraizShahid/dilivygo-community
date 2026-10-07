@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "Dilivygo Vendor",
+    "slug": "dilivygo-vendor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "dilivygo-vendor",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/vendor_splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dilivygo.vendor"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.dilivygo.vendor"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-font",
+      [
+        "expo-notifications"
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/fae1ecc8-02f3-4628-86ce-c7b7c060f595"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fae1ecc8-02f3-4628-86ce-c7b7c060f595"
+      },
+      "router": {}
+    },
+    "owner": "helptribe-org"
+  }
+}
