@@ -1,0 +1,21 @@
+# Maestro E2E Test Output
+# Ignore test artifacts and output directories
+
+# Test output
+output/
+screenshots/
+recordings/
+
+# Maestro debug output
+.maestro-output/
+
+# Test reports
+reports/
+*.html
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+.DS_Store

@@ -1,0 +1,98 @@
+{
+  "expo": {
+    "name": "Dilivygo",
+    "slug": "delivio-customer",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "dilivygo-customer",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/customer_splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1d4ed8"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "splash": {
+        "image": "./assets/customer_splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#1d4ed8"
+      },
+      "bundleIdentifier": "com.dilivygo.customer",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSLocationWhenInUseUsageDescription": "We use your location to show nearby restaurants, suggest your country code for sign-in, and track deliveries.",
+        "NSPhotoLibraryUsageDescription": "Choose a profile photo to show on your account."
+      }
+    },
+    "android": {
+      "splash": {
+        "image": "./assets/customer_splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#1d4ed8"
+      },
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.dilivygo.customer",
+      "versionCode": 4,
+      "permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ],
+      "softwareKeyboardLayoutMode": "resize"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-font",
+      [
+        "expo-notifications"
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Show nearby restaurants, suggest your country code for sign-in, and track deliveries."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Choose a profile photo to show on your account."
+        }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.com.dilivygo.customer",
+          "enableGooglePay": true
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/0159cd7b-8611-4c9f-86b5-c47db753a236"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0159cd7b-8611-4c9f-86b5-c47db753a236"
+      },
+      "router": {}
+    },
+    "owner": "helptribe-org"
+  }
+}

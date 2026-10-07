@@ -1,0 +1,117 @@
+# Maestro E2E Testing Configuration
+# https://maestro.mobile.dev/
+
+# App configuration
+appId: com.dilivygo.customer
+
+# Flow directories
+flows:
+  - ./flows
+
+# Tags for organizing tests
+tags:
+  smoke:
+    - flows/smoke/*.yaml
+  auth:
+    - flows/auth/*.yaml
+  order:
+    - flows/order/*.yaml
+  navigation:
+    - flows/navigation/*.yaml
+  cart:
+    - flows/order/cart-management.yaml
+    - flows/order/add-to-cart.yaml
+  checkout:
+    - flows/order/checkout.yaml
+  location:
+    - flows/navigation/location-address.yaml
+  notifications:
+    - flows/navigation/push-notifications.yaml
+  critical:
+    - flows/smoke/critical-flows.yaml
+    - flows/auth/login.yaml
+    - flows/order/checkout.yaml
+  testcases:
+    - testCases/*.yaml
+
+# Environment configuration
+env:
+  # API base URL for testing
+  API_BASE_URL: http://localhost:8080/api
+  
+  # Test user credentials (phone OTP login)
+  TEST_PHONE: "+1234567890"
+  TEST_USER_EMAIL: test@dilivygo.com
+  
+  # Test data
+  TEST_RESTAURANT_NAME: "Test Restaurant"
+  TEST_OTP: "123456"
+  
+  # Stripe test card
+  STRIPE_TEST_CARD: "4242424242424242"
+  STRIPE_TEST_EXPIRY: "12/28"
+  STRIPE_TEST_CVC: "123"
+
+# Default settings
+defaults:
+  # Wait timeout in milliseconds
+  timeout: 10000
+  
+  # Screenshot on failure
+  screenshotOnFailure: true
+  
+  # Continue on failure for non-critical steps
+  continueOnFailure: false
+
+# iOS specific configuration
+ios:
+  # Simulator to use for testing
+  simulator: "iPhone 15 Pro"
+  
+  # Bundle identifier
+  bundleId: com.dilivygo.customer
+  
+  # Build settings for Expo
+  buildCommand: "npx expo run:ios --configuration Debug"
+  
+  # Permissions to auto-grant
+  permissions:
+    - notifications
+    - location
+
+# Android specific configuration  
+android:
+  # Emulator to use for testing
+  emulator: "Pixel_7_API_34"
+  
+  # Package name
+  package: com.dilivygo.customer
+  
+  # Build settings for Expo
+  buildCommand: "npx expo run:android --variant debug"
+  
+  # Permissions to auto-grant
+  permissions:
+    - android.permission.ACCESS_FINE_LOCATION
+    - android.permission.ACCESS_COARSE_LOCATION
+    - android.permission.POST_NOTIFICATIONS
+
+# Hooks (optional - for setup/teardown)
+onFlowStart:
+  - clearState
+
+# Debug settings
+debug:
+  # Enable verbose logging
+  verbose: false
+  
+  # Record video of test execution
+  recordVideo: true
+  
+  # Output directory for screenshots and videos
+  outputDirectory: ./e2e-results
+
+# Retry configuration for flaky tests
+retry:
+  maxAttempts: 2
+  delayBetweenAttempts: 2000
