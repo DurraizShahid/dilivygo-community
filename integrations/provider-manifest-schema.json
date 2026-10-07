@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dilivygo.com/schemas/provider-manifest.json",
+  "title": "Dilivygo provider manifest",
+  "description": "Declarative metadata for one integration catalog entry. This file is the single source of truth for allowed fields and value sets; apps/server/lib/provider-manifest.js validates entries against it with a hand-rolled validator (no new dependencies). The current integrations/catalog.json must validate against this schema (proven by apps/server/tests/developer-platform.test.js).",
+  "type": "object",
+  "required": ["key", "name", "category", "type", "capabilities"],
+  "additionalProperties": false,
+  "properties": {
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "Stable machine identifier (matches catalog.json `key`)."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human display name (matches catalog.json `name`)."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Payments & Accounting",
+        "Notifications",
+        "Maps & Logistics",
+        "AI & Automation",
+        "Marketing & CRM",
+        "Communication & Support",
+        "Delivery & POS Ecosystem"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["native", "nango", "webhook"],
+      "description": "native = first-party runtime code; nango = Nango-managed OAuth/proxy; webhook = signed outbound automation endpoint."
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["core", "extended"]
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Capability tags (e.g. payments, accounting, automation). Business code must depend on these, not on provider names."
+    },
+    "icon": {
+      "type": "string",
+      "description": "SVG file name under integrations/icons/."
+    },
+    "integrationId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Nango Unique Key. REQUIRED when type is nango (enforced by the validator); must be absent-or-empty otherwise."
+    },
+    "requiresProviderApproval": {
+      "type": "boolean",
+      "description": "True for partner-gated providers that must never render Connected until approval + credentials exist."
+    },
+    "auth": {
+      "type": "object",
+      "description": "How credentials are onboarded for this provider.",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["managed", "oauth2", "api-key", "none"],
+          "description": "managed = Nango holds secrets; oauth2 = direct OAuth; api-key = pasted key; none = no credentials (e.g. outbound webhook URL only)."
+        },
+        "requiredConfig": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Config field names the operator must supply (never the secrets themselves)."
+        }
+      }
+    },
+    "regions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "ISO region/country codes where the provider operates. Empty or absent = global."
+    },
+    "docsUrl": {
+      "type": "string",
+      "description": "Link to the provider runbook under docs/integrations/providers/ or the official vendor docs."
+    },
+    "sandbox": {
+      "type": "object",
+      "description": "Sandbox / test-fixture expectations for partner certification.",
+      "required": ["supported"],
+      "additionalProperties": false,
+      "properties": {
+        "supported": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "webhooks": {
+      "type": "object",
+      "description": "Inbound/outbound webhook support declaration.",
+      "required": ["supported"],
+      "additionalProperties": false,
+      "properties": {
+        "supported": { "type": "boolean" },
+        "events": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "notes": "Conditional rule (enforced by the hand-rolled validator, expressed here for readers): when `type` is `nango`, `integrationId` is required and non-empty."
+}
