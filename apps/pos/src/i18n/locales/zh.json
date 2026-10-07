@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "仪表板",
+    "orderLine": "订单队列",
+    "manageDishes": "管理菜品",
+    "customers": "客户",
+    "inventory": "库存",
+    "settings": "设置"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "终端模式",
+    "secureLogin": "安全终端登录",
+    "loading": "正在加载POS终端...",
+    "noActiveShop": "没有活跃的店铺",
+    "selectShop": "选择店铺"
+  },
+  "auth": {
+    "emailPlaceholder": "电子邮件",
+    "passwordPlaceholder": "密码",
+    "signIn": "登录",
+    "signingIn": "登录中..."
+  },
+  "order": {
+    "title": "订单队列",
+    "itemsInOrder": "订单中有 {{count}} 个商品",
+    "detailOrder": "订单详情",
+    "items": "{{count}} 个商品",
+    "noItems": "未添加任何商品。",
+    "specialInstructions": "特殊说明...",
+    "placeOrder": "下单",
+    "placing": "正在下单...",
+    "posOrderCreated": "POS订单已创建",
+    "note": "订单备注",
+    "notePlaceholder": "如：4号桌，不要洋葱..."
+  },
+  "menu": {
+    "title": "美食菜单",
+    "allMenu": "全部菜单 ({{count}})",
+    "searchPlaceholder": "搜索菜单... (F)",
+    "barcodePlaceholder": "扫描条码 (B)",
+    "noProducts": "没有符合筛选条件的产品。",
+    "loadingProducts": "正在加载产品...",
+    "menuLabel": "菜单",
+    "variantOptions": "选项：{{list}}"
+  },
+  "queue": {
+    "title": "活跃订单",
+    "empty": "当前没有活跃订单。",
+    "markStatus": "标记为 {{status}}",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "支付摘要",
+    "subtotal": "小计",
+    "service": "服务费",
+    "totalPayable": "应付总额",
+    "method": "支付方式",
+    "cash": "现金",
+    "card": "银行卡",
+    "split": "分账",
+    "tendered": "收款",
+    "change": "找零",
+    "exact": "整数",
+    "insufficient": "不足"
+  },
+  "actions": {
+    "reprint": "重新打印 (R)",
+    "print": "打印",
+    "pdf": "PDF",
+    "clear": "清除",
+    "void": "作废",
+    "logout": "退出登录",
+    "add": "添加",
+    "save": "保存",
+    "refresh": "刷新"
+  },
+  "printer": {
+    "title": "终端打印机",
+    "terminalName": "终端名称",
+    "cashierOnly": "仅收银台",
+    "kitchenOnly": "仅厨房",
+    "cashierAndKitchen": "收银台 + 厨房",
+    "autoPrint": "结账时自动打印",
+    "diagnosticsTitle": "打印机诊断",
+    "detectedPrinters": "检测到的打印机 ({{count}})",
+    "noPrinters": "未检测到打印机。",
+    "desktopOnly": "桌面诊断仅在Electron POS中可用。",
+    "cashierTarget": "收银台目标",
+    "kitchenTarget": "厨房目标",
+    "systemDefault": "系统默认",
+    "testCashier": "测试收银台",
+    "testKitchen": "测试厨房",
+    "targetsSaved": "桌面打印机目标已保存"
+  },
+  "shortcuts": {
+    "title": "收银快捷键",
+    "description": "设置选中数量、调整、结账、搜索、条码、重新打印。",
+    "selected": "已选择: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "厨房",
+    "cashier": "收银台",
+    "kitchenTicket": "厨房小票",
+    "customerReceipt": "顾客收据",
+    "copy": "副本 {{current}}/{{total}}",
+    "total": "总计",
+    "noReceiptYet": "暂无可下载的收据。",
+    "noReceiptReprint": "暂无可重新打印的收据。",
+    "reprinted": "已重新打印上一张收据",
+    "pdfDownloaded": "PDF收据已下载",
+    "pdfFailed": "无法下载PDF收据",
+    "printWindowBlocked": "无法打开打印窗口。请允许弹出窗口。",
+    "noPrinterProfile": "未选择打印机配置文件"
+  },
+  "errors": {
+    "selectShopFirst": "请先选择店铺",
+    "checkoutFailed": "结账失败",
+    "statusUpdateFailed": "状态更新失败",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "未找到代码为 {{code}} 的产品",
+    "loginFailed": "登录失败",
+    "twoFactorEnabled": "此账户已启用双重验证。请使用商家门户登录流程。",
+    "printerDiagFailed": "无法加载桌面打印机诊断",
+    "printerTargetsFailed": "无法保存打印机目标",
+    "testPrintFailed": "测试打印失败",
+    "testPrintError": "运行测试打印失败",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

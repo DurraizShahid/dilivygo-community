@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "Kontrol Paneli",
+    "orderLine": "Sipariş Hattı",
+    "manageDishes": "Yemekleri Yönet",
+    "customers": "Müşteriler",
+    "inventory": "Envanter",
+    "settings": "Ayarlar"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Terminal modu",
+    "secureLogin": "Güvenli terminal girişi",
+    "loading": "POS terminali yükleniyor...",
+    "noActiveShop": "Aktif mağaza yok",
+    "selectShop": "Bir mağaza seçin"
+  },
+  "auth": {
+    "emailPlaceholder": "E-posta",
+    "passwordPlaceholder": "Şifre",
+    "signIn": "Giriş yap",
+    "signingIn": "Giriş yapılıyor..."
+  },
+  "order": {
+    "title": "Sipariş Hattı",
+    "itemsInOrder": "Siparişte {{count}} ürün",
+    "detailOrder": "Sipariş Detayı",
+    "items": "{{count}} ürün",
+    "noItems": "Ürün eklenmedi.",
+    "specialInstructions": "Özel talimatlar...",
+    "placeOrder": "Sipariş Ver",
+    "placing": "İşleniyor...",
+    "posOrderCreated": "POS siparişi oluşturuldu",
+    "note": "Sipariş notu",
+    "notePlaceholder": "ör. Masa 4, soğansız..."
+  },
+  "menu": {
+    "title": "Foodies Menü",
+    "allMenu": "Tüm Menü ({{count}})",
+    "searchPlaceholder": "Menüde ara... (F)",
+    "barcodePlaceholder": "Barkod tara (B)",
+    "noProducts": "Filtrelerinize uyan ürün bulunamadı.",
+    "loadingProducts": "Ürünler yükleniyor...",
+    "menuLabel": "Menü",
+    "variantOptions": "Seçenekler: {{list}}"
+  },
+  "queue": {
+    "title": "Aktif Siparişler",
+    "empty": "Şu anda aktif kuyruk yok.",
+    "markStatus": "{{status}} olarak işaretle",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "Ödeme Özeti",
+    "subtotal": "Ara Toplam",
+    "service": "Hizmet",
+    "totalPayable": "Ödenecek Toplam",
+    "method": "Ödeme Yöntemi",
+    "cash": "Nakit",
+    "card": "Kart",
+    "split": "Böl",
+    "tendered": "Ödenen",
+    "change": "Para Üstü",
+    "exact": "Tam",
+    "insufficient": "Eksik"
+  },
+  "actions": {
+    "reprint": "Yeniden Yazdır (R)",
+    "print": "Yazdır",
+    "pdf": "PDF",
+    "clear": "Temizle",
+    "void": "İptal Et",
+    "logout": "Çıkış Yap",
+    "add": "Ekle",
+    "save": "Kaydet",
+    "refresh": "Yenile"
+  },
+  "printer": {
+    "title": "Terminal Yazıcısı",
+    "terminalName": "Terminal adı",
+    "cashierOnly": "Sadece kasa",
+    "kitchenOnly": "Sadece mutfak",
+    "cashierAndKitchen": "Kasa + Mutfak",
+    "autoPrint": "Ödemede otomatik yazdır",
+    "diagnosticsTitle": "Yazıcı Tanılama",
+    "detectedPrinters": "Algılanan yazıcılar ({{count}})",
+    "noPrinters": "Yazıcı algılanmadı.",
+    "desktopOnly": "Masaüstü tanılama sadece Electron POS'ta kullanılabilir.",
+    "cashierTarget": "Kasa hedefi",
+    "kitchenTarget": "Mutfak hedefi",
+    "systemDefault": "Sistem varsayılanı",
+    "testCashier": "Kasa Test",
+    "testKitchen": "Mutfak Test",
+    "targetsSaved": "Masaüstü yazıcı hedefleri kaydedildi"
+  },
+  "shortcuts": {
+    "title": "Kasiyer Kısayolları",
+    "description": "seçili miktarı ayarla, düzenle, ödeme, ara, barkod, yeniden yazdır.",
+    "selected": "Seçili: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Mutfak",
+    "cashier": "Kasa",
+    "kitchenTicket": "Mutfak Fişi",
+    "customerReceipt": "Müşteri Fişi",
+    "copy": "Kopya {{current}}/{{total}}",
+    "total": "Toplam",
+    "noReceiptYet": "Henüz indirilecek fiş yok.",
+    "noReceiptReprint": "Henüz yeniden yazdırılacak fiş yok.",
+    "reprinted": "Son fiş yeniden yazdırıldı",
+    "pdfDownloaded": "PDF fiş indirildi",
+    "pdfFailed": "PDF fiş indirilemedi",
+    "printWindowBlocked": "Yazdırma penceresi açılamadı. Lütfen açılır pencerelere izin verin.",
+    "noPrinterProfile": "Yazıcı profili seçilmedi"
+  },
+  "errors": {
+    "selectShopFirst": "Önce bir mağaza seçin",
+    "checkoutFailed": "Ödeme başarısız",
+    "statusUpdateFailed": "Durum güncellenemedi",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "Kod için ürün bulunamadı: {{code}}",
+    "loginFailed": "Giriş başarısız",
+    "twoFactorEnabled": "Bu hesap için iki faktörlü doğrulama etkin. Satıcı portalı giriş akışını kullanın.",
+    "printerDiagFailed": "Masaüstü yazıcı tanılama yüklenemedi",
+    "printerTargetsFailed": "Yazıcı hedefleri kaydedilemedi",
+    "testPrintFailed": "Test yazdırma başarısız",
+    "testPrintError": "Test yazdırma çalıştırılamadı",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

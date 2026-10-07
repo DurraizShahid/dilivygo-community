@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "ڈیش بورڈ",
+    "orderLine": "آرڈر لائن",
+    "manageDishes": "پکوان کا انتظام",
+    "customers": "گاہک",
+    "inventory": "انوینٹری",
+    "settings": "ترتیبات"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "ٹرمینل موڈ",
+    "secureLogin": "محفوظ ٹرمینل لاگ ان",
+    "loading": "POS ٹرمینل لوڈ ہو رہا ہے...",
+    "noActiveShop": "کوئی فعال دکان نہیں",
+    "selectShop": "دکان منتخب کریں"
+  },
+  "auth": {
+    "emailPlaceholder": "ای میل",
+    "passwordPlaceholder": "پاس ورڈ",
+    "signIn": "سائن ان",
+    "signingIn": "سائن ان ہو رہا ہے..."
+  },
+  "order": {
+    "title": "آرڈر لائن",
+    "itemsInOrder": "آرڈر میں {{count}} اشیاء",
+    "detailOrder": "آرڈر کی تفصیل",
+    "items": "{{count}} اشیاء",
+    "noItems": "کوئی اشیاء شامل نہیں۔",
+    "specialInstructions": "خصوصی ہدایات...",
+    "placeOrder": "آرڈر دیں",
+    "placing": "رکھا جا رہا ہے...",
+    "posOrderCreated": "POS آرڈر بن گیا",
+    "note": "آرڈر نوٹ",
+    "notePlaceholder": "مثال: میز 4، پیاز کے بغیر..."
+  },
+  "menu": {
+    "title": "کھانے کا مینو",
+    "allMenu": "تمام مینو ({{count}})",
+    "searchPlaceholder": "مینو تلاش کریں... (F)",
+    "barcodePlaceholder": "بارکوڈ اسکین کریں (B)",
+    "noProducts": "آپ کے فلٹرز سے کوئی مصنوعات میل نہیں کھاتیں۔",
+    "loadingProducts": "مصنوعات لوڈ ہو رہی ہیں...",
+    "menuLabel": "مینو",
+    "variantOptions": "اختیارات: {{list}}"
+  },
+  "queue": {
+    "title": "فعال آرڈرز",
+    "empty": "ابھی کوئی فعال قطار نہیں۔",
+    "markStatus": "{{status}} نشان لگائیں",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "ادائیگی کا خلاصہ",
+    "subtotal": "ذیلی کل",
+    "service": "سروس",
+    "totalPayable": "کل قابل ادائیگی",
+    "method": "ادائیگی کا طریقہ",
+    "cash": "نقد",
+    "card": "کارڈ",
+    "split": "تقسیم",
+    "tendered": "ادا شدہ",
+    "change": "واپسی",
+    "exact": "بالکل صحیح",
+    "insufficient": "کم"
+  },
+  "actions": {
+    "reprint": "دوبارہ پرنٹ (R)",
+    "print": "پرنٹ",
+    "pdf": "PDF",
+    "clear": "صاف کریں",
+    "void": "منسوخ",
+    "logout": "لاگ آؤٹ",
+    "add": "شامل کریں",
+    "save": "محفوظ کریں",
+    "refresh": "تازہ کریں"
+  },
+  "printer": {
+    "title": "ٹرمینل پرنٹر",
+    "terminalName": "ٹرمینل کا نام",
+    "cashierOnly": "صرف کیشیئر",
+    "kitchenOnly": "صرف کچن",
+    "cashierAndKitchen": "کیشیئر + کچن",
+    "autoPrint": "چیک آؤٹ پر خود بخود پرنٹ",
+    "diagnosticsTitle": "پرنٹر تشخیص",
+    "detectedPrinters": "دریافت شدہ پرنٹرز ({{count}})",
+    "noPrinters": "کوئی پرنٹر نہیں ملا۔",
+    "desktopOnly": "ڈیسک ٹاپ تشخیص صرف Electron POS میں دستیاب ہے۔",
+    "cashierTarget": "کیشیئر ہدف",
+    "kitchenTarget": "کچن ہدف",
+    "systemDefault": "سسٹم ڈیفالٹ",
+    "testCashier": "کیشیئر ٹیسٹ",
+    "testKitchen": "کچن ٹیسٹ",
+    "targetsSaved": "ڈیسک ٹاپ پرنٹر اہداف محفوظ ہو گئے"
+  },
+  "shortcuts": {
+    "title": "کیشیئر شارٹ کٹس",
+    "description": "منتخب مقدار سیٹ کریں، ایڈجسٹ کریں، چیک آؤٹ، تلاش، بارکوڈ، دوبارہ پرنٹ۔",
+    "selected": "منتخب: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "کچن",
+    "cashier": "کیشیئر",
+    "kitchenTicket": "کچن ٹکٹ",
+    "customerReceipt": "گاہک کی رسید",
+    "copy": "کاپی {{current}}/{{total}}",
+    "total": "کل",
+    "noReceiptYet": "ابھی تک ڈاؤن لوڈ کرنے کے لیے کوئی رسید نہیں۔",
+    "noReceiptReprint": "ابھی تک دوبارہ پرنٹ کرنے کے لیے کوئی رسید نہیں۔",
+    "reprinted": "آخری رسید دوبارہ پرنٹ ہوئی",
+    "pdfDownloaded": "PDF رسید ڈاؤن لوڈ ہو گئی",
+    "pdfFailed": "PDF رسید ڈاؤن لوڈ نہیں ہو سکی",
+    "printWindowBlocked": "پرنٹ ونڈو نہیں کھل سکی۔ براہ کرم پاپ اپس کی اجازت دیں۔",
+    "noPrinterProfile": "کوئی پرنٹر پروفائل منتخب نہیں"
+  },
+  "errors": {
+    "selectShopFirst": "پہلے دکان منتخب کریں",
+    "checkoutFailed": "چیک آؤٹ ناکام",
+    "statusUpdateFailed": "اسٹیٹس اپ ڈیٹ ناکام",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "کوڈ کے لیے کوئی مصنوع نہیں ملی: {{code}}",
+    "loginFailed": "سائن ان ناکام",
+    "twoFactorEnabled": "اس اکاؤنٹ کے لیے دو فیکٹر فعال ہے۔ وینڈر پورٹل لاگ ان استعمال کریں۔",
+    "printerDiagFailed": "ڈیسک ٹاپ پرنٹر تشخیص لوڈ کرنے میں ناکام",
+    "printerTargetsFailed": "پرنٹر اہداف محفوظ کرنے میں ناکام",
+    "testPrintFailed": "ٹیسٹ پرنٹ ناکام",
+    "testPrintError": "ٹیسٹ پرنٹ چلانے میں ناکام",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}
