@@ -1,0 +1,43 @@
+{
+  "tabs": {
+    "orders": "注文",
+    "menu": "メニュー",
+    "chat": "チャット",
+    "settings": "設定"
+  },
+  "newOrder": {
+    "title": "New order",
+    "subtitle": "Order #{{shortId}} needs a response.",
+    "prepHint": "Accept starts prep with {{minutes}} minutes on the clock.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "viewOrder": "View order",
+    "errorTitle": "Something went wrong",
+    "acceptError": "Could not accept this order. Try again from the order screen.",
+    "rejectError": "Could not reject this order. Try again from the order screen."
+  },
+  "alerts": {
+    "statusChanged": "Order #{{shortId}} is now {{status}}.",
+    "orderRejected": "Order #{{shortId}} was rejected.",
+    "orderDelayed": "Order #{{shortId}} missed its SLA target."
+  },
+  "banner": {
+    "dismiss": "Dismiss",
+    "newOrders": "You have {{count}} new order(s)",
+    "viewOrders": "Open",
+    "viewOrdersHint": "Switch to the orders tab"
+  },
+  "orderStatus": {
+    "placed": "Placed",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "preparing": "Preparing",
+    "ready": "Ready",
+    "assigned": "Assigned",
+    "picked_up": "Picked up",
+    "arrived": "Arrived",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "scheduled": "Scheduled"
+  }
+}
