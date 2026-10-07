@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "orderLine": "ऑर्डर लाइन",
+    "manageDishes": "व्यंजन प्रबंधित करें",
+    "customers": "ग्राहक",
+    "inventory": "इन्वेंटरी",
+    "settings": "सेटिंग्स"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "टर्मिनल मोड",
+    "secureLogin": "सुरक्षित टर्मिनल लॉगिन",
+    "loading": "POS टर्मिनल लोड हो रहा है...",
+    "noActiveShop": "कोई सक्रिय दुकान नहीं",
+    "selectShop": "दुकान चुनें"
+  },
+  "auth": {
+    "emailPlaceholder": "ईमेल",
+    "passwordPlaceholder": "पासवर्ड",
+    "signIn": "साइन इन करें",
+    "signingIn": "साइन इन हो रहा है..."
+  },
+  "order": {
+    "title": "ऑर्डर लाइन",
+    "itemsInOrder": "ऑर्डर में {{count}} आइटम",
+    "detailOrder": "ऑर्डर विवरण",
+    "items": "{{count}} आइटम",
+    "noItems": "कोई आइटम नहीं जोड़ा गया।",
+    "specialInstructions": "विशेष निर्देश...",
+    "placeOrder": "ऑर्डर दें",
+    "placing": "रखा जा रहा है...",
+    "posOrderCreated": "POS ऑर्डर बनाया गया",
+    "note": "ऑर्डर नोट",
+    "notePlaceholder": "जैसे: टेबल 4, प्याज़ नहीं..."
+  },
+  "menu": {
+    "title": "खाने का मेनू",
+    "allMenu": "सभी मेनू ({{count}})",
+    "searchPlaceholder": "मेनू खोजें... (F)",
+    "barcodePlaceholder": "बारकोड स्कैन करें (B)",
+    "noProducts": "आपके फ़िल्टर से कोई उत्पाद मेल नहीं खाता।",
+    "loadingProducts": "उत्पाद लोड हो रहे हैं...",
+    "menuLabel": "मेनू",
+    "variantOptions": "विकल्प: {{list}}"
+  },
+  "queue": {
+    "title": "सक्रिय ऑर्डर",
+    "empty": "अभी कोई सक्रिय कतार नहीं।",
+    "markStatus": "{{status}} चिह्नित करें",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "भुगतान सारांश",
+    "subtotal": "उप-योग",
+    "service": "सेवा",
+    "totalPayable": "कुल देय",
+    "method": "भुगतान विधि",
+    "cash": "नकद",
+    "card": "कार्ड",
+    "split": "विभाजित",
+    "tendered": "दी गई राशि",
+    "change": "वापसी",
+    "exact": "बिल्कुल सही",
+    "insufficient": "कम"
+  },
+  "actions": {
+    "reprint": "पुनः प्रिंट (R)",
+    "print": "प्रिंट",
+    "pdf": "PDF",
+    "clear": "साफ़ करें",
+    "void": "रद्द करें",
+    "logout": "लॉग आउट",
+    "add": "जोड़ें",
+    "save": "सहेजें",
+    "refresh": "ताज़ा करें"
+  },
+  "printer": {
+    "title": "टर्मिनल प्रिंटर",
+    "terminalName": "टर्मिनल नाम",
+    "cashierOnly": "केवल कैशियर",
+    "kitchenOnly": "केवल किचन",
+    "cashierAndKitchen": "कैशियर + किचन",
+    "autoPrint": "चेकआउट पर ऑटो प्रिंट",
+    "diagnosticsTitle": "प्रिंटर डायग्नोस्टिक्स",
+    "detectedPrinters": "पहचाने गए प्रिंटर ({{count}})",
+    "noPrinters": "कोई प्रिंटर नहीं मिला।",
+    "desktopOnly": "डेस्कटॉप डायग्नोस्टिक्स केवल Electron POS में उपलब्ध हैं।",
+    "cashierTarget": "कैशियर लक्ष्य",
+    "kitchenTarget": "किचन लक्ष्य",
+    "systemDefault": "सिस्टम डिफ़ॉल्ट",
+    "testCashier": "कैशियर टेस्ट",
+    "testKitchen": "किचन टेस्ट",
+    "targetsSaved": "डेस्कटॉप प्रिंटर लक्ष्य सहेजे गए"
+  },
+  "shortcuts": {
+    "title": "कैशियर शॉर्टकट",
+    "description": "चयनित मात्रा सेट करें, समायोजित करें, चेकआउट, खोज, बारकोड, पुनः प्रिंट।",
+    "selected": "चयनित: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "किचन",
+    "cashier": "कैशियर",
+    "kitchenTicket": "किचन टिकट",
+    "customerReceipt": "ग्राहक रसीद",
+    "copy": "प्रति {{current}}/{{total}}",
+    "total": "कुल",
+    "noReceiptYet": "अभी डाउनलोड के लिए कोई रसीद नहीं।",
+    "noReceiptReprint": "अभी पुनः प्रिंट के लिए कोई रसीद नहीं।",
+    "reprinted": "अंतिम रसीद पुनः प्रिंट की गई",
+    "pdfDownloaded": "PDF रसीद डाउनलोड हो गई",
+    "pdfFailed": "PDF रसीद डाउनलोड नहीं हो सकी",
+    "printWindowBlocked": "प्रिंट विंडो नहीं खुल सकी। कृपया पॉपअप की अनुमति दें।",
+    "noPrinterProfile": "कोई प्रिंटर प्रोफ़ाइल नहीं चुनी गई"
+  },
+  "errors": {
+    "selectShopFirst": "पहले दुकान चुनें",
+    "checkoutFailed": "चेकआउट विफल",
+    "statusUpdateFailed": "स्थिति अपडेट विफल",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "कोड के लिए कोई उत्पाद नहीं मिला: {{code}}",
+    "loginFailed": "साइन इन विफल",
+    "twoFactorEnabled": "इस खाते के लिए दो-कारक सक्षम है। वेंडर पोर्टल लॉगिन फ़्लो का उपयोग करें।",
+    "printerDiagFailed": "डेस्कटॉप प्रिंटर डायग्नोस्टिक्स लोड करने में विफल",
+    "printerTargetsFailed": "प्रिंटर लक्ष्य सहेजने में विफल",
+    "testPrintFailed": "टेस्ट प्रिंट विफल",
+    "testPrintError": "टेस्ट प्रिंट चलाने में विफल",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

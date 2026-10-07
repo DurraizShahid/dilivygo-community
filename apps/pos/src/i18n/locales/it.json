@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "orderLine": "Coda ordini",
+    "manageDishes": "Gestisci piatti",
+    "customers": "Clienti",
+    "inventory": "Inventario",
+    "settings": "Impostazioni"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Modalità terminale",
+    "secureLogin": "Accesso terminale sicuro",
+    "loading": "Caricamento terminale POS...",
+    "noActiveShop": "Nessun negozio attivo",
+    "selectShop": "Seleziona un negozio"
+  },
+  "auth": {
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "signIn": "Accedi",
+    "signingIn": "Accesso in corso..."
+  },
+  "order": {
+    "title": "Coda ordini",
+    "itemsInOrder": "{{count}} articoli nell'ordine",
+    "detailOrder": "Dettaglio ordine",
+    "items": "{{count}} articoli",
+    "noItems": "Nessun articolo aggiunto.",
+    "specialInstructions": "Istruzioni speciali...",
+    "placeOrder": "Effettua ordine",
+    "placing": "Elaborazione...",
+    "posOrderCreated": "Ordine POS creato",
+    "note": "Nota ordine",
+    "notePlaceholder": "es. Tavolo 4, senza cipolla..."
+  },
+  "menu": {
+    "title": "Menu cibi",
+    "allMenu": "Tutto il menu ({{count}})",
+    "searchPlaceholder": "Cerca nel menu... (F)",
+    "barcodePlaceholder": "Scansiona codice a barre (B)",
+    "noProducts": "Nessun prodotto corrisponde ai filtri.",
+    "loadingProducts": "Caricamento prodotti...",
+    "menuLabel": "Menu",
+    "variantOptions": "Opzioni: {{list}}"
+  },
+  "queue": {
+    "title": "Ordini attivi",
+    "empty": "Nessun ordine attivo al momento.",
+    "markStatus": "Segna come {{status}}",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "Riepilogo pagamento",
+    "subtotal": "Subtotale",
+    "service": "Servizio",
+    "totalPayable": "Totale da pagare",
+    "method": "Metodo di pagamento",
+    "cash": "Contanti",
+    "card": "Carta",
+    "split": "Dividi",
+    "tendered": "Incassato",
+    "change": "Resto",
+    "exact": "Esatto",
+    "insufficient": "Manca"
+  },
+  "actions": {
+    "reprint": "Ristampa (R)",
+    "print": "Stampa",
+    "pdf": "PDF",
+    "clear": "Cancella",
+    "void": "Annulla",
+    "logout": "Esci",
+    "add": "Aggiungi",
+    "save": "Salva",
+    "refresh": "Aggiorna"
+  },
+  "printer": {
+    "title": "Stampante terminale",
+    "terminalName": "Nome terminale",
+    "cashierOnly": "Solo cassa",
+    "kitchenOnly": "Solo cucina",
+    "cashierAndKitchen": "Cassa + Cucina",
+    "autoPrint": "Stampa automatica al checkout",
+    "diagnosticsTitle": "Diagnostica stampante",
+    "detectedPrinters": "Stampanti rilevate ({{count}})",
+    "noPrinters": "Nessuna stampante rilevata.",
+    "desktopOnly": "La diagnostica desktop è disponibile solo in Electron POS.",
+    "cashierTarget": "Stampante cassa",
+    "kitchenTarget": "Stampante cucina",
+    "systemDefault": "Predefinita di sistema",
+    "testCashier": "Test cassa",
+    "testKitchen": "Test cucina",
+    "targetsSaved": "Destinazioni stampante salvate"
+  },
+  "shortcuts": {
+    "title": "Scorciatoie cassiere",
+    "description": "imposta quantità, modifica, checkout, cerca, codice a barre, ristampa.",
+    "selected": "Selezionato: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Cucina",
+    "cashier": "Cassa",
+    "kitchenTicket": "Scontrino cucina",
+    "customerReceipt": "Ricevuta cliente",
+    "copy": "Copia {{current}}/{{total}}",
+    "total": "Totale",
+    "noReceiptYet": "Nessuna ricevuta da scaricare.",
+    "noReceiptReprint": "Nessuna ricevuta da ristampare.",
+    "reprinted": "Ultima ricevuta ristampata",
+    "pdfDownloaded": "Ricevuta PDF scaricata",
+    "pdfFailed": "Impossibile scaricare la ricevuta PDF",
+    "printWindowBlocked": "Impossibile aprire la finestra di stampa. Consenti i popup.",
+    "noPrinterProfile": "Nessun profilo stampante selezionato"
+  },
+  "errors": {
+    "selectShopFirst": "Seleziona prima un negozio",
+    "checkoutFailed": "Checkout fallito",
+    "statusUpdateFailed": "Aggiornamento stato fallito",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "Nessun prodotto trovato per il codice: {{code}}",
+    "loginFailed": "Accesso fallito",
+    "twoFactorEnabled": "L'autenticazione a due fattori è attiva per questo account. Usa il portale vendor.",
+    "printerDiagFailed": "Impossibile caricare la diagnostica stampante",
+    "printerTargetsFailed": "Impossibile salvare le destinazioni stampante",
+    "testPrintFailed": "Stampa di prova fallita",
+    "testPrintError": "Impossibile eseguire la stampa di prova",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

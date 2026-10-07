@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "داشبورد",
+    "orderLine": "صف سفارش",
+    "manageDishes": "مدیریت غذاها",
+    "customers": "مشتریان",
+    "inventory": "موجودی",
+    "settings": "تنظیمات"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "حالت ترمینال",
+    "secureLogin": "ورود امن ترمینال",
+    "loading": "در حال بارگذاری ترمینال POS...",
+    "noActiveShop": "فروشگاه فعالی وجود ندارد",
+    "selectShop": "فروشگاه را انتخاب کنید"
+  },
+  "auth": {
+    "emailPlaceholder": "ایمیل",
+    "passwordPlaceholder": "رمز عبور",
+    "signIn": "ورود",
+    "signingIn": "در حال ورود..."
+  },
+  "order": {
+    "title": "صف سفارش",
+    "itemsInOrder": "{{count}} آیتم در سفارش",
+    "detailOrder": "جزئیات سفارش",
+    "items": "{{count}} آیتم",
+    "noItems": "آیتمی اضافه نشده است.",
+    "specialInstructions": "دستورالعمل‌های ویژه...",
+    "placeOrder": "ثبت سفارش",
+    "placing": "در حال ثبت...",
+    "posOrderCreated": "سفارش POS ایجاد شد",
+    "note": "یادداشت سفارش",
+    "notePlaceholder": "مثال: میز ۴، بدون پیاز..."
+  },
+  "menu": {
+    "title": "منوی غذا",
+    "allMenu": "همه منو ({{count}})",
+    "searchPlaceholder": "جستجوی منو... (F)",
+    "barcodePlaceholder": "اسکن بارکد (B)",
+    "noProducts": "هیچ محصولی با فیلترهای شما مطابقت ندارد.",
+    "loadingProducts": "در حال بارگذاری محصولات...",
+    "menuLabel": "منو",
+    "variantOptions": "گزینه‌ها: {{list}}"
+  },
+  "queue": {
+    "title": "سفارشات فعال",
+    "empty": "در حال حاضر صف فعالی وجود ندارد.",
+    "markStatus": "علامت‌گذاری {{status}}",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "خلاصه پرداخت",
+    "subtotal": "جمع جزء",
+    "service": "سرویس",
+    "totalPayable": "مجموع قابل پرداخت",
+    "method": "روش پرداخت",
+    "cash": "نقدی",
+    "card": "کارت",
+    "split": "تقسیم",
+    "tendered": "مبلغ پرداختی",
+    "change": "باقی‌مانده",
+    "exact": "دقیق",
+    "insufficient": "کمبود"
+  },
+  "actions": {
+    "reprint": "چاپ مجدد (R)",
+    "print": "چاپ",
+    "pdf": "PDF",
+    "clear": "پاک کردن",
+    "void": "باطل",
+    "logout": "خروج",
+    "add": "افزودن",
+    "save": "ذخیره",
+    "refresh": "بازخوانی"
+  },
+  "printer": {
+    "title": "چاپگر ترمینال",
+    "terminalName": "نام ترمینال",
+    "cashierOnly": "فقط صندوقدار",
+    "kitchenOnly": "فقط آشپزخانه",
+    "cashierAndKitchen": "صندوقدار + آشپزخانه",
+    "autoPrint": "چاپ خودکار هنگام تسویه",
+    "diagnosticsTitle": "عیب‌یابی چاپگر",
+    "detectedPrinters": "چاپگرهای شناسایی شده ({{count}})",
+    "noPrinters": "چاپگری شناسایی نشد.",
+    "desktopOnly": "عیب‌یابی دسکتاپ فقط در Electron POS موجود است.",
+    "cashierTarget": "هدف صندوقدار",
+    "kitchenTarget": "هدف آشپزخانه",
+    "systemDefault": "پیش‌فرض سیستم",
+    "testCashier": "تست صندوقدار",
+    "testKitchen": "تست آشپزخانه",
+    "targetsSaved": "اهداف چاپگر دسکتاپ ذخیره شد"
+  },
+  "shortcuts": {
+    "title": "میانبرهای صندوقدار",
+    "description": "تنظیم تعداد انتخاب شده، تنظیم، تسویه، جستجو، بارکد، چاپ مجدد.",
+    "selected": "انتخاب شده: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "آشپزخانه",
+    "cashier": "صندوقدار",
+    "kitchenTicket": "بلیط آشپزخانه",
+    "customerReceipt": "رسید مشتری",
+    "copy": "نسخه {{current}}/{{total}}",
+    "total": "مجموع",
+    "noReceiptYet": "هنوز رسیدی برای دانلود وجود ندارد.",
+    "noReceiptReprint": "هنوز رسیدی برای چاپ مجدد وجود ندارد.",
+    "reprinted": "آخرین رسید مجدداً چاپ شد",
+    "pdfDownloaded": "رسید PDF دانلود شد",
+    "pdfFailed": "دانلود رسید PDF ممکن نشد",
+    "printWindowBlocked": "پنجره چاپ باز نشد. لطفاً پاپ‌آپ‌ها را مجاز کنید.",
+    "noPrinterProfile": "پروفایل چاپگری انتخاب نشده"
+  },
+  "errors": {
+    "selectShopFirst": "ابتدا فروشگاه را انتخاب کنید",
+    "checkoutFailed": "تسویه ناموفق بود",
+    "statusUpdateFailed": "به‌روزرسانی وضعیت ناموفق بود",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "محصولی برای کد یافت نشد: {{code}}",
+    "loginFailed": "ورود ناموفق بود",
+    "twoFactorEnabled": "احراز هویت دو مرحله‌ای برای این حساب فعال است. از جریان ورود پورتال فروشنده استفاده کنید.",
+    "printerDiagFailed": "بارگذاری عیب‌یابی چاپگر دسکتاپ ناموفق بود",
+    "printerTargetsFailed": "ذخیره اهداف چاپگر ناموفق بود",
+    "testPrintFailed": "چاپ آزمایشی ناموفق بود",
+    "testPrintError": "اجرای چاپ آزمایشی ناموفق بود",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

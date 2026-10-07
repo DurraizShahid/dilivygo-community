@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "Töölaud",
+    "orderLine": "Tellimuste järjekord",
+    "manageDishes": "Halda roogasid",
+    "customers": "Kliendid",
+    "inventory": "Laoseis",
+    "settings": "Seaded"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Terminali režiim",
+    "secureLogin": "Turvaline terminali sisselogimine",
+    "loading": "POS terminali laadimine...",
+    "noActiveShop": "Aktiivne pood puudub",
+    "selectShop": "Vali pood"
+  },
+  "auth": {
+    "emailPlaceholder": "E-post",
+    "passwordPlaceholder": "Parool",
+    "signIn": "Logi sisse",
+    "signingIn": "Sisselogimine..."
+  },
+  "order": {
+    "title": "Tellimuste järjekord",
+    "itemsInOrder": "{{count}} toodet tellimuses",
+    "detailOrder": "Tellimuse üksikasjad",
+    "items": "{{count}} toodet",
+    "noItems": "Tooteid pole lisatud.",
+    "specialInstructions": "Erijuhised...",
+    "placeOrder": "Esita tellimus",
+    "placing": "Esitamine...",
+    "posOrderCreated": "POS tellimus loodud",
+    "note": "Tellimuse märkus",
+    "notePlaceholder": "nt. Laud 4, sibulata..."
+  },
+  "menu": {
+    "title": "Toidumenüü",
+    "allMenu": "Kogu menüü ({{count}})",
+    "searchPlaceholder": "Otsi menüüst... (F)",
+    "barcodePlaceholder": "Skaneeri vöötkoodi (B)",
+    "noProducts": "Filtritele vastavaid tooteid ei leitud.",
+    "loadingProducts": "Toodete laadimine...",
+    "menuLabel": "Menüü",
+    "variantOptions": "Valikud: {{list}}"
+  },
+  "queue": {
+    "title": "Aktiivsed tellimused",
+    "empty": "Hetkel aktiivseid tellimusi pole.",
+    "markStatus": "Märgi kui {{status}}",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "Makse kokkuvõte",
+    "subtotal": "Vahesumma",
+    "service": "Teenustasu",
+    "totalPayable": "Kokku tasuda",
+    "method": "Makseviis",
+    "cash": "Sularaha",
+    "card": "Kaart",
+    "split": "Jaga",
+    "tendered": "Makstud",
+    "change": "Tagasi",
+    "exact": "Täpselt",
+    "insufficient": "Puudub"
+  },
+  "actions": {
+    "reprint": "Trüki uuesti (R)",
+    "print": "Trüki",
+    "pdf": "PDF",
+    "clear": "Tühjenda",
+    "void": "Tühista",
+    "logout": "Logi välja",
+    "add": "Lisa",
+    "save": "Salvesta",
+    "refresh": "Värskenda"
+  },
+  "printer": {
+    "title": "Terminali printer",
+    "terminalName": "Terminali nimi",
+    "cashierOnly": "Ainult kassa",
+    "kitchenOnly": "Ainult köök",
+    "cashierAndKitchen": "Kassa + Köök",
+    "autoPrint": "Automaatne printimine maksmisel",
+    "diagnosticsTitle": "Printeri diagnostika",
+    "detectedPrinters": "Tuvastatud printerid ({{count}})",
+    "noPrinters": "Printereid ei tuvastatud.",
+    "desktopOnly": "Töölaua diagnostika on saadaval ainult Electron POS-is.",
+    "cashierTarget": "Kassa printer",
+    "kitchenTarget": "Köögi printer",
+    "systemDefault": "Süsteemi vaikimisi",
+    "testCashier": "Testi kassat",
+    "testKitchen": "Testi kööki",
+    "targetsSaved": "Töölaua printeri sihtkohad salvestatud"
+  },
+  "shortcuts": {
+    "title": "Kassapidaja otseteed",
+    "description": "määra kogus, kohanda, maksa, otsi, vöötkood, trüki uuesti.",
+    "selected": "Valitud: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Köök",
+    "cashier": "Kassa",
+    "kitchenTicket": "Köögi pilet",
+    "customerReceipt": "Kliendi kviitung",
+    "copy": "Koopia {{current}}/{{total}}",
+    "total": "Kokku",
+    "noReceiptYet": "Kviitungit pole veel alla laadida.",
+    "noReceiptReprint": "Kviitungit pole uuesti trükkida.",
+    "reprinted": "Viimane kviitung uuesti trükitud",
+    "pdfDownloaded": "PDF kviitung alla laaditud",
+    "pdfFailed": "PDF kviitungit ei saanud alla laadida",
+    "printWindowBlocked": "Printimisakent ei saa avada. Palun luba hüpikaknad.",
+    "noPrinterProfile": "Printeri profiili pole valitud"
+  },
+  "errors": {
+    "selectShopFirst": "Vali esmalt pood",
+    "checkoutFailed": "Maksmine ebaõnnestus",
+    "statusUpdateFailed": "Oleku värskendamine ebaõnnestus",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "Koodiga {{code}} toodet ei leitud",
+    "loginFailed": "Sisselogimine ebaõnnestus",
+    "twoFactorEnabled": "Sellel kontol on kaheastmeline autentimine. Kasuta müüja portaali.",
+    "printerDiagFailed": "Printeri diagnostikat ei saanud laadida",
+    "printerTargetsFailed": "Printeri sihtkohtade salvestamine ebaõnnestus",
+    "testPrintFailed": "Testprintimine ebaõnnestus",
+    "testPrintError": "Testprintimist ei saanud käivitada",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

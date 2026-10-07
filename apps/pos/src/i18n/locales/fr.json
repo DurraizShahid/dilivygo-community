@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "orderLine": "Ligne de commande",
+    "manageDishes": "Gérer les plats",
+    "customers": "Clients",
+    "inventory": "Inventaire",
+    "settings": "Paramètres"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Mode terminal",
+    "secureLogin": "Connexion sécurisée au terminal",
+    "loading": "Chargement du terminal POS...",
+    "noActiveShop": "Aucune boutique active",
+    "selectShop": "Sélectionnez une boutique"
+  },
+  "auth": {
+    "emailPlaceholder": "E-mail",
+    "passwordPlaceholder": "Mot de passe",
+    "signIn": "Se connecter",
+    "signingIn": "Connexion en cours..."
+  },
+  "wrongAccount": {
+    "title": "Compte POS requis",
+    "description": "Vous êtes connecté avec un compte personnel qui ne peut pas utiliser le terminal POS (par ex. compte livreur). Déconnectez-vous et connectez-vous avec un compte vendeur ou admin, ou utilisez l’app livreur.",
+    "signOut": "Se déconnecter"
+  },
+  "order": {
+    "title": "Ligne de commande",
+    "itemsInOrder": "{{count}} articles dans la commande",
+    "detailOrder": "Détail de la commande",
+    "items": "{{count}} articles",
+    "noItems": "Aucun article ajouté.",
+    "specialInstructions": "Instructions spéciales...",
+    "placeOrder": "Passer la commande",
+    "placing": "En cours...",
+    "posOrderCreated": "Commande POS créée",
+    "saleType": "Type de vente",
+    "walkInSale": "Vente sur place",
+    "kitchenTicket": "Ticket cuisine",
+    "walkInHint": "Enregistrée comme terminée pour cette boutique.",
+    "kitchenHint": "File d’attente jusqu’au service ; pas de livreurs.",
+    "walkInSaleRecorded": "Vente sur place enregistrée",
+    "kitchenTicketCreated": "Ticket cuisine créé",
+    "note": "Note de commande",
+    "notePlaceholder": "ex. Table 4, sans oignons...",
+    "completeSale": "Finaliser la vente",
+    "sendToKitchen": "Envoyer en cuisine"
+  },
+  "menu": {
+    "title": "Menu Gourmand",
+    "allMenu": "Tout le menu ({{count}})",
+    "searchPlaceholder": "Rechercher dans le menu... (F)",
+    "barcodePlaceholder": "Scanner le code-barres (B)",
+    "noProducts": "Aucun produit ne correspond à vos filtres.",
+    "loadingProducts": "Chargement des produits...",
+    "menuLabel": "Menu",
+    "variantOptions": "Options : {{list}}"
+  },
+  "queue": {
+    "title": "Commandes actives",
+    "empty": "Aucune commande active en ce moment.",
+    "markStatus": "Marquer {{status}}",
+    "extendSuccess": "Temps de préparation prolongé"
+  },
+  "payment": {
+    "title": "Résumé du paiement",
+    "subtotal": "Sous-total",
+    "service": "Service",
+    "totalPayable": "Total à payer",
+    "method": "Mode de paiement",
+    "cash": "Espèces",
+    "card": "Carte",
+    "split": "Partagé",
+    "tendered": "Montant remis",
+    "change": "Monnaie",
+    "exact": "Exact",
+    "insufficient": "Manque"
+  },
+  "actions": {
+    "reprint": "Réimprimer (R)",
+    "print": "Imprimer",
+    "pdf": "PDF",
+    "clear": "Effacer",
+    "void": "Annuler",
+    "logout": "Déconnexion",
+    "add": "Ajouter",
+    "save": "Enregistrer",
+    "refresh": "Actualiser"
+  },
+  "printer": {
+    "title": "Imprimante du terminal",
+    "terminalName": "Nom du terminal",
+    "cashierOnly": "Caisse uniquement",
+    "kitchenOnly": "Cuisine uniquement",
+    "cashierAndKitchen": "Caisse + Cuisine",
+    "autoPrint": "Impression automatique à la validation",
+    "diagnosticsTitle": "Diagnostics d'impression",
+    "detectedPrinters": "Imprimantes détectées ({{count}})",
+    "noPrinters": "Aucune imprimante détectée.",
+    "desktopOnly": "Les diagnostics de bureau ne sont disponibles que dans Electron POS.",
+    "cashierTarget": "Cible caisse",
+    "kitchenTarget": "Cible cuisine",
+    "systemDefault": "Par défaut du système",
+    "testCashier": "Tester caisse",
+    "testKitchen": "Tester cuisine",
+    "targetsSaved": "Cibles d'impression de bureau enregistrées"
+  },
+  "shortcuts": {
+    "title": "Raccourcis caissier",
+    "description": "définir la quantité sélectionnée, ajuster, valider, rechercher, code-barres, réimprimer.",
+    "selected": "Sélectionné : {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Cuisine",
+    "cashier": "Caisse",
+    "kitchenTicket": "Ticket cuisine",
+    "customerReceipt": "Reçu client",
+    "copy": "Copie {{current}}/{{total}}",
+    "total": "Total",
+    "noReceiptYet": "Aucun reçu à télécharger pour le moment.",
+    "noReceiptReprint": "Aucun reçu à réimprimer pour le moment.",
+    "reprinted": "Dernier reçu réimprimé",
+    "pdfDownloaded": "Reçu PDF téléchargé",
+    "pdfFailed": "Impossible de télécharger le reçu PDF",
+    "printWindowBlocked": "Impossible d'ouvrir la fenêtre d'impression. Veuillez autoriser les popups.",
+    "noPrinterProfile": "Aucun profil d'imprimante sélectionné"
+  },
+  "errors": {
+    "selectShopFirst": "Sélectionnez d'abord une boutique",
+    "checkoutFailed": "Échec de la validation",
+    "statusUpdateFailed": "Échec de la mise à jour du statut",
+    "extendSlaFailed": "Impossible de prolonger le temps de préparation",
+    "noProductForCode": "Aucun produit trouvé pour le code : {{code}}",
+    "loginFailed": "Échec de la connexion",
+    "twoFactorEnabled": "L'authentification à deux facteurs est activée pour ce compte. Utilisez le portail vendeur.",
+    "printerDiagFailed": "Échec du chargement des diagnostics d'impression",
+    "printerTargetsFailed": "Échec de l'enregistrement des cibles d'impression",
+    "testPrintFailed": "Échec de l'impression de test",
+    "testPrintError": "Impossible d'effectuer l'impression de test",
+    "noAvailableVariant": "Ce produit propose des variantes mais aucune n'est disponible. Activez une variante ou scannez un code-barres de variante."
+  }
+}

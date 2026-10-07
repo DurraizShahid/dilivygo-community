@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "ダッシュボード",
+    "orderLine": "注文キュー",
+    "manageDishes": "メニュー管理",
+    "customers": "顧客",
+    "inventory": "在庫",
+    "settings": "設定"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "ターミナルモード",
+    "secureLogin": "セキュアターミナルログイン",
+    "loading": "POSターミナルを読み込み中...",
+    "noActiveShop": "アクティブな店舗がありません",
+    "selectShop": "店舗を選択"
+  },
+  "auth": {
+    "emailPlaceholder": "メールアドレス",
+    "passwordPlaceholder": "パスワード",
+    "signIn": "サインイン",
+    "signingIn": "サインイン中..."
+  },
+  "order": {
+    "title": "注文キュー",
+    "itemsInOrder": "注文に{{count}}品",
+    "detailOrder": "注文詳細",
+    "items": "{{count}}品",
+    "noItems": "商品が追加されていません。",
+    "specialInstructions": "特別な指示...",
+    "placeOrder": "注文する",
+    "placing": "注文中...",
+    "posOrderCreated": "POS注文が作成されました",
+    "note": "注文メモ",
+    "notePlaceholder": "例：4番テーブル、玉ねぎなし..."
+  },
+  "menu": {
+    "title": "フードメニュー",
+    "allMenu": "全メニュー ({{count}})",
+    "searchPlaceholder": "メニューを検索... (F)",
+    "barcodePlaceholder": "バーコードをスキャン (B)",
+    "noProducts": "フィルターに一致する商品がありません。",
+    "loadingProducts": "商品を読み込み中...",
+    "menuLabel": "メニュー",
+    "variantOptions": "オプション: {{list}}"
+  },
+  "queue": {
+    "title": "進行中の注文",
+    "empty": "現在アクティブなキューはありません。",
+    "markStatus": "{{status}}にする",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "お支払い概要",
+    "subtotal": "小計",
+    "service": "サービス料",
+    "totalPayable": "お支払い合計",
+    "method": "支払い方法",
+    "cash": "現金",
+    "card": "カード",
+    "split": "分割払い",
+    "tendered": "受取金額",
+    "change": "お釣り",
+    "exact": "ちょうど",
+    "insufficient": "不足"
+  },
+  "actions": {
+    "reprint": "再印刷 (R)",
+    "print": "印刷",
+    "pdf": "PDF",
+    "clear": "クリア",
+    "void": "取消",
+    "logout": "ログアウト",
+    "add": "追加",
+    "save": "保存",
+    "refresh": "更新"
+  },
+  "printer": {
+    "title": "ターミナルプリンター",
+    "terminalName": "ターミナル名",
+    "cashierOnly": "レジのみ",
+    "kitchenOnly": "キッチンのみ",
+    "cashierAndKitchen": "レジ + キッチン",
+    "autoPrint": "精算時に自動印刷",
+    "diagnosticsTitle": "プリンター診断",
+    "detectedPrinters": "検出されたプリンター ({{count}})",
+    "noPrinters": "プリンターが検出されませんでした。",
+    "desktopOnly": "デスクトップ診断はElectron POSでのみ利用可能です。",
+    "cashierTarget": "レジ対象",
+    "kitchenTarget": "キッチン対象",
+    "systemDefault": "システムデフォルト",
+    "testCashier": "レジテスト",
+    "testKitchen": "キッチンテスト",
+    "targetsSaved": "デスクトッププリンター対象が保存されました"
+  },
+  "shortcuts": {
+    "title": "レジショートカット",
+    "description": "選択数量設定、調整、精算、検索、バーコード、再印刷。",
+    "selected": "選択中: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "キッチン",
+    "cashier": "レジ",
+    "kitchenTicket": "キッチンチケット",
+    "customerReceipt": "お客様レシート",
+    "copy": "コピー {{current}}/{{total}}",
+    "total": "合計",
+    "noReceiptYet": "ダウンロードするレシートがありません。",
+    "noReceiptReprint": "再印刷するレシートがありません。",
+    "reprinted": "前回のレシートを再印刷しました",
+    "pdfDownloaded": "PDFレシートをダウンロードしました",
+    "pdfFailed": "PDFレシートをダウンロードできませんでした",
+    "printWindowBlocked": "印刷ウィンドウを開けません。ポップアップを許可してください。",
+    "noPrinterProfile": "プリンタープロファイルが選択されていません"
+  },
+  "errors": {
+    "selectShopFirst": "最初に店舗を選択してください",
+    "checkoutFailed": "精算に失敗しました",
+    "statusUpdateFailed": "ステータスの更新に失敗しました",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "コード {{code}} の商品が見つかりません",
+    "loginFailed": "サインインに失敗しました",
+    "twoFactorEnabled": "このアカウントは二要素認証が有効です。ベンダーポータルからログインしてください。",
+    "printerDiagFailed": "デスクトッププリンター診断を読み込めませんでした",
+    "printerTargetsFailed": "プリンター対象を保存できませんでした",
+    "testPrintFailed": "テスト印刷に失敗しました",
+    "testPrintError": "テスト印刷を実行できませんでした",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

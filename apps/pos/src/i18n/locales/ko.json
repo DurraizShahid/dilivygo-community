@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "대시보드",
+    "orderLine": "주문 대기열",
+    "manageDishes": "메뉴 관리",
+    "customers": "고객",
+    "inventory": "재고",
+    "settings": "설정"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "터미널 모드",
+    "secureLogin": "보안 터미널 로그인",
+    "loading": "POS 터미널 로딩 중...",
+    "noActiveShop": "활성 매장 없음",
+    "selectShop": "매장 선택"
+  },
+  "auth": {
+    "emailPlaceholder": "이메일",
+    "passwordPlaceholder": "비밀번호",
+    "signIn": "로그인",
+    "signingIn": "로그인 중..."
+  },
+  "order": {
+    "title": "주문 대기열",
+    "itemsInOrder": "주문에 {{count}}개 항목",
+    "detailOrder": "주문 상세",
+    "items": "{{count}}개 항목",
+    "noItems": "추가된 항목이 없습니다.",
+    "specialInstructions": "특별 요청사항...",
+    "placeOrder": "주문하기",
+    "placing": "주문 중...",
+    "posOrderCreated": "POS 주문이 생성되었습니다",
+    "note": "주문 메모",
+    "notePlaceholder": "예: 4번 테이블, 양파 없이..."
+  },
+  "menu": {
+    "title": "음식 메뉴",
+    "allMenu": "전체 메뉴 ({{count}})",
+    "searchPlaceholder": "메뉴 검색... (F)",
+    "barcodePlaceholder": "바코드 스캔 (B)",
+    "noProducts": "필터에 맞는 상품이 없습니다.",
+    "loadingProducts": "상품 로딩 중...",
+    "menuLabel": "메뉴",
+    "variantOptions": "옵션: {{list}}"
+  },
+  "queue": {
+    "title": "진행 중인 주문",
+    "empty": "현재 대기 중인 주문이 없습니다.",
+    "markStatus": "{{status}}(으)로 표시",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "결제 요약",
+    "subtotal": "소계",
+    "service": "서비스",
+    "totalPayable": "총 결제 금액",
+    "method": "결제 방법",
+    "cash": "현금",
+    "card": "카드",
+    "split": "분할 결제",
+    "tendered": "받은 금액",
+    "change": "거스름돈",
+    "exact": "정확히",
+    "insufficient": "부족"
+  },
+  "actions": {
+    "reprint": "재인쇄 (R)",
+    "print": "인쇄",
+    "pdf": "PDF",
+    "clear": "지우기",
+    "void": "취소",
+    "logout": "로그아웃",
+    "add": "추가",
+    "save": "저장",
+    "refresh": "새로고침"
+  },
+  "printer": {
+    "title": "터미널 프린터",
+    "terminalName": "터미널 이름",
+    "cashierOnly": "계산대만",
+    "kitchenOnly": "주방만",
+    "cashierAndKitchen": "계산대 + 주방",
+    "autoPrint": "결제 시 자동 인쇄",
+    "diagnosticsTitle": "프린터 진단",
+    "detectedPrinters": "감지된 프린터 ({{count}})",
+    "noPrinters": "감지된 프린터가 없습니다.",
+    "desktopOnly": "데스크톱 진단은 Electron POS에서만 사용 가능합니다.",
+    "cashierTarget": "계산대 대상",
+    "kitchenTarget": "주방 대상",
+    "systemDefault": "시스템 기본값",
+    "testCashier": "계산대 테스트",
+    "testKitchen": "주방 테스트",
+    "targetsSaved": "데스크톱 프린터 대상이 저장되었습니다"
+  },
+  "shortcuts": {
+    "title": "계산대 단축키",
+    "description": "선택 수량 설정, 조정, 결제, 검색, 바코드, 재인쇄.",
+    "selected": "선택됨: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "주방",
+    "cashier": "계산대",
+    "kitchenTicket": "주방 주문서",
+    "customerReceipt": "고객 영수증",
+    "copy": "사본 {{current}}/{{total}}",
+    "total": "합계",
+    "noReceiptYet": "다운로드할 영수증이 없습니다.",
+    "noReceiptReprint": "재인쇄할 영수증이 없습니다.",
+    "reprinted": "마지막 영수증이 재인쇄되었습니다",
+    "pdfDownloaded": "PDF 영수증이 다운로드되었습니다",
+    "pdfFailed": "PDF 영수증을 다운로드할 수 없습니다",
+    "printWindowBlocked": "인쇄 창을 열 수 없습니다. 팝업을 허용해 주세요.",
+    "noPrinterProfile": "선택된 프린터 프로필이 없습니다"
+  },
+  "errors": {
+    "selectShopFirst": "먼저 매장을 선택하세요",
+    "checkoutFailed": "결제 실패",
+    "statusUpdateFailed": "상태 업데이트 실패",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "코드 {{code}}에 해당하는 상품을 찾을 수 없습니다",
+    "loginFailed": "로그인 실패",
+    "twoFactorEnabled": "이 계정은 이중 인증이 활성화되어 있습니다. 판매자 포털 로그인을 사용하세요.",
+    "printerDiagFailed": "데스크톱 프린터 진단을 로드할 수 없습니다",
+    "printerTargetsFailed": "프린터 대상을 저장할 수 없습니다",
+    "testPrintFailed": "테스트 인쇄 실패",
+    "testPrintError": "테스트 인쇄를 실행할 수 없습니다",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

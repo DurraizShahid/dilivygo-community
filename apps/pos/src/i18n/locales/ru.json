@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "Панель управления",
+    "orderLine": "Очередь заказов",
+    "manageDishes": "Управление блюдами",
+    "customers": "Клиенты",
+    "inventory": "Инвентарь",
+    "settings": "Настройки"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Режим терминала",
+    "secureLogin": "Безопасный вход в терминал",
+    "loading": "Загрузка POS терминала...",
+    "noActiveShop": "Нет активного магазина",
+    "selectShop": "Выберите магазин"
+  },
+  "auth": {
+    "emailPlaceholder": "Электронная почта",
+    "passwordPlaceholder": "Пароль",
+    "signIn": "Войти",
+    "signingIn": "Вход..."
+  },
+  "order": {
+    "title": "Очередь заказов",
+    "itemsInOrder": "{{count}} позиций в заказе",
+    "detailOrder": "Детали заказа",
+    "items": "{{count}} позиций",
+    "noItems": "Позиции не добавлены.",
+    "specialInstructions": "Особые пожелания...",
+    "placeOrder": "Оформить заказ",
+    "placing": "Оформление...",
+    "posOrderCreated": "POS заказ создан",
+    "note": "Заметка к заказу",
+    "notePlaceholder": "напр. Стол 4, без лука..."
+  },
+  "menu": {
+    "title": "Меню блюд",
+    "allMenu": "Всё меню ({{count}})",
+    "searchPlaceholder": "Поиск в меню... (F)",
+    "barcodePlaceholder": "Сканировать штрих-код (B)",
+    "noProducts": "Нет товаров, соответствующих фильтрам.",
+    "loadingProducts": "Загрузка товаров...",
+    "menuLabel": "Меню",
+    "variantOptions": "Варианты: {{list}}"
+  },
+  "queue": {
+    "title": "Активные заказы",
+    "empty": "Сейчас нет активных заказов.",
+    "markStatus": "Отметить как {{status}}",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "Итого к оплате",
+    "subtotal": "Подытог",
+    "service": "Обслуживание",
+    "totalPayable": "Итого к оплате",
+    "method": "Способ оплаты",
+    "cash": "Наличные",
+    "card": "Карта",
+    "split": "Разделить",
+    "tendered": "Оплачено",
+    "change": "Сдача",
+    "exact": "Точно",
+    "insufficient": "Не хватает"
+  },
+  "actions": {
+    "reprint": "Повторная печать (R)",
+    "print": "Печать",
+    "pdf": "PDF",
+    "clear": "Очистить",
+    "void": "Аннулировать",
+    "logout": "Выйти",
+    "add": "Добавить",
+    "save": "Сохранить",
+    "refresh": "Обновить"
+  },
+  "printer": {
+    "title": "Принтер терминала",
+    "terminalName": "Название терминала",
+    "cashierOnly": "Только касса",
+    "kitchenOnly": "Только кухня",
+    "cashierAndKitchen": "Касса + Кухня",
+    "autoPrint": "Автопечать при оплате",
+    "diagnosticsTitle": "Диагностика принтера",
+    "detectedPrinters": "Обнаружено принтеров ({{count}})",
+    "noPrinters": "Принтеры не обнаружены.",
+    "desktopOnly": "Диагностика доступна только в Electron POS.",
+    "cashierTarget": "Принтер кассы",
+    "kitchenTarget": "Принтер кухни",
+    "systemDefault": "По умолчанию",
+    "testCashier": "Тест кассы",
+    "testKitchen": "Тест кухни",
+    "targetsSaved": "Настройки принтеров сохранены"
+  },
+  "shortcuts": {
+    "title": "Горячие клавиши кассира",
+    "description": "количество, корректировка, оплата, поиск, штрих-код, повторная печать.",
+    "selected": "Выбрано: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Кухня",
+    "cashier": "Касса",
+    "kitchenTicket": "Талон на кухню",
+    "customerReceipt": "Чек клиента",
+    "copy": "Копия {{current}}/{{total}}",
+    "total": "Итого",
+    "noReceiptYet": "Нет чека для скачивания.",
+    "noReceiptReprint": "Нет чека для повторной печати.",
+    "reprinted": "Последний чек напечатан повторно",
+    "pdfDownloaded": "PDF чек скачан",
+    "pdfFailed": "Не удалось скачать PDF чек",
+    "printWindowBlocked": "Не удалось открыть окно печати. Разрешите всплывающие окна.",
+    "noPrinterProfile": "Профиль принтера не выбран"
+  },
+  "errors": {
+    "selectShopFirst": "Сначала выберите магазин",
+    "checkoutFailed": "Ошибка оплаты",
+    "statusUpdateFailed": "Не удалось обновить статус",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "Товар с кодом {{code}} не найден",
+    "loginFailed": "Не удалось войти",
+    "twoFactorEnabled": "Для этого аккаунта включена двухфакторная аутентификация. Используйте вход через портал продавца.",
+    "printerDiagFailed": "Не удалось загрузить диагностику принтера",
+    "printerTargetsFailed": "Не удалось сохранить настройки принтеров",
+    "testPrintFailed": "Тестовая печать не удалась",
+    "testPrintError": "Не удалось выполнить тестовую печать",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

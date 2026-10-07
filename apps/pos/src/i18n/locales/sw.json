@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "Dashibodi",
+    "orderLine": "Foleni ya Agizo",
+    "manageDishes": "Dhibiti Vyakula",
+    "customers": "Wateja",
+    "inventory": "Hesabu ya Mali",
+    "settings": "Mipangilio"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Hali ya terminali",
+    "secureLogin": "Kuingia kwa usalama kwenye terminali",
+    "loading": "Kupakia terminali ya POS...",
+    "noActiveShop": "Hakuna duka linalofanya kazi",
+    "selectShop": "Chagua duka"
+  },
+  "auth": {
+    "emailPlaceholder": "Barua pepe",
+    "passwordPlaceholder": "Nenosiri",
+    "signIn": "Ingia",
+    "signingIn": "Kuingia..."
+  },
+  "order": {
+    "title": "Foleni ya Agizo",
+    "itemsInOrder": "Bidhaa {{count}} kwenye agizo",
+    "detailOrder": "Maelezo ya Agizo",
+    "items": "Bidhaa {{count}}",
+    "noItems": "Hakuna bidhaa zilizoongezwa.",
+    "specialInstructions": "Maagizo maalum...",
+    "placeOrder": "Weka Agizo",
+    "placing": "Kuweka...",
+    "posOrderCreated": "Agizo la POS limeundwa",
+    "note": "Kumbuka ya Agizo",
+    "notePlaceholder": "mfano: Meza 4, bila vitunguu..."
+  },
+  "menu": {
+    "title": "Menyu ya Vyakula",
+    "allMenu": "Menyu Yote ({{count}})",
+    "searchPlaceholder": "Tafuta menyu... (F)",
+    "barcodePlaceholder": "Changanua msimbo wa pau (B)",
+    "noProducts": "Hakuna bidhaa zinazolingana na vichujio vyako.",
+    "loadingProducts": "Kupakia bidhaa...",
+    "menuLabel": "Menyu",
+    "variantOptions": "Chaguo: {{list}}"
+  },
+  "queue": {
+    "title": "Maagizo Yanayoendelea",
+    "empty": "Hakuna foleni inayoendelea kwa sasa.",
+    "markStatus": "Weka alama {{status}}",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "Muhtasari wa Malipo",
+    "subtotal": "Jumla ndogo",
+    "service": "Huduma",
+    "totalPayable": "Jumla ya Kulipa",
+    "method": "Njia ya Malipo",
+    "cash": "Pesa taslimu",
+    "card": "Kadi",
+    "split": "Gawanya",
+    "tendered": "Kililolipwa",
+    "change": "Chenji",
+    "exact": "Hasa",
+    "insufficient": "Pungufu"
+  },
+  "actions": {
+    "reprint": "Chapisha Tena (R)",
+    "print": "Chapisha",
+    "pdf": "PDF",
+    "clear": "Futa",
+    "void": "Batilisha",
+    "logout": "Ondoka",
+    "add": "Ongeza",
+    "save": "Hifadhi",
+    "refresh": "Onyesha upya"
+  },
+  "printer": {
+    "title": "Printa ya Terminali",
+    "terminalName": "Jina la terminali",
+    "cashierOnly": "Kaunta pekee",
+    "kitchenOnly": "Jiko pekee",
+    "cashierAndKitchen": "Kaunta + Jiko",
+    "autoPrint": "Chapisha kiotomatiki wakati wa malipo",
+    "diagnosticsTitle": "Uchunguzi wa Printa",
+    "detectedPrinters": "Printa zilizogunduliwa ({{count}})",
+    "noPrinters": "Hakuna printa zilizogunduliwa.",
+    "desktopOnly": "Uchunguzi wa desktop unapatikana tu kwenye Electron POS.",
+    "cashierTarget": "Printa ya kaunta",
+    "kitchenTarget": "Printa ya jiko",
+    "systemDefault": "Chaguomsingi la mfumo",
+    "testCashier": "Jaribu Kaunta",
+    "testKitchen": "Jaribu Jiko",
+    "targetsSaved": "Malengo ya printa ya desktop yamehifadhiwa"
+  },
+  "shortcuts": {
+    "title": "Njia za Mkato za Kaunta",
+    "description": "weka kiasi, rekebisha, malipo, tafuta, msimbo wa pau, chapisha tena.",
+    "selected": "Umechagua: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Jiko",
+    "cashier": "Kaunta",
+    "kitchenTicket": "Tiketi ya Jiko",
+    "customerReceipt": "Risiti ya Mteja",
+    "copy": "Nakala {{current}}/{{total}}",
+    "total": "Jumla",
+    "noReceiptYet": "Hakuna risiti ya kupakua bado.",
+    "noReceiptReprint": "Hakuna risiti ya kuchapisha tena bado.",
+    "reprinted": "Risiti ya mwisho imechapishwa tena",
+    "pdfDownloaded": "Risiti ya PDF imepakuwa",
+    "pdfFailed": "Imeshindikana kupakua risiti ya PDF",
+    "printWindowBlocked": "Imeshindikana kufungua dirisha la uchapishaji. Tafadhali ruhusu popups.",
+    "noPrinterProfile": "Hakuna wasifu wa printa uliochaguliwa"
+  },
+  "errors": {
+    "selectShopFirst": "Chagua duka kwanza",
+    "checkoutFailed": "Malipo yameshindikana",
+    "statusUpdateFailed": "Imeshindikana kusasisha hali",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "Hakuna bidhaa iliyopatikana kwa msimbo: {{code}}",
+    "loginFailed": "Imeshindikana kuingia",
+    "twoFactorEnabled": "Uthibitishaji wa hatua mbili umewezeshwa kwa akaunti hii. Tumia portal ya muuzaji.",
+    "printerDiagFailed": "Imeshindikana kupakia uchunguzi wa printa ya desktop",
+    "printerTargetsFailed": "Imeshindikana kuhifadhi malengo ya printa",
+    "testPrintFailed": "Uchapishaji wa majaribio umeshindikana",
+    "testPrintError": "Imeshindikana kuendesha uchapishaji wa majaribio",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}
