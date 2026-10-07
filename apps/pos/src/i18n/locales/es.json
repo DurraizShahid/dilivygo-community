@@ -1,0 +1,135 @@
+{
+  "nav": {
+    "dashboard": "Panel",
+    "orderLine": "Línea de pedidos",
+    "manageDishes": "Gestionar platos",
+    "customers": "Clientes",
+    "inventory": "Inventario",
+    "settings": "Configuración"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Modo terminal",
+    "secureLogin": "Inicio de sesión seguro del terminal",
+    "loading": "Cargando terminal POS...",
+    "noActiveShop": "Sin tienda activa",
+    "selectShop": "Seleccionar una tienda"
+  },
+  "auth": {
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "signIn": "Iniciar sesión",
+    "signingIn": "Iniciando sesión..."
+  },
+  "wrongAccount": {
+    "title": "Se requiere cuenta POS",
+    "description": "Has iniciado sesión con una cuenta de personal que no puede usar el terminal POS (por ejemplo, una cuenta de repartidor). Cierra sesión e inicia con una cuenta de comercio o administrador, o usa la app de repartidor.",
+    "signOut": "Cerrar sesión"
+  },
+  "order": {
+    "title": "Línea de pedidos",
+    "itemsInOrder": "{{count}} artículos en el pedido",
+    "detailOrder": "Detalle del pedido",
+    "items": "{{count}} artículos",
+    "noItems": "No hay artículos añadidos.",
+    "specialInstructions": "Instrucciones especiales...",
+    "placeOrder": "Realizar pedido",
+    "placing": "Procesando...",
+    "posOrderCreated": "Pedido POS creado",
+    "note": "Nota del pedido",
+    "notePlaceholder": "ej. Mesa 4, sin cebolla..."
+  },
+  "menu": {
+    "title": "Menú Foodies",
+    "allMenu": "Todo el menú ({{count}})",
+    "searchPlaceholder": "Buscar en el menú... (F)",
+    "barcodePlaceholder": "Escanear código de barras (B)",
+    "noProducts": "No hay productos que coincidan con tus filtros.",
+    "loadingProducts": "Cargando productos...",
+    "menuLabel": "Menú",
+    "variantOptions": "Opciones: {{list}}"
+  },
+  "queue": {
+    "title": "Pedidos activos",
+    "empty": "No hay cola activa en este momento.",
+    "markStatus": "Marcar {{status}}",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "Resumen del pago",
+    "subtotal": "Subtotal",
+    "service": "Servicio",
+    "totalPayable": "Total a pagar",
+    "method": "Método de pago",
+    "cash": "Efectivo",
+    "card": "Tarjeta",
+    "split": "Dividir",
+    "tendered": "Entregado",
+    "change": "Cambio",
+    "exact": "Exacto",
+    "insufficient": "Falta"
+  },
+  "actions": {
+    "reprint": "Reimprimir (R)",
+    "print": "Imprimir",
+    "pdf": "PDF",
+    "clear": "Limpiar",
+    "void": "Anular",
+    "logout": "Cerrar sesión",
+    "add": "Añadir",
+    "save": "Guardar",
+    "refresh": "Actualizar"
+  },
+  "printer": {
+    "title": "Impresora del terminal",
+    "terminalName": "Nombre del terminal",
+    "cashierOnly": "Solo cajero",
+    "kitchenOnly": "Solo cocina",
+    "cashierAndKitchen": "Cajero + Cocina",
+    "autoPrint": "Impresión automática al finalizar",
+    "diagnosticsTitle": "Diagnóstico de impresora",
+    "detectedPrinters": "Impresoras detectadas ({{count}})",
+    "noPrinters": "No se detectaron impresoras.",
+    "desktopOnly": "Los diagnósticos de escritorio solo están disponibles en Electron POS.",
+    "cashierTarget": "Destino cajero",
+    "kitchenTarget": "Destino cocina",
+    "systemDefault": "Predeterminado del sistema",
+    "testCashier": "Probar cajero",
+    "testKitchen": "Probar cocina",
+    "targetsSaved": "Destinos de impresora guardados"
+  },
+  "shortcuts": {
+    "title": "Atajos del cajero",
+    "description": "establecer cantidad seleccionada, ajustar, finalizar, buscar, código de barras, reimprimir.",
+    "selected": "Seleccionado: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Cocina",
+    "cashier": "Cajero",
+    "kitchenTicket": "Ticket de cocina",
+    "customerReceipt": "Recibo del cliente",
+    "copy": "Copia {{current}}/{{total}}",
+    "total": "Total",
+    "noReceiptYet": "Aún no hay recibo para descargar.",
+    "noReceiptReprint": "Aún no hay recibo para reimprimir.",
+    "reprinted": "Último recibo reimpreso",
+    "pdfDownloaded": "Recibo PDF descargado",
+    "pdfFailed": "No se pudo descargar el recibo PDF",
+    "printWindowBlocked": "No se puede abrir la ventana de impresión. Por favor, permite las ventanas emergentes.",
+    "noPrinterProfile": "No hay perfil de impresora seleccionado"
+  },
+  "errors": {
+    "selectShopFirst": "Selecciona una tienda primero",
+    "checkoutFailed": "Error al finalizar la compra",
+    "statusUpdateFailed": "Error al actualizar el estado",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "No se encontró producto para el código: {{code}}",
+    "loginFailed": "Error al iniciar sesión",
+    "twoFactorEnabled": "La autenticación de dos factores está habilitada para esta cuenta. Usa el flujo de inicio de sesión del portal de vendedores.",
+    "printerDiagFailed": "Error al cargar los diagnósticos de la impresora",
+    "printerTargetsFailed": "Error al guardar los destinos de impresora",
+    "testPrintFailed": "Error en la impresión de prueba",
+    "testPrintError": "Error al ejecutar la impresión de prueba",
+    "noAvailableVariant": "Este producto tiene variantes pero ninguna está disponible. Active una variante o escanee el código de una variante."
+  }
+}

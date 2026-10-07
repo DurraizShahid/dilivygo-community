@@ -1,0 +1,159 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "orderLine": "Order Line",
+    "manageDishes": "Manage Dishes",
+    "customers": "Customers",
+    "inventory": "Inventory",
+    "settings": "Settings"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Terminal mode",
+    "secureLogin": "Secure terminal login",
+    "loading": "Loading POS terminal...",
+    "noActiveShop": "No active shop",
+    "selectShop": "Select a shop"
+  },
+  "auth": {
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in..."
+  },
+  "wrongAccount": {
+    "title": "POS account required",
+    "description": "You’re signed in with a staff account that can’t use the POS terminal. Sign out and sign in with a vendor or admin account.",
+    "signOut": "Sign out"
+  },
+  "order": {
+    "title": "Order Line",
+    "itemsInOrder": "{{count}} items in order",
+    "detailOrder": "Detail Order",
+    "items": "{{count}} items",
+    "noItems": "No items added.",
+    "specialInstructions": "Special instructions...",
+    "placeOrder": "Place Order",
+    "placing": "Placing...",
+    "posOrderCreated": "POS order created",
+    "saleType": "Sale type",
+    "walkInSale": "Walk-in sale",
+    "kitchenTicket": "Kitchen ticket",
+    "walkInHint": "Save as completed for this shop—ideal for counter checkout.",
+    "kitchenHint": "Ticket in the queue until served; no delivery riders.",
+    "walkInSaleRecorded": "Walk-in sale saved",
+    "kitchenTicketCreated": "Kitchen ticket created",
+    "completeSale": "Complete sale",
+    "sendToKitchen": "Send to kitchen",
+    "note": "Order note",
+    "notePlaceholder": "e.g. Table 4, no onions, extra napkins..."
+  },
+  "menu": {
+    "title": "Foodies Menu",
+    "allMenu": "All Menu ({{count}})",
+    "searchPlaceholder": "Search menu... (F)",
+    "barcodePlaceholder": "Scan barcode (B)",
+    "noProducts": "No products match your filters.",
+    "loadingProducts": "Loading products...",
+    "menuLabel": "Menu",
+    "uncategorized": "Uncategorized",
+    "variantOptions": "Options: {{list}}"
+  },
+  "queue": {
+    "title": "Active Orders",
+    "empty": "No active queue right now.",
+    "markStatus": "Mark {{status}}",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "Payment Summary",
+    "subtotal": "Subtotal",
+    "service": "Service",
+    "totalPayable": "Total Payable",
+    "method": "Payment Method",
+    "cash": "Cash",
+    "card": "Card",
+    "split": "Split",
+    "tendered": "Tendered",
+    "change": "Change",
+    "exact": "Exact",
+    "insufficient": "Short by"
+  },
+  "actions": {
+    "reprint": "Reprint (R)",
+    "print": "Print",
+    "pdf": "PDF",
+    "clear": "Clear",
+    "void": "Void",
+    "logout": "Logout",
+    "add": "Add",
+    "save": "Save",
+    "refresh": "Refresh"
+  },
+  "printer": {
+    "profile": "Profile",
+    "defaultPrinterBadge": "Default",
+    "title": "Terminal Printer",
+    "terminalName": "Terminal name",
+    "cashierOnly": "Cashier only",
+    "kitchenOnly": "Kitchen only",
+    "cashierAndKitchen": "Cashier + Kitchen",
+    "autoPrint": "Auto print on checkout",
+    "diagnosticsTitle": "Printer Diagnostics",
+    "detectedPrinters": "Detected printers ({{count}})",
+    "noPrinters": "No printers detected.",
+    "desktopOnly": "Desktop diagnostics are available only in Electron POS.",
+    "cashierTarget": "Cashier target",
+    "kitchenTarget": "Kitchen target",
+    "systemDefault": "System default",
+    "testCashier": "Test Cashier",
+    "testKitchen": "Test Kitchen",
+    "targetsSaved": "Desktop printer targets saved"
+  },
+  "shortcuts": {
+    "title": "Cashier Shortcuts",
+    "description": "set selected qty, adjust, checkout, search, barcode, reprint.",
+    "selected": "Selected: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Kitchen",
+    "cashier": "Cashier",
+    "kitchenTicket": "Kitchen Ticket",
+    "customerReceipt": "Customer Receipt",
+    "copy": "Copy {{current}}/{{total}}",
+    "total": "Total",
+    "noReceiptYet": "No receipt to download yet.",
+    "noReceiptReprint": "No receipt to reprint yet.",
+    "reprinted": "Reprinted last receipt",
+    "pdfDownloaded": "PDF receipt downloaded",
+    "pdfFailed": "Could not download PDF receipt",
+    "printWindowBlocked": "Unable to open print window. Please allow popups.",
+    "noPrinterProfile": "No printer profile selected"
+  },
+  "errors": {
+    "selectShopFirst": "Select a shop first",
+    "checkoutFailed": "Checkout failed",
+    "statusUpdateFailed": "Failed to update status",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "No product found for code: {{code}}",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode.",
+    "loginFailed": "Failed to sign in",
+    "twoFactorEnabled": "Two-factor is enabled for this account. Use the vendor portal login flow.",
+    "printerDiagFailed": "Failed to load desktop printer diagnostics",
+    "printerTargetsFailed": "Failed to save printer targets",
+    "testPrintFailed": "Test print failed",
+    "testPrintError": "Failed to run test print"
+  },
+  "settings": {
+    "title": "Settings",
+    "logoUploadFailed": "Failed to upload logo",
+    "workspaceLogo": "Workspace Logo",
+    "logoDescription": "Upload a logo to customize your vendor portal appearance.",
+    "uploadLogo": "Upload Logo",
+    "uploading": "Uploading...",
+    "logoUploaded": "Logo uploaded successfully",
+    "workspaceInfo": "Workspace Information",
+    "name": "Workspace Name",
+    "email": "Account Email"
+  }
+}

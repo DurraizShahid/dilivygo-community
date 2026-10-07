@@ -1,0 +1,562 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@dilivygo/ui/app-scrollbar.css";
+
+@source "../../../../packages/ui/src";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Light / dark tokens aligned with apps/superadmin/src/app/globals.css */
+:root {
+  --background: oklch(0.97 0.003 260);
+  --foreground: oklch(0.15 0.015 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.015 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.015 260);
+  --primary: oklch(0.55 0.18 260);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.005 260);
+  --secondary-foreground: oklch(0.25 0.01 260);
+  --muted: oklch(0.96 0.005 260);
+  --muted-foreground: oklch(0.48 0.01 260);
+  --accent: oklch(0.94 0.02 260);
+  --accent-foreground: oklch(0.3 0.06 260);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.91 0.005 260);
+  --input: oklch(0.91 0.005 260);
+  --ring: oklch(0.55 0.18 260);
+  --chart-1: oklch(0.55 0.18 260);
+  --chart-2: oklch(0.65 0.15 160);
+  --chart-3: oklch(0.6 0.18 30);
+  --chart-4: oklch(0.62 0.19 310);
+  --chart-5: oklch(0.66 0.15 80);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.98 0.002 260);
+  --sidebar-foreground: oklch(0.15 0.015 260);
+  --sidebar-primary: oklch(0.55 0.18 260);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.94 0.02 260);
+  --sidebar-accent-foreground: oklch(0.3 0.06 260);
+  --sidebar-border: oklch(0.92 0.004 260);
+  --sidebar-ring: oklch(0.55 0.18 260);
+  --success: var(--chart-2);
+  --warning: var(--chart-3);
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: oklch(0.98 0 0);
+  --card: #18181b;
+  --card-foreground: oklch(0.98 0 0);
+  --popover: #18181b;
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.65 0.2 260);
+  --primary-foreground: oklch(0.13 0.04 260);
+  --secondary: #18181b;
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: #18181b;
+  --muted-foreground: oklch(0.65 0.008 260);
+  --accent: #18181b;
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(0.29 0.01 260);
+  --input: #18181b;
+  --ring: oklch(0.65 0.2 260);
+  --chart-1: oklch(0.65 0.2 260);
+  --chart-2: oklch(0.65 0.15 160);
+  --chart-3: oklch(0.6 0.18 30);
+  --chart-4: oklch(0.62 0.19 310);
+  --chart-5: oklch(0.66 0.15 80);
+  --sidebar: #161616;
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.65 0.2 260);
+  --sidebar-primary-foreground: oklch(0.13 0.04 260);
+  --sidebar-accent: #202022;
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.29 0.01 260);
+  --sidebar-ring: oklch(0.65 0.2 260);
+  --success: var(--chart-2);
+  --warning: var(--chart-3);
+}
+
+/* POS logistics shell */
+html[data-pos-shell="logistics"].dark {
+  --background: #09090b;
+  --foreground: #ffffff;
+  --card: #18181b;
+  --card-foreground: #ffffff;
+  --popover: #18181b;
+  --popover-foreground: #ffffff;
+  --primary: #ff8c69;
+  --primary-foreground: #14100e;
+  --secondary: #18181b;
+  --secondary-foreground: #e8e8e8;
+  --muted: #18181b;
+  --muted-foreground: #707070;
+  --accent: #2a2420;
+  --accent-foreground: #ffdccf;
+  --destructive: oklch(0.62 0.2 25);
+  --border: rgba(255, 255, 255, 0.07);
+  --input: #1e1e20;
+  --ring: #ff8c69;
+  --chart-1: #ff8c69;
+  --chart-2: #a3e635;
+  --chart-3: #fbbf24;
+  --chart-4: #fb7185;
+  --chart-5: #a78bfa;
+  --sidebar: #0f0f11;
+  --sidebar-foreground: #f0f0f0;
+  --sidebar-primary: #ff8c69;
+  --sidebar-primary-foreground: #14100e;
+  --sidebar-accent: #1c1c1e;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: rgba(255, 255, 255, 0.055);
+  --sidebar-ring: #ff8c69;
+  --logistics-success: #a3e635;
+  --logistics-warn: #f59e0b;
+  --logistics-danger: #fb7185;
+  --success: var(--logistics-success);
+  --warning: var(--logistics-warn);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* ─── POS Keyframes ─────────────────────────────────────────────────────────── */
+
+@keyframes pos-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pos-fade-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pos-zoom-fade {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pos-pop {
+  0%   { transform: scale(0.55); opacity: 0; }
+  55%  { transform: scale(1.2);  opacity: 1; }
+  75%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pos-cart-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pos-pulse-cta {
+  0%, 100% {
+    box-shadow: 0 4px 22px -2px color-mix(in oklab, var(--primary) 55%, transparent),
+                0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 6px 36px -2px color-mix(in oklab, var(--primary) 75%, transparent),
+                0 0 0 7px color-mix(in oklab, var(--primary) 10%, transparent);
+  }
+}
+
+@keyframes pos-shimmer {
+  from { background-position: -250% center; }
+  to   { background-position: 250% center; }
+}
+
+@keyframes pos-fade-up-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes pos-fade-down-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(8px); }
+}
+
+@keyframes pos-cart-out {
+  from { opacity: 1; transform: translateX(0) scaleY(1); max-height: 200px; margin-bottom: 0; }
+  to   { opacity: 0; transform: translateX(24px) scaleY(0.8); max-height: 0; margin-bottom: -6px; }
+}
+
+@keyframes pos-pop-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.6); }
+}
+
+@keyframes pos-collapse-out {
+  from { opacity: 1; max-height: 400px; }
+  to   { opacity: 0; max-height: 0; }
+}
+
+/* ─── POS Utilities ─────────────────────────────────────────────────────────── */
+@layer utilities {
+
+  /* ── Animation classes ──────────────────────────────────────────────── */
+
+  .pos-anim-fade-up {
+    animation: pos-fade-up 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .pos-anim-fade-down {
+    animation: pos-fade-down 0.26s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .pos-anim-zoom {
+    animation: pos-zoom-fade 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .pos-anim-pop {
+    animation: pos-pop 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .pos-anim-cart-in {
+    animation: pos-cart-in 0.26s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .pos-anim-pulse-cta {
+    animation: pos-pulse-cta 3s ease-in-out infinite;
+  }
+
+  /* ── Exit animation classes ─────────────────────────────────────────── */
+
+  .pos-anim-fade-up-out {
+    animation: pos-fade-up-out 0.22s cubic-bezier(0.4, 0, 1, 1) both;
+  }
+  .pos-anim-fade-down-out {
+    animation: pos-fade-down-out 0.2s cubic-bezier(0.4, 0, 1, 1) both;
+  }
+  .pos-anim-cart-out {
+    animation: pos-cart-out 0.24s cubic-bezier(0.4, 0, 1, 1) both;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .pos-anim-pop-out {
+    animation: pos-pop-out 0.18s cubic-bezier(0.4, 0, 1, 1) both;
+  }
+  .pos-anim-collapse-out {
+    animation: pos-collapse-out 0.26s cubic-bezier(0.4, 0, 1, 1) both;
+    overflow: hidden;
+  }
+
+  /* Stagger delays (cycle with idx % 8) */
+  .pos-d-0 { animation-delay:   0ms; }
+  .pos-d-1 { animation-delay:  45ms; }
+  .pos-d-2 { animation-delay:  90ms; }
+  .pos-d-3 { animation-delay: 135ms; }
+  .pos-d-4 { animation-delay: 180ms; }
+  .pos-d-5 { animation-delay: 225ms; }
+  .pos-d-6 { animation-delay: 270ms; }
+  .pos-d-7 { animation-delay: 315ms; }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .pos-anim-fade-up,
+    .pos-anim-fade-down,
+    .pos-anim-zoom,
+    .pos-anim-pop,
+    .pos-anim-cart-in,
+    .pos-anim-pulse-cta,
+    .pos-anim-fade-up-out,
+    .pos-anim-fade-down-out,
+    .pos-anim-cart-out,
+    .pos-anim-pop-out,
+    .pos-anim-collapse-out {
+      animation: none;
+    }
+  }
+
+  /* Generic card */
+  .pos-card {
+    @apply rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm shadow-sm;
+  }
+
+  /* Panel section */
+  .pos-panel {
+    border-radius: 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  /* Product card */
+  .pos-product-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.18s ease,
+                box-shadow 0.22s ease,
+                transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(0) scale(1);
+    will-change: transform;
+  }
+  .pos-product-card:hover {
+    border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+    box-shadow: 0 10px 32px -6px color-mix(in oklab, var(--primary) 22%, transparent),
+                0 2px 8px -2px color-mix(in oklab, var(--foreground) 8%, transparent);
+    transform: translateY(-3px) scale(1.012);
+  }
+  .pos-product-card:active {
+    transform: translateY(-1px) scale(1.005);
+    transition-duration: 0.1s;
+  }
+  .pos-product-card.in-cart {
+    border-color: color-mix(in oklab, var(--primary) 65%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 22%, transparent),
+                0 8px 24px -4px color-mix(in oklab, var(--primary) 18%, transparent);
+  }
+
+  /* Image shimmer on hover */
+  .pos-product-card:hover .pos-img-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.18) 50%,
+      transparent 60%
+    );
+    background-size: 250% 100%;
+    animation: pos-shimmer 0.7s ease-out both;
+    pointer-events: none;
+  }
+
+  /* Qty badge on product card */
+  .pos-qty-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    z-index: 10;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ff8c69;
+    color: #14100e;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(255, 140, 105, 0.55);
+  }
+
+  /* Queue card */
+  .pos-queue-card {
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left-width: 3px;
+    transition: box-shadow 0.15s;
+    flex-shrink: 0;
+    min-width: 200px;
+  }
+  .pos-queue-card {
+    transition: box-shadow 0.18s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .pos-queue-card:hover {
+    box-shadow: 0 6px 20px -4px color-mix(in oklab, var(--foreground) 20%, transparent);
+    transform: translateY(-2px);
+  }
+
+  /* Input field */
+  .pos-input {
+    height: 44px;
+    border-radius: 12px;
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    padding: 0 14px;
+    font-size: 14px;
+    width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    outline: none;
+  }
+  .pos-input::placeholder {
+    color: var(--muted-foreground);
+    opacity: 0.6;
+  }
+  .pos-input:focus {
+    background: var(--muted);
+    border-color: color-mix(in oklab, var(--primary) 60%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 15%, transparent);
+  }
+
+  /* Big CTA button */
+  .pos-cta {
+    height: 52px;
+    width: 100%;
+    border-radius: 14px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 22px -2px color-mix(in oklab, var(--primary) 60%, transparent);
+    transition: background 0.15s, box-shadow 0.15s, opacity 0.15s, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .pos-cta:hover:not(:disabled) {
+    background: color-mix(in oklab, var(--primary) 88%, black 12%);
+    box-shadow: 0 6px 28px -2px color-mix(in oklab, var(--primary) 72%, transparent);
+  }
+  .pos-cta:active:not(:disabled) {
+    background: color-mix(in oklab, var(--primary) 78%, black 22%);
+    box-shadow: 0 2px 12px -2px color-mix(in oklab, var(--primary) 55%, transparent);
+    transform: scale(0.98);
+    transition-duration: 0.08s;
+  }
+  .pos-cta:disabled {
+    opacity: 0.35;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  /* Toggle button (active) */
+  .pos-toggle-active {
+    background: color-mix(in oklab, var(--primary) 12%, transparent);
+    border-color: color-mix(in oklab, var(--primary) 50%, transparent);
+    color: var(--primary);
+  }
+  .pos-toggle-inactive {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--muted-foreground);
+  }
+  .pos-toggle-inactive:hover {
+    color: var(--foreground);
+    border-color: color-mix(in oklab, var(--border) 150%, transparent);
+    background: var(--muted);
+  }
+
+  /* Cart line item */
+  .pos-cart-line {
+    border-radius: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    transition: background 0.1s, border-color 0.1s;
+    cursor: pointer;
+  }
+  .pos-cart-line.selected {
+    background: color-mix(in oklab, var(--primary) 8%, transparent);
+    border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+  }
+  .pos-cart-line:not(.selected) {
+    background: transparent;
+  }
+  .pos-cart-line:not(.selected):hover {
+    background: var(--muted);
+  }
+
+  /* Qty control button */
+  .pos-qty-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--muted);
+    color: var(--foreground);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s, transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .pos-qty-btn:hover:not(:disabled) {
+    background: color-mix(in oklab, var(--muted) 150%, var(--foreground) 5%);
+  }
+  .pos-qty-btn:active:not(:disabled) {
+    transform: scale(0.82);
+    transition-duration: 0.08s;
+  }
+  .pos-qty-btn.add {
+    background: color-mix(in oklab, var(--primary) 18%, transparent);
+    border-color: color-mix(in oklab, var(--primary) 35%, transparent);
+    color: var(--primary);
+  }
+  .pos-qty-btn.add:hover:not(:disabled) {
+    background: color-mix(in oklab, var(--primary) 28%, transparent);
+  }
+  .pos-qty-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* Keyboard shortcut keycap */
+  .pos-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 5px;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    font-family: monospace;
+    font-size: 10px;
+    color: var(--muted-foreground);
+  }
+
+  /* Status glow */
+  .pos-glow {
+    box-shadow: 0 0 40px -10px color-mix(in oklab, var(--primary) 30%, transparent);
+  }
+}

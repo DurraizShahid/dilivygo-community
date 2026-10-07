@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "orderLine": "خط الطلبات",
+    "manageDishes": "إدارة الأطباق",
+    "customers": "العملاء",
+    "inventory": "المخزون",
+    "settings": "الإعدادات"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "وضع الطرفية",
+    "secureLogin": "تسجيل دخول آمن للطرفية",
+    "loading": "جاري تحميل طرفية نقطة البيع...",
+    "noActiveShop": "لا يوجد متجر نشط",
+    "selectShop": "اختر متجراً"
+  },
+  "auth": {
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordPlaceholder": "كلمة المرور",
+    "signIn": "تسجيل الدخول",
+    "signingIn": "جاري تسجيل الدخول..."
+  },
+  "wrongAccount": {
+    "title": "مطلوب حساب نقطة بيع",
+    "description": "أنت مسجّل الدخول بحساب موظف لا يمكنه استخدام نقطة البيع (مثل حساب سائق). سجّل الخروج ثم سجّل الدخول بحساب تاجر أو مسؤول، أو استخدم تطبيق السائق.",
+    "signOut": "تسجيل الخروج"
+  },
+  "order": {
+    "title": "خط الطلبات",
+    "itemsInOrder": "{{count}} عناصر في الطلب",
+    "detailOrder": "تفاصيل الطلب",
+    "items": "{{count}} عناصر",
+    "noItems": "لم تتم إضافة أي عناصر.",
+    "specialInstructions": "تعليمات خاصة...",
+    "placeOrder": "تأكيد الطلب",
+    "placing": "جاري التأكيد...",
+    "posOrderCreated": "تم إنشاء طلب نقطة البيع",
+    "saleType": "نوع البيع",
+    "walkInSale": "بيع مباشر",
+    "kitchenTicket": "طلب للمطبخ",
+    "walkInHint": "يُحفظ كمكتمل لهذا الفرع.",
+    "kitchenHint": "يبقى في الطابور حتى التسليم؛ بدون سائقي توصيل.",
+    "walkInSaleRecorded": "تم حفظ البيع المباشر",
+    "kitchenTicketCreated": "تم إنشاء طلب المطبخ",
+    "note": "ملاحظة الطلب",
+    "notePlaceholder": "مثال: طاولة 4، بدون بصل...",
+    "completeSale": "إتمام البيع",
+    "sendToKitchen": "إرسال للمطبخ"
+  },
+  "menu": {
+    "title": "قائمة الطعام",
+    "allMenu": "كل القائمة ({{count}})",
+    "searchPlaceholder": "بحث في القائمة... (F)",
+    "barcodePlaceholder": "مسح الباركود (B)",
+    "noProducts": "لا توجد منتجات تطابق الفلاتر.",
+    "loadingProducts": "جاري تحميل المنتجات...",
+    "menuLabel": "القائمة",
+    "variantOptions": "الخيارات: {{list}}"
+  },
+  "queue": {
+    "title": "الطلبات النشطة",
+    "empty": "لا توجد طلبات نشطة حالياً.",
+    "markStatus": "تحديد {{status}}",
+    "extendSuccess": "تم تمديد وقت التحضير"
+  },
+  "payment": {
+    "title": "ملخص الدفع",
+    "subtotal": "المجموع الفرعي",
+    "service": "الخدمة",
+    "totalPayable": "المبلغ المستحق",
+    "method": "طريقة الدفع",
+    "cash": "نقداً",
+    "card": "بطاقة",
+    "split": "تقسيم",
+    "tendered": "المبلغ المدفوع",
+    "change": "الباقي",
+    "exact": "المبلغ بالضبط",
+    "insufficient": "ينقص"
+  },
+  "actions": {
+    "reprint": "إعادة طباعة (R)",
+    "print": "طباعة",
+    "pdf": "PDF",
+    "clear": "مسح",
+    "void": "إلغاء",
+    "logout": "تسجيل الخروج",
+    "add": "إضافة",
+    "save": "حفظ",
+    "refresh": "تحديث"
+  },
+  "printer": {
+    "title": "طابعة الطرفية",
+    "terminalName": "اسم الطرفية",
+    "cashierOnly": "الكاشير فقط",
+    "kitchenOnly": "المطبخ فقط",
+    "cashierAndKitchen": "الكاشير + المطبخ",
+    "autoPrint": "طباعة تلقائية عند الدفع",
+    "diagnosticsTitle": "تشخيص الطابعة",
+    "detectedPrinters": "الطابعات المكتشفة ({{count}})",
+    "noPrinters": "لم يتم اكتشاف أي طابعة.",
+    "desktopOnly": "تشخيصات سطح المكتب متاحة فقط في Electron POS.",
+    "cashierTarget": "هدف الكاشير",
+    "kitchenTarget": "هدف المطبخ",
+    "systemDefault": "الافتراضي للنظام",
+    "testCashier": "اختبار الكاشير",
+    "testKitchen": "اختبار المطبخ",
+    "targetsSaved": "تم حفظ أهداف طابعة سطح المكتب"
+  },
+  "shortcuts": {
+    "title": "اختصارات الكاشير",
+    "description": "تعيين الكمية المحددة، ضبط، دفع، بحث، باركود، إعادة طباعة.",
+    "selected": "المحدد: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "المطبخ",
+    "cashier": "الكاشير",
+    "kitchenTicket": "تذكرة المطبخ",
+    "customerReceipt": "إيصال العميل",
+    "copy": "نسخة {{current}}/{{total}}",
+    "total": "الإجمالي",
+    "noReceiptYet": "لا يوجد إيصال للتنزيل حتى الآن.",
+    "noReceiptReprint": "لا يوجد إيصال لإعادة الطباعة حتى الآن.",
+    "reprinted": "تمت إعادة طباعة آخر إيصال",
+    "pdfDownloaded": "تم تنزيل إيصال PDF",
+    "pdfFailed": "تعذر تنزيل إيصال PDF",
+    "printWindowBlocked": "تعذر فتح نافذة الطباعة. يرجى السماح بالنوافذ المنبثقة.",
+    "noPrinterProfile": "لم يتم تحديد ملف تعريف الطابعة"
+  },
+  "errors": {
+    "selectShopFirst": "اختر متجراً أولاً",
+    "checkoutFailed": "فشل إتمام الطلب",
+    "statusUpdateFailed": "فشل تحديث الحالة",
+    "extendSlaFailed": "تعذر تمديد وقت التحضير",
+    "noProductForCode": "لم يتم العثور على منتج للرمز: {{code}}",
+    "loginFailed": "فشل تسجيل الدخول",
+    "twoFactorEnabled": "المصادقة الثنائية مفعّلة لهذا الحساب. استخدم بوابة البائع لتسجيل الدخول.",
+    "printerDiagFailed": "فشل تحميل تشخيصات الطابعة",
+    "printerTargetsFailed": "فشل حفظ أهداف الطابعة",
+    "testPrintFailed": "فشل اختبار الطباعة",
+    "testPrintError": "تعذر إجراء اختبار الطباعة",
+    "noAvailableVariant": "This product has variants but none are available. Enable a variant or scan a variant barcode."
+  }
+}

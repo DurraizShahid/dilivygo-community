@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "orderLine": "Bestelllinie",
+    "manageDishes": "Gerichte verwalten",
+    "customers": "Kunden",
+    "inventory": "Inventar",
+    "settings": "Einstellungen"
+  },
+  "terminal": {
+    "title": "Dilivygo POS",
+    "subtitle": "Terminal-Modus",
+    "secureLogin": "Sichere Terminal-Anmeldung",
+    "loading": "POS-Terminal wird geladen...",
+    "noActiveShop": "Kein aktives Geschäft",
+    "selectShop": "Geschäft auswählen"
+  },
+  "auth": {
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Passwort",
+    "signIn": "Anmelden",
+    "signingIn": "Anmeldung läuft..."
+  },
+  "order": {
+    "title": "Bestelllinie",
+    "itemsInOrder": "{{count}} Artikel in der Bestellung",
+    "detailOrder": "Bestelldetails",
+    "items": "{{count}} Artikel",
+    "noItems": "Keine Artikel hinzugefügt.",
+    "specialInstructions": "Besondere Anweisungen...",
+    "placeOrder": "Bestellung aufgeben",
+    "placing": "Wird verarbeitet...",
+    "posOrderCreated": "POS-Bestellung erstellt",
+    "note": "Bestellnotiz",
+    "notePlaceholder": "z.B. Tisch 4, ohne Zwiebeln..."
+  },
+  "menu": {
+    "title": "Foodies Menü",
+    "allMenu": "Gesamtes Menü ({{count}})",
+    "searchPlaceholder": "Menü durchsuchen... (F)",
+    "barcodePlaceholder": "Barcode scannen (B)",
+    "noProducts": "Keine Produkte entsprechen Ihren Filtern.",
+    "loadingProducts": "Produkte werden geladen...",
+    "menuLabel": "Menü",
+    "variantOptions": "Varianten: {{list}}"
+  },
+  "queue": {
+    "title": "Aktive Bestellungen",
+    "empty": "Derzeit keine aktive Warteschlange.",
+    "markStatus": "Als {{status}} markieren",
+    "extendSuccess": "Prep time extended"
+  },
+  "payment": {
+    "title": "Zahlungsübersicht",
+    "subtotal": "Zwischensumme",
+    "service": "Service",
+    "totalPayable": "Zu zahlender Betrag",
+    "method": "Zahlungsmethode",
+    "cash": "Bargeld",
+    "card": "Karte",
+    "split": "Teilen",
+    "tendered": "Gegeben",
+    "change": "Wechselgeld",
+    "exact": "Exakt",
+    "insufficient": "Fehlt"
+  },
+  "actions": {
+    "reprint": "Neu drucken (R)",
+    "print": "Drucken",
+    "pdf": "PDF",
+    "clear": "Leeren",
+    "void": "Stornieren",
+    "logout": "Abmelden",
+    "add": "Hinzufügen",
+    "save": "Speichern",
+    "refresh": "Aktualisieren"
+  },
+  "printer": {
+    "title": "Terminal-Drucker",
+    "terminalName": "Terminal-Name",
+    "cashierOnly": "Nur Kasse",
+    "kitchenOnly": "Nur Küche",
+    "cashierAndKitchen": "Kasse + Küche",
+    "autoPrint": "Automatisch drucken beim Checkout",
+    "diagnosticsTitle": "Drucker-Diagnose",
+    "detectedPrinters": "Erkannte Drucker ({{count}})",
+    "noPrinters": "Keine Drucker erkannt.",
+    "desktopOnly": "Desktop-Diagnose ist nur in Electron POS verfügbar.",
+    "cashierTarget": "Kassenziel",
+    "kitchenTarget": "Küchenziel",
+    "systemDefault": "Systemstandard",
+    "testCashier": "Kasse testen",
+    "testKitchen": "Küche testen",
+    "targetsSaved": "Desktop-Druckerziele gespeichert"
+  },
+  "shortcuts": {
+    "title": "Kassierer-Shortcuts",
+    "description": "ausgewählte Menge festlegen, anpassen, auschecken, suchen, Barcode, neu drucken.",
+    "selected": "Ausgewählt: {{name}}"
+  },
+  "receipt": {
+    "kitchen": "Küche",
+    "cashier": "Kasse",
+    "kitchenTicket": "Küchenbon",
+    "customerReceipt": "Kundenbeleg",
+    "copy": "Kopie {{current}}/{{total}}",
+    "total": "Gesamt",
+    "noReceiptYet": "Noch kein Beleg zum Herunterladen.",
+    "noReceiptReprint": "Noch kein Beleg zum Nachdrucken.",
+    "reprinted": "Letzten Beleg nachgedruckt",
+    "pdfDownloaded": "PDF-Beleg heruntergeladen",
+    "pdfFailed": "PDF-Beleg konnte nicht heruntergeladen werden",
+    "printWindowBlocked": "Druckfenster konnte nicht geöffnet werden. Bitte Popups erlauben.",
+    "noPrinterProfile": "Kein Druckerprofil ausgewählt"
+  },
+  "errors": {
+    "selectShopFirst": "Bitte zuerst ein Geschäft auswählen",
+    "checkoutFailed": "Checkout fehlgeschlagen",
+    "statusUpdateFailed": "Status-Aktualisierung fehlgeschlagen",
+    "extendSlaFailed": "Could not extend prep time",
+    "noProductForCode": "Kein Produkt für Code gefunden: {{code}}",
+    "loginFailed": "Anmeldung fehlgeschlagen",
+    "twoFactorEnabled": "Zwei-Faktor-Authentifizierung ist für dieses Konto aktiviert. Bitte den Händlerportal-Login verwenden.",
+    "printerDiagFailed": "Desktop-Druckerdiagnose konnte nicht geladen werden",
+    "printerTargetsFailed": "Druckerziele konnten nicht gespeichert werden",
+    "testPrintFailed": "Testdruck fehlgeschlagen",
+    "testPrintError": "Testdruck konnte nicht ausgeführt werden",
+    "noAvailableVariant": "Dieses Produkt hat Varianten, aber keine ist verfügbar. Aktivieren Sie eine Variante oder scannen Sie einen Varianten-Barcode."
+  }
+}
