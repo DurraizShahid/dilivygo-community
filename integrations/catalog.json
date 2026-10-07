@@ -1,0 +1,354 @@
+[
+  {
+    "key": "stripe",
+    "name": "Stripe",
+    "category": "Payments & Accounting",
+    "type": "native",
+    "priority": "core",
+    "capabilities": [
+      "payments"
+    ],
+    "icon": "Stripe.svg"
+  },
+  {
+    "key": "stripe-connect",
+    "name": "Stripe Connect",
+    "category": "Payments & Accounting",
+    "type": "native",
+    "priority": "core",
+    "capabilities": [
+      "marketplace-payments",
+      "payouts"
+    ],
+    "icon": "Stripe_Connect.svg"
+  },
+  {
+    "key": "apple-pay",
+    "name": "Apple Pay",
+    "category": "Payments & Accounting",
+    "type": "native",
+    "priority": "core",
+    "capabilities": [
+      "payments"
+    ],
+    "icon": "Apple_Pay.svg"
+  },
+  {
+    "key": "google-pay",
+    "name": "Google Pay",
+    "category": "Payments & Accounting",
+    "type": "native",
+    "priority": "core",
+    "capabilities": [
+      "payments"
+    ],
+    "icon": "Google_Pay.svg"
+  },
+  {
+    "key": "paypal",
+    "name": "PayPal",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "payments"
+    ],
+    "icon": "PayPal.svg",
+    "integrationId": "paypal"
+  },
+  {
+    "key": "adyen",
+    "name": "Adyen",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "payments"
+    ],
+    "icon": "Adyen.svg",
+    "integrationId": "adyen"
+  },
+  {
+    "key": "square",
+    "name": "Square",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "payments",
+      "pos"
+    ],
+    "icon": "Square.svg",
+    "integrationId": "square"
+  },
+  {
+    "key": "tabby",
+    "name": "Tabby",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "payments",
+      "bnpl"
+    ],
+    "icon": "Tabby.svg",
+    "integrationId": "tabby"
+  },
+  {
+    "key": "tamara",
+    "name": "Tamara",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "payments",
+      "bnpl"
+    ],
+    "icon": "Tamara.svg",
+    "integrationId": "tamara"
+  },
+  {
+    "key": "easypaisa",
+    "name": "EasyPaisa",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "payments"
+    ],
+    "icon": "EasyPaisa.svg",
+    "integrationId": "easypaisa"
+  },
+  {
+    "key": "jazzcash",
+    "name": "JazzCash",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "payments"
+    ],
+    "icon": "JazzCash.svg",
+    "integrationId": "jazzcash"
+  },
+  {
+    "key": "quickbooks",
+    "name": "QuickBooks",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "core",
+    "capabilities": [
+      "accounting"
+    ],
+    "icon": "QuickBooks.svg",
+    "integrationId": "quickbooks"
+  },
+  {
+    "key": "xero",
+    "name": "Xero",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "core",
+    "capabilities": [
+      "accounting"
+    ],
+    "icon": "Xero.svg",
+    "integrationId": "xero"
+  },
+  {
+    "key": "zoho-books",
+    "name": "Zoho Books",
+    "category": "Payments & Accounting",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "accounting"
+    ],
+    "icon": "Zoho_Books.svg",
+    "integrationId": "zoho-books"
+  },
+  {
+    "key": "firebase-fcm",
+    "name": "Firebase FCM",
+    "category": "Notifications",
+    "type": "native",
+    "priority": "core",
+    "capabilities": [
+      "push-notifications"
+    ],
+    "icon": "Firebase_FCM.svg"
+  },
+  {
+    "key": "onesignal",
+    "name": "OneSignal",
+    "category": "Notifications",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "push-notifications"
+    ],
+    "icon": "OneSignal.svg",
+    "integrationId": "onesignal"
+  },
+  {
+    "key": "google-maps",
+    "name": "Google Maps",
+    "category": "Maps & Logistics",
+    "type": "native",
+    "priority": "core",
+    "capabilities": [
+      "maps",
+      "geocoding",
+      "delivery"
+    ],
+    "icon": "Google_Maps.svg"
+  },
+  {
+    "key": "mapbox",
+    "name": "Mapbox",
+    "category": "Maps & Logistics",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "maps",
+      "geocoding",
+      "delivery"
+    ],
+    "icon": "Mapbox.svg",
+    "integrationId": "mapbox"
+  },
+  {
+    "key": "here-maps",
+    "name": "HERE Maps",
+    "category": "Maps & Logistics",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "maps",
+      "geocoding",
+      "delivery"
+    ],
+    "icon": "HERE_Maps.svg",
+    "integrationId": "here-maps"
+  },
+  {
+    "key": "zapier",
+    "name": "Zapier",
+    "category": "AI & Automation",
+    "type": "webhook",
+    "priority": "extended",
+    "capabilities": [
+      "automation"
+    ],
+    "icon": "Zapier.svg"
+  },
+  {
+    "key": "make",
+    "name": "Make",
+    "category": "AI & Automation",
+    "type": "webhook",
+    "priority": "extended",
+    "capabilities": [
+      "automation"
+    ],
+    "icon": "Make.svg"
+  },
+  {
+    "key": "n8n",
+    "name": "n8n",
+    "category": "AI & Automation",
+    "type": "webhook",
+    "priority": "extended",
+    "capabilities": [
+      "automation"
+    ],
+    "icon": "n8n.svg"
+  },
+  {
+    "key": "resend",
+    "name": "Resend",
+    "category": "Marketing & CRM",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "email"
+    ],
+    "icon": "Resend.svg",
+    "integrationId": "resend"
+  },
+  {
+    "key": "slack",
+    "name": "Slack",
+    "category": "Communication & Support",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "notifications",
+      "collaboration"
+    ],
+    "icon": "Slack.svg",
+    "integrationId": "slack"
+  },
+  {
+    "key": "microsoft-teams",
+    "name": "Microsoft Teams",
+    "category": "Communication & Support",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "notifications",
+      "collaboration"
+    ],
+    "icon": "Microsoft_Teams.svg",
+    "integrationId": "microsoft-teams"
+  },
+  {
+    "key": "whatsapp",
+    "name": "WhatsApp",
+    "category": "Communication & Support",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "messaging"
+    ],
+    "icon": "WhatsApp.svg",
+    "integrationId": "whatsapp"
+  },
+  {
+    "key": "intercom",
+    "name": "Intercom",
+    "category": "Communication & Support",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "support",
+      "messaging"
+    ],
+    "icon": "Intercom.svg",
+    "integrationId": "intercom"
+  },
+  {
+    "key": "zendesk",
+    "name": "Zendesk",
+    "category": "Communication & Support",
+    "type": "nango",
+    "priority": "extended",
+    "capabilities": [
+      "support"
+    ],
+    "icon": "Zendesk.svg",
+    "integrationId": "zendesk"
+  },
+  {
+    "key": "twilio",
+    "name": "Twilio",
+    "category": "Communication & Support",
+    "type": "native",
+    "priority": "core",
+    "capabilities": [
+      "sms",
+      "otp"
+    ],
+    "icon": "Twilio.svg"
+  }
+]

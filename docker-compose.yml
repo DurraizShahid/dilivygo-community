@@ -1,0 +1,103 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+      - DILIVYGO_EDITION=community
+      # Override .env so the container always listens on 8080 (host maps 8080:8080)
+      - PORT=8080
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      postgrest:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:8080/api/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # One-shot: migrate + grant PostgREST roles. Run once after first `up`:
+  #   docker compose run --rm db-setup
+  db-setup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - SUPABASE_DB_URL=postgres://dilivygo:dilivygo@postgres:5432/dilivygo
+    command: ["sh", "-c", "node migrations/runner.local.js && node scripts/ce-postgrest-grants.js"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      postgrest:
+        condition: service_started
+    profiles: ["setup"]
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=dilivygo
+      - POSTGRES_PASSWORD=dilivygo
+      - POSTGRES_DB=dilivygo
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres-init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dilivygo -d dilivygo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Standalone PostgREST: the server talks to Postgres via SUPABASE_URL/rest/v1.
+  # This replaces the Supabase stack's PostgREST for local CE deployments.
+  # Storage API is NOT included: uploads degrade gracefully (logged, not fatal).
+  postgrest:
+    image: postgrest/postgrest:v12.2.0
+    environment:
+      - PGRST_DB_URI=postgres://dilivygo:dilivygo@postgres:5432/dilivygo
+      - PGRST_DB_SCHEMAS=public
+      - PGRST_DB_ANON_ROLE=anon
+      - PGRST_JWT_SECRET=${POSTGREST_JWT_SECRET:-dilivygo-ce-dev-jwt-secret-CHANGE-ME-IN-PRODUCTION}
+      - PGRST_SERVER_PORT=3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
